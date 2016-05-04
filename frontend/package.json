@@ -1,0 +1,23 @@
+{
+  "name": "typing-golf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "event-emitter": "^0.3.4",
+    "merge": "^1.2.0",
+    "qwest": "^4.4.2",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "react-router": "^2.4.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "reactify": "^1.1.1"
+  }
+}

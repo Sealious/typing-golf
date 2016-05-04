@@ -1,0 +1,425 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    text-rendering: optimizelegibility;
+    font-smooth: auto;
+    -webkit-font-smoothing: auto;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+body {
+    font-family: 'Source Sans Pro Regular', 'Open Sans', 'Liberation Sans', 'Nimbus Sans L', 'Trebuchet MS', 'Arial';
+    font-weight: 300;
+    /*color: #555;*/
+    color: #FFF;
+    background-color: hsl(0, 10%, 25%);
+}
+
+.break {
+    background-color: hsl(136, 75%, 60%);
+    cursor: wait;
+}
+
+.after_break,
+.after_work {
+    background-color: hsl(76, 75%, 60%);
+    cursor: pointer;
+    font-size: 5rem;
+    line-height: 10rem;
+}
+
+.after_break:hover,
+.after_work:hover {
+    background-color: hsl(76, 55%, 55%);
+}
+
+.work {
+    background-color: hsl(9, 80%, 60%);
+    cursor: wait;
+}
+
+
+/*.after_work {
+    background-color: hsl(16, 75%, 60%);
+    cursor: pointer;
+    font-size: 5rem !important;
+    line-height: 19rem !important;
+}
+
+.after_work:hover {
+    background-color: hsl(48, 75%, 60%);
+}*/
+
+.logo {
+    /*background-color: #333;*/
+    font-family: 'Lobster';
+    font-size: 6rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    text-shadow: 0.3rem 0.3rem hsl(0, 12%, 24%);
+}
+
+.sentence {
+    font-size: 2rem;
+}
+
+.slug {
+    color: hsl(0, 10%, 45%);
+}
+
+.flex-container {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+}
+
+.row {
+    width: auto;
+    /*border: 1px solid blue;*/
+}
+
+.flex-item {
+    /*background-color: hsl(0, 100%, 63%);*/
+    /*padding: 2rem;*/
+    /*margin: 0;*/
+    color: #fff;
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+    padding: 2rem;
+}
+
+.no-padding {
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.press {
+    transition: all 400ms;
+    width: 20rem;
+    height: 20rem;
+    /*border-radius: 50%;*/
+    border-top: 0.4rem solid hsl(0, 20%, 24%);
+    border-left: 0.4rem solid hsl(0, 20%, 24%);
+    border-right: 0.4rem solid hsl(0, 20%, 24%);
+    border-bottom: 0.4rem solid hsl(0, 20%, 24%);
+    text-align: center;
+    vertical-align: middle;
+    line-height: 18rem;
+    font-size: 6rem;
+    display: inline-block;
+}
+
+.press:hover {
+    border-top: 0.4rem solid #fff;
+    border-left: 0.4rem solid #fff;
+    border-right: 0.4rem solid #fff;
+    border-bottom: 0.4rem solid #fff;
+}
+
+.circle-block {
+    transition: all 400ms;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    border-top: 0.2rem solid hsl(0, 20%, 24%);
+    border-left: 0.4rem solid hsl(0, 20%, 24%);
+    border-right: 0.4rem solid hsl(0, 20%, 24%);
+    border-bottom: 0.2rem solid hsl(0, 20%, 24%);
+    text-align: center;
+    vertical-align: middle;
+    line-height: 19rem;
+    font-size: 6rem;
+    display: inline-block;
+}
+
+.bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    left: 36px;
+    top: 36px;
+}
+
+
+/* Color/shape of burger icon bars */
+
+.bm-burger-bars {
+    background: hsl(0, 10%, 45%);
+}
+
+
+/* Position and sizing of clickable cross button */
+
+.bm-cross-button {
+    height: 24px;
+    width: 24px;
+}
+
+
+/* Color/shape of close button cross */
+
+.bm-cross {
+    background: #bdc3c7;
+}
+
+
+/* General sidebar styles */
+
+.bm-menu {
+    background: hsl(0, 10%, 15%);
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+}
+
+
+/* Morph shape necessary with bubble or elastic */
+
+.bm-morph-shape {
+    fill: #373a47;
+}
+
+
+/* Wrapper for item list */
+
+.bm-item-list {
+    color: #b8b7ad;
+    padding: 0.8em;
+}
+
+
+/* Styling of overlay */
+
+.bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.input {
+    padding-left: 0.5rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    font-size: 2rem;
+    color: #555;
+    margin: 0 0px 0px;
+    width: 100%;
+    background-color: #312828;
+    border: 0px solid #EEE;
+    transition: all 400ms;
+    font-family: 'Source Sans Pro Regular';
+    margin-bottom: 1rem;
+    margin-top: 0.2rem;
+}
+
+.button {
+    transition: all 400ms;
+    width: 100%;
+    background-color: #312828;
+    border: none;
+    padding: 1rem;
+    color: rgb(184, 183, 173);
+    font-weight: bold;
+    font-size: 1.25rem;
+    text-align: center;
+    transition: all 400ms;
+    cursor: pointer;
+}
+
+.button:focus {
+    outline: none !important;
+    /*box-shadow: 0 0 10px #4D7984;*/
+    transition: all 400ms;
+}
+
+.button:hover {
+    transition: all 400ms;
+    background: hsl(54, 7%, 30%);
+}
+
+button {
+    cursor: pointer;
+}
+
+.information {
+    font-size: 2.6rem;
+}
+
+.no-padding-inputs {
+    padding: 0;
+    margin: 0;
+}
+
+@media all and (max-width: 36rem) {
+    .input {
+        font-size: 1.6rem;
+        width: 90%;
+    }
+}
+
+@media all and (max-width: 32rem) {
+    .bm-burger-button {
+        display: none;
+    }
+    .logo {
+        font-size: 5rem;
+    }
+    .flex-item {
+        padding: 0rem;
+        /*padding-top: 2rem;*/
+    }
+    .press,
+    .circle-block {
+        width: 16rem;
+        height: 16rem;
+        font-size: 4rem;
+        line-height: 14rem;
+    }
+    .circle-block {
+        line-height: 15rem;
+    }
+    .input {
+        font-size: 1.6rem;
+        width: 100%;
+    }
+}
+
+@media all and (max-width: 48rem) {
+    .slug {
+        font-size: 1.4rem;
+    }
+    .information {
+        font-size: 2.2rem;
+    }
+    .input {
+        font-size: 1.6rem;
+        margin-bottom: 0;
+    }
+    .button {
+        margin-top: 1.6rem;
+    }
+}
+
+@media all and (max-width: 30rem) {
+    .logo {
+        font-size: 4.5rem;
+    }
+    .slug {
+        font-size: 1.4rem;
+    }
+    .information {
+        font-size: 2.2rem;
+    }
+    .input {
+        font-size: 1.4rem;
+        margin-bottom: 0;
+    }
+    .button {
+        margin-top: 1.4rem;
+    }
+}
+
+@media all and (max-width: 28rem) {
+    .logo {
+        font-size: 4rem;
+    }
+    .slug {
+        font-size: 1.2rem;
+    }
+    .press,
+    .circle-block {
+        width: 12rem;
+        height: 12rem;
+        font-size: 3rem;
+        line-height: 11rem;
+    }
+    .circle-block {
+        line-height: 11rem;
+    }
+    .information {
+        font-size: 2rem;
+    }
+    .input {
+        font-size: 1.4rem;
+        margin-bottom: 0;
+    }
+    .button {
+        margin-top: 1.2rem;
+    }
+}
+
+@media all and (max-width: 26rem) {
+    .logo {
+        font-size: 3.5rem;
+    }
+    .information {
+        font-size: 2rem;
+    }
+    .press,
+    .circle-block {
+        width: 10rem;
+        height: 10rem;
+        font-size: 2.5rem;
+        line-height: 8.5rem;
+    }
+    .circle-block {
+        line-height: 9rem;
+    }
+    .input {
+        font-size: 1.2rem;
+        margin-bottom: 0;
+    }
+    .button {
+        margin-top: 1.2rem;
+    }
+}
+
+@media all and (max-width: 24rem) {
+    .logo {
+        font-size: 3rem;
+    }
+    .information {
+        font-size: 1.6rem;
+    }
+    .slug {
+        font-size: 1rem;
+    }
+    .press,
+    .circle-block {
+        width: 8rem;
+        height: 8rem;
+        font-size: 2rem;
+        line-height: 7rem;
+    }
+    .circle-block {
+        line-height: 7.5rem;
+    }
+    .input {
+        font-size: 1.2rem;
+        margin-bottom: 0;
+    }
+    .button {
+        margin-top: 1rem;
+    }
+}

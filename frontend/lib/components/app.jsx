@@ -2,18 +2,15 @@ var Example = {};
 
 var React = require("react");
 var Router = require("react-router");
-
-
 module.exports = Example;
 
-// Example.Work = require('./work.jsx');
 Example.Field = require('./field.jsx');
 
 Example.App = React.createClass({
 	mixins: [Router.State, Router.Navigation],
-	componentDidMount: function() {
-		var self = this;
-	},
+	// componentDidMount: function() {
+	// 	var self = this;
+	// },
 	getInitialState: function() {
 		return {
 			text: "Ala ma kota",
@@ -22,20 +19,23 @@ Example.App = React.createClass({
 		};
 	},
 	handleChange: function(event) {
-		this.setState({text: event.target.value});
+		this.setState({
+			text: event.target.value, 
+			selectionStart: event.target.selectionStart, 
+			selectionEnd: event.target.selectionEnd
+		});
 	},
-
 	render: function() {
-
 		return (
 			<div>
-				<strong>It works</strong>
+				"text": {this.state.text}<br/>
+				"start": {this.state.selectionStart}<br/>
+				"end": {this.state.selectionEnd}<br/>
 				<Example.Field
 					text={this.state.text}
 					selectionStart={this.state.selectionStart}
 					selectionEnd={this.state.selectionEnd}
 					handleChange={this.handleChange}/>
-
 			</div>
 		)
 	}

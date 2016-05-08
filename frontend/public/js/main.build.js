@@ -3,18 +3,15 @@ var Example = {};
 
 var React = require("react");
 var Router = require("react-router");
-
-
 module.exports = Example;
 
-// Example.Work = require('./work.jsx');
 Example.Field = require('./field.jsx');
 
 Example.App = React.createClass({displayName: "App",
 	mixins: [Router.State, Router.Navigation],
-	componentDidMount: function() {
-		var self = this;
-	},
+	// componentDidMount: function() {
+	// 	var self = this;
+	// },
 	getInitialState: function() {
 		return {
 			text: "Ala ma kota",
@@ -23,20 +20,23 @@ Example.App = React.createClass({displayName: "App",
 		};
 	},
 	handleChange: function(event) {
-		this.setState({text: event.target.value});
+		this.setState({
+			text: event.target.value, 
+			selectionStart: event.target.selectionStart, 
+			selectionEnd: event.target.selectionEnd
+		});
 	},
-
 	render: function() {
-
 		return (
 			React.createElement("div", null, 
-				React.createElement("strong", null, "It works"), 
+				"\"text\": ", this.state.text, React.createElement("br", null), 
+				"\"start\": ", this.state.selectionStart, React.createElement("br", null), 
+				"\"end\": ", this.state.selectionEnd, React.createElement("br", null), 
 				React.createElement(Example.Field, {
 					text: this.state.text, 
 					selectionStart: this.state.selectionStart, 
 					selectionEnd: this.state.selectionEnd, 
 					handleChange: this.handleChange})
-
 			)
 		)
 	}
@@ -52,34 +52,21 @@ var Field = React.createClass({displayName: "Field",
 	},
 	selectText: function(){
 		this.refs.input.focus();
-
 		var direction;
-		if (this.props.selectionStart < this.props.selectionEnd) {
-			direction = "forward"
-		} else {
-			direction = "backward"
-		}
-		
+		if (this.props.selectionStart <= this.props.selectionEnd) direction = "forward"
+		else direction = "backward"
 		this.refs.input.setSelectionRange(this.props.selectionStart, this.props.selectionEnd, direction);
-		console.log(this.refs.input)
-		console.log(this.refs.input.selectionStart)
-		console.log(this.refs.input.selectionEnd)
-
 	},
 	render: function() {
 		return (
 			React.createElement("div", null, 
-				this.props.text, 
-				this.props.selectionStart, 
-				this.props.selectionEnd, 
-
 				React.createElement("input", {
 					className: "input", 
 					type: "text", 
 					value: this.props.text, 
 					onChange: this.props.handleChange, 
+					onSelect: this.props.handleChange, 
 					ref: "input"})
-
 			)
 		);
 	}

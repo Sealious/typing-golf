@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-front": "watchify -t reactify frontend/lib/main.jsx -o frontend/public/js/frontend.js -v"
+    "build-front": "watchify -t reactify frontend/lib/main.jsx -o frontend/public/js/main.build.js -v"
   },
   "repository": {
     "type": "git",
@@ -22,9 +22,10 @@
     "react-router": "^2.4.0"
   },
   "devDependencies": {
-    "babelify": "^7.3.0",
     "babel-preset-es2015": "^6.9.0",
+    "babelify": "^7.3.0",
     "browserify": "^13.0.0",
+    "deep-equal": "^1.0.1",
     "reactify": "^1.1.1",
     "watchify": "^3.7.0"
   },

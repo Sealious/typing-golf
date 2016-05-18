@@ -19,10 +19,12 @@ Example.App = React.createClass({
 		};
 	},
 	handleChange: function(event) {
+		var eventDirection = ((event.target.selectionDirection).localeCompare("backward") == 0) ? "b" : "f";
 		this.setState({
-			text: event.target.value, 
-			selectionStart: event.target.selectionStart, 
-			selectionEnd: event.target.selectionEnd
+			text: event.target.value,
+			selectionStart: event.target.selectionStart,
+			selectionEnd: event.target.selectionEnd,
+			direction: eventDirection
 		});
 	},
 	render: function() {

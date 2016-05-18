@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-front": "watchify -t reactify frontend/lib/main.jsx -o public/js/frontend.js -v"
+    "build-front": "watchify -t reactify frontend/lib/main.jsx -o frontend/public/js/frontend.js -v"
   },
   "repository": {
     "type": "git",

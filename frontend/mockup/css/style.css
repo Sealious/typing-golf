@@ -1,0 +1,195 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    text-rendering: optimizelegibility;
+    font-smooth: auto;
+    -webkit-font-smoothing: auto;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+body {
+    font-family: 'Source Sans Pro Regular', 'Open Sans', 'Liberation Sans', 'Nimbus Sans L', 'Trebuchet MS', 'Arial';
+    font-weight: 300;
+    color: #777;
+    background: #E1E3E4;
+    /*background-color: #f1f1f1;*/
+}
+
+.logo {
+    font-family: 'Lobster';
+    font-size: 2rem;
+    /*color: hsl(0, 0%, 20%);*/
+    color: #434B79;
+}
+
+#app {
+    padding-top: 1rem;
+    margin: 0 auto;
+    width: 60rem;
+}
+
+.flex-container {
+    height: 100%;
+    padding: 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    background-color: #FFF;
+}
+
+.flex-container:nth-child(1) {
+    margin-bottom: 1rem;
+}
+
+.content {
+    width: 100%;
+    padding: 1rem;
+}
+
+.end-text,
+.changed-word {
+    font-size: 1.8rem;
+    line-height: 2rem;
+    padding-top: 0.4rem;
+    padding-bottom: 1.2rem;
+    color: #B2B2B2;
+}
+
+.changed-word {
+    color: hsl(138, 49%, 60%);
+}
+
+.end-text-details {
+    font-size: 1rem;
+}
+
+.row {
+    width: auto;
+}
+
+.flex-item {
+    font-size: 1.5rem;
+    padding-right: 4rem;
+    line-height: 1.5rem;
+}
+
+.logo-item {
+    background-color: #FDF286;
+    /*background: #FDF39A;*/
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 1.6rem;
+}
+
+a {
+    text-decoration: none;
+    /*color: #FFF;*/
+    color: #444;
+    display: inline-block;
+    transition: all 400ms
+}
+
+a:hover {
+    color: #434B79;
+    border-bottom: solid 0.05rem hsl(54, 96%, 85%);
+}
+
+.bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    left: 36px;
+    top: 36px;
+}
+
+
+/* Color/shape of burger icon bars */
+
+.bm-burger-bars {
+    background: hsl(0, 10%, 45%);
+}
+
+
+/* Position and sizing of clickable cross button */
+
+.bm-cross-button {
+    height: 24px;
+    width: 24px;
+}
+
+
+/* Color/shape of close button cross */
+
+.bm-cross {
+    background: #bdc3c7;
+}
+
+
+/* General sidebar styles */
+
+.bm-menu {
+    background: hsl(0, 10%, 15%);
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+}
+
+
+/* Morph shape necessary with bubble or elastic */
+
+.bm-morph-shape {
+    fill: #373a47;
+}
+
+
+/* Wrapper for item list */
+
+.bm-item-list {
+    color: #b8b7ad;
+    padding: 0.8em;
+}
+
+
+/* Styling of overlay */
+
+.bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.input {
+    padding: 1rem;
+    font-size: 1.8rem;
+    color: #555;
+    margin: 0 0px 0px;
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    background-color: hsl(54, 96%, 85%);
+    border: 0px solid;
+    transition: all 400ms;
+    font-family: 'Source Sans Pro Regular';
+    resize: none;
+    -webkit-box-shadow: 0 8px 6px -6px #ddd;
+    -moz-box-shadow: 0 8px 6px -6px #ddd;
+    box-shadow: 0 8px 6px -6px #ddd;
+}
+

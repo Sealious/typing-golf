@@ -1,0 +1,30 @@
+@font-face{
+    font-family: 'Roboto Light';
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    src: 
+        url('fonts/eot/Roboto-Light.eot') format('embedded-opentype'),
+        url('fonts/woff/Roboto-Light.woff') format('woff'),
+        url('fonts/ttf/Roboto-Light.ttf') format('truetype');
+}
+@font-face{
+    font-family: 'Source Sans Pro Regular';
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    src:
+        url('fonts/eot/SourceSansPro-Regular.eot') format('embedded-opentype'),
+        url('fonts/woff/SourceSansPro-Regular.otf.woff') format('woff'),
+        url('fonts/ttf/SourceSansPro-Regular.ttf') format('truetype'),
+        url('fonts/otf/SourceSansPro-Regular.otf') format('opentype');
+}
+
+@font-face{
+    font-family: 'Lobster';
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    src:
+        url('fonts/otf/lobster.otf') format('opentype');
+}

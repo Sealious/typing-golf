@@ -25,16 +25,26 @@ summary {
 body {
     font-family: 'Source Sans Pro Regular', 'Open Sans', 'Liberation Sans', 'Nimbus Sans L', 'Trebuchet MS', 'Arial';
     font-weight: 300;
-    color: #777;
-    background: #E1E3E4;
+    color: hsl(0, 0%, 36%);
+    /*background: #E1E3E4;*/
     /*background-color: #f1f1f1;*/
+    background: hsl(52, 68%, 72%);
+    background: #fff;
+    /*background: #f4f4f8;*/
+}
+
+.logo-item {
+    background-color: hsl(54, 96%, 75%);
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 1.6rem;
 }
 
 .logo {
     font-family: 'Lobster';
     font-size: 2rem;
     /*color: hsl(0, 0%, 20%);*/
-    color: #434B79;
+    color: hsl(231, 28%, 46%);
 }
 
 #app {
@@ -54,7 +64,7 @@ body {
     align-items: center;
     justify-content: space-between;
     -webkit-justify-content: space-between;
-    background-color: #FFF;
+    background-color: hsl(0, 0%, 100%);
 }
 
 .flex-container:nth-child(1) {
@@ -67,20 +77,28 @@ body {
 }
 
 .end-text,
-.changed-word {
+.changed-word,
+.descripiton {
     font-size: 1.8rem;
     line-height: 2rem;
     padding-top: 0.4rem;
     padding-bottom: 1.2rem;
-    color: #B2B2B2;
+    color: hsl(231, 18%, 66%);
+}
+
+.descripiton {
+    text-align: center;
 }
 
 .changed-word {
     color: hsl(138, 49%, 60%);
 }
 
+.end-text-title,
 .end-text-details {
     font-size: 1rem;
+    text-align: center;
+    color: hsl(231, 18%, 66%);
 }
 
 .row {
@@ -93,25 +111,50 @@ body {
     line-height: 1.5rem;
 }
 
-.logo-item {
-    background-color: #FDF286;
-    /*background: #FDF39A;*/
-    font-size: 1.6rem;
-    text-align: center;
-    padding: 1.6rem;
+.shortcuts {
+    max-width: 60rem;
+    margin: 0 auto;
+    /* padding-bottom: 3rem; */
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-justify-content: center;
+    justify-content: center;
+    font-weight: 300;
 }
+
+.shortcut-item {
+    width: 11rem;
+    height: 11rem;
+    margin: 1rem;
+    text-align: justify;
+/*    background: #ddd;*/
+}
+
+.key{
+    background: #EEE;
+    font-weight: bold;
+    padding: 1rem;
+    margin-bottom: 0.6rem;
+}
+
+
 
 a {
     text-decoration: none;
-    /*color: #FFF;*/
-    color: #444;
     display: inline-block;
-    transition: all 400ms
+    transition: all 400ms;
+    color: hsl(0, 0%, 36%);
 }
 
 a:hover {
-    color: #434B79;
-    border-bottom: solid 0.05rem hsl(54, 96%, 85%);
+    color: hsl(231, 18%, 66%);
+    /*border-bottom: solid 0.05rem hsl(54, 96%, 85%);*/
+}
+
+a:active {
+    color: hsl(231, 18%, 66%);
 }
 
 .bm-burger-button {
@@ -141,7 +184,7 @@ a:hover {
 /* Color/shape of close button cross */
 
 .bm-cross {
-    background: #bdc3c7;
+    background: hsl(204, 8%, 76%);
 }
 
 
@@ -157,14 +200,14 @@ a:hover {
 /* Morph shape necessary with bubble or elastic */
 
 .bm-morph-shape {
-    fill: #373a47;
+    fill: hsl(228, 12%, 24%);
 }
 
 
 /* Wrapper for item list */
 
 .bm-item-list {
-    color: #b8b7ad;
+    color: hsl(54, 7%, 70%);
     padding: 0.8em;
 }
 
@@ -178,18 +221,65 @@ a:hover {
 .input {
     padding: 1rem;
     font-size: 1.8rem;
-    color: #555;
+    color: hsl(231, 10%, 37%);
     margin: 0 0px 0px;
     width: 100%;
     height: auto;
     overflow: auto;
-    background-color: hsl(54, 96%, 85%);
-    border: 0px solid;
+    background-color: hsl(54, 96%, 90%);
+    border: 0px solid hsl(0, 0%, 100%);
     transition: all 400ms;
     font-family: 'Source Sans Pro Regular';
     resize: none;
-    -webkit-box-shadow: 0 8px 6px -6px #ddd;
-    -moz-box-shadow: 0 8px 6px -6px #ddd;
-    box-shadow: 0 8px 6px -6px #ddd;
 }
 
+@-webkit-keyframes blink {
+    0% {
+        background: #fff;
+    }
+    50% {
+        background: #fff;
+    }
+    100% {
+        background: hsl(54, 96%, 90%);
+        ;
+    }
+}
+
+@-moz-keyframes blink {
+    0% {
+        background: #fff;
+    }
+    50% {
+        background: #fff;
+    }
+    100% {
+        background: hsl(54, 96%, 90%);
+        ;
+    }
+}
+
+@-ms-keyframes blink {
+    0% {
+        background: #fff;
+    }
+    50% {
+        background: #fff;
+    }
+    100% {
+        background: hsl(54, 96%, 90%);
+        ;
+    }
+}
+
+.input {
+    -webkit-animation: blink 1s 1;
+    -moz-animation: blink 1s 1;
+    -ms-animation: blink 1s 1;
+}
+
+footer {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
+}

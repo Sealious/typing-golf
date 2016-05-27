@@ -282,4 +282,6 @@ footer {
     padding-top: 1rem;
     padding-bottom: 1rem;
     text-align: center;
+    width: 100%;
+    bottom: 1rem;
 }

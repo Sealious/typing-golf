@@ -102,6 +102,10 @@ body {
 	color: hsl(138, 49%, 60%);
 }
 
+.end-text{
+	font-family: 'Inconsolata';
+}
+
 .end-text-title,
 .end-text-details {
 	font-size: 1rem;
@@ -127,8 +131,8 @@ body {
 }
 
 .shortcut-item {
-	width: 11rem;
-	height: 11rem;
+	width: 12rem;
+	height: auto;
 	margin: 1rem;
 	text-align: justify;
 /*    background: #ddd;*/
@@ -165,57 +169,54 @@ a:active {
 	margin: 0 0px 0px;
 	width: 100%;
 	height: auto;
-	overflow: auto;
+	overflow: visible;
 	background-color: hsl(54, 96%, 90%);
 	border: 0px solid hsl(0, 0%, 100%);
 	transition: all 400ms;
-	font-family: 'Source Sans Pro Regular';
+	font-family: 'Inconsolata';
 	resize: none;
 }
 
-@-webkit-keyframes blink {
+@-webkit-keyframes fadeIn {
 	0% {
-		background: #fff;
+		opacity: 0%;
 	}
 	50% {
-		background: #fff;
+		opacity: 50%;
 	}
 	100% {
-		background: hsl(54, 96%, 90%);
-		;
+		opacity: 100%;
 	}
 }
 
-@-moz-keyframes blink {
+@-moz-keyframes fadeIn {
 	0% {
-		background: #fff;
+		opacity: 0%;
 	}
 	50% {
-		background: #fff;
+		opacity: 50%;
 	}
 	100% {
-		background: hsl(54, 96%, 90%);
-		;
+		opacity: 100%;
 	}
 }
 
-@-ms-keyframes blink {
+@-ms-keyframes fadeIn {
 	0% {
-		background: #fff;
+		opacity: 0%;
 	}
 	50% {
-		background: #fff;
+		opacity: 50%;
 	}
 	100% {
-		background: hsl(54, 96%, 90%);
-		;
+		opacity: 100%;
 	}
 }
 
-.input {
-	-webkit-animation: blink 1s 1;
-	-moz-animation: blink 1s 1;
-	-ms-animation: blink 1s 1;
+.end-text {
+	-webkit-animation: fadeIn 1.6s 1;
+	-moz-animation: fadeIn 1.6s 1;
+	-ms-animation: fadeIn 1.6s 1;
 }
 
 footer {
@@ -224,6 +225,7 @@ footer {
 	text-align: center;
 	width: 100%;
 	bottom: 1rem;
+	color: hsl(230, 18%, 86%);
 }
 
 

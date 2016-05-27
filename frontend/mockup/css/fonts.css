@@ -28,3 +28,15 @@
     src:
         url('fonts/otf/lobster.otf') format('opentype');
 }
+
+
+@font-face{ /*pre*/
+    font-family: 'Inconsolata';
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    src:
+        url('fonts/woff/inconsolata.woff') format('woff'),
+        url('fonts/ttf/inconsolata.ttf') format('truetype'),
+        url('fonts/otf/inconsolata.eot') format('embedded-opentype');
+}

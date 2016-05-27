@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"fon",
+				"font-family"
+			],
+			[
 				"bo",
 				"bottom"
 			],
@@ -98,10 +102,6 @@
 			[
 				"fo",
 				"footer	 element"
-			],
-			[
-				"fon",
-				"font-kerning"
 			],
 			[
 				"tex",
@@ -520,10 +520,18 @@
 	"buffers":
 	[
 		{
-			"file": "frontend/mockup/index.html",
+			"file": "frontend/mockup/css/style.css",
 			"settings":
 			{
-				"buffer_size": 1818,
+				"buffer_size": 4110,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "frontend/mockup/css/fonts.css",
+			"settings":
+			{
+				"buffer_size": 1264,
 				"line_ending": "Unix"
 			}
 		},
@@ -531,23 +539,15 @@
 			"file": "frontend/mockup/cheatsheet.html",
 			"settings":
 			{
-				"buffer_size": 4727,
+				"buffer_size": 3488,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "common/bfs.js",
+			"file": "frontend/mockup/index.html",
 			"settings":
 			{
-				"buffer_size": 774,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "frontend/mockup/css/style.css",
-			"settings":
-			{
-				"buffer_size": 4539,
+				"buffer_size": 1518,
 				"line_ending": "Unix"
 			}
 		}
@@ -875,14 +875,16 @@
 		"/home/arkadiusz/Projects/typing-golf/frontend/lib/components",
 		"/home/arkadiusz/Projects/typing-golf/frontend/mockup",
 		"/home/arkadiusz/Projects/typing-golf/frontend/mockup/css",
+		"/home/arkadiusz/Projects/typing-golf/frontend/mockup/css/fonts",
 		"/home/arkadiusz/Projects/typing-golf/frontend/public",
 		"/home/arkadiusz/Projects/typing-golf/frontend/public/css"
 	],
 	"file_history":
 	[
+		"/home/arkadiusz/Projects/typing-golf/frontend/mockup/index.html",
+		"/home/arkadiusz/Projects/typing-golf/frontend/mockup/cheatsheet.html",
 		"/home/arkadiusz/Projects/typing-golf/common/text-edits.js",
 		"/home/arkadiusz/Projects/typing-golf/frontend/public/index.html",
-		"/home/arkadiusz/Projects/typing-golf/frontend/mockup/index.html",
 		"/home/arkadiusz/Projects/typing-golf/frontend/mockup/css/style.css",
 		"/home/arkadiusz/Projects/typing-golf/frontend/mockup/css/fonts.css",
 		"/home/arkadiusz/Projects/typing-golf/frontend/lib/components/work.jsx",
@@ -1006,8 +1008,7 @@
 		"/media/arkadiusz/7479088D089D8471/backup-ThinkpadX200-2/Dokumenty/WMI-4/GRK/CopyOfOBJ2XML.java",
 		"/media/arkadiusz/7479088D089D8471/backup-ThinkpadX200-2/Dokumenty/WMI-4/FIZ/Fizyka_Zadanie.txt",
 		"/media/arkadiusz/7479088D089D8471/backup-ThinkpadX200-2/Dokumenty/WMI-3/SOP/ćwiczenia/dariusz/plik2",
-		"/media/arkadiusz/7479088D089D8471/backup-ThinkpadX200-2/Dokumenty/WMI-3/SOP/ćwiczenia/dariusz/skrypt1",
-		"/media/arkadiusz/7479088D089D8471/backup-ThinkpadX200-2/Dokumenty/WMI-3/SOP/ćwiczenia/dariusz/plik1"
+		"/media/arkadiusz/7479088D089D8471/backup-ThinkpadX200-2/Dokumenty/WMI-3/SOP/ćwiczenia/dariusz/skrypt1"
 	],
 	"find":
 	{
@@ -1029,6 +1030,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"end",
+			"animated",
+			"*/",
 			"12rem",
 			"10rem",
 			"CTRL",
@@ -1153,10 +1157,7 @@
 			"is_prop",
 			"utils",
 			"init_parser",
-			"params",
-			" === true",
-			"=== false",
-			"\"remove\""
+			"params"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1193,19 +1194,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "frontend/mockup/index.html",
+					"file": "frontend/mockup/css/style.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1818,
+						"buffer_size": 4110,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1660,
-								1660
+								2700,
+								2700
 							]
 						],
 						"settings":
@@ -1233,16 +1234,11 @@
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -1258,34 +1254,139 @@
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_regex_content"
+								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
 							],
 							"color_scheme": "Packages/User/Color Highlighter/themes/AgolaNimbus (SL).tmTheme",
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2070.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "frontend/mockup/css/fonts.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1264,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								988,
+								988
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"bh_regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -1297,20 +1398,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 2,
 					"file": "frontend/mockup/cheatsheet.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4727,
+						"buffer_size": 3488,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4592,
-								4592
+								1166,
+								1166
 							]
 						],
 						"settings":
@@ -1325,98 +1426,91 @@
 								{
 									"characters": ".#",
 									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
 								}
 							],
 							"bh_regions":
 							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_round_content"
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
 							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/AgolaNimbus (SL).tmTheme",
-							"open_with_edit": true,
 							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 900.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "common/bfs.js",
-					"semi_transient": true,
+					"buffer": 3,
+					"file": "frontend/mockup/index.html",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 774,
+						"buffer_size": 1518,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1251,
+								1251
 							]
 						],
 						"settings":
@@ -1431,72 +1525,67 @@
 								{
 									"characters": ".#",
 									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
 								}
 							],
 							"bh_regions":
 							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
-								"bh_round_content"
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
 							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/AgolaNimbus (SL).tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -1504,117 +1593,6 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 3,
-					"file": "frontend/mockup/css/style.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4539,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4536,
-								4536
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"auto_complete_triggers":
-							[
-								{
-									"characters": "<",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								}
-							],
-							"bh_regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/AgolaNimbus (SL).tmTheme",
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3684.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1637,18 +1615,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.552234474754,
 			1.0
 		],
 		"rows":
@@ -1856,7 +1827,7 @@
 		],
 		"width": 1051.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},

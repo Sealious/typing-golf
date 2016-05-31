@@ -349,7 +349,11 @@ function get_h_offset(state){
 		moving_index = "start";
 	}
 	var left_half = state.text.slice(0, state[moving_index])
-	return left_half.slice(left_half.lastIndexOf("\n"), Infinity).length - 1;
+	if(left_half.lastIndexOf("\n") == "-1"){
+		return state[moving_index];
+	}
+	var ret = left_half.slice(left_half.lastIndexOf("\n"), Infinity).length - 1;
+	return ret;
 }
 
 function get_v_offset(state){
@@ -362,7 +366,7 @@ function get_v_offset(state){
 	var the_line = 0;
 	for(var i in lines){
 		var new_index = parseInt(current_index) + lines[i].length + 1;
-		if(new_index >= state[moving_index]){
+		if(new_index > state[moving_index]){
 			the_line = i;
 			break;
 		}
@@ -373,7 +377,6 @@ function get_v_offset(state){
 
 function hv2i(state, v, h){
 	assert(!isNaN(h));
-	console.log("hv2i", state, v, h);
 	var lines = state.text.split("\n");
 	var ret = lines
 		.slice(0, v)
@@ -383,30 +386,66 @@ function hv2i(state, v, h){
 		.reduce(function(a,b){
 			return a + b;
 		}, 0) + Math.min(h, lines[v].length);
-	console.log("returning", ret, "\n");
 	return ret;
 }
 
 edits.shift_up = function(state){
 	var h_offset;
-	if(state.cached_h_offset == undefined){
+	if(state.h == undefined){
 		h_offset = get_h_offset(state);
 	}else{
-		h_offset = state.cached_h_offset;
+		h_offset = state.h;
 	}
 	var v_offset = get_v_offset(state);
 	var lines = state.text.split("\n");
 	if(v_offset == 0){
-		return {
-			text: state.text,
-			start: 0,
-			end: state.end,
-			direction: "b"
-		}
+		return edits.shift_home(state);
 	}
 
 	var direction;
 	var new_offset = hv2i(state, v_offset-1, h_offset);
+	if(state.direction== "f"){
+		var start = Math.min(new_offset, state.start);
+		var end = Math.max(new_offset, state.start);
+		if(new_offset<state.start){
+			direction = "b";
+		}else{
+			direction = "f";
+		}
+	}else{
+		var start = Math.min(new_offset, state.end);
+		var end = Math.max(new_offset, state.end);
+		if(new_offset > state.end){
+			direction = "f";
+		}else{
+			direction = "b";
+		}
+	}
+	
+	return {
+		text: state.text,
+		start:start,
+		end: end,
+		direction: direction,
+		h: h_offset
+	}
+}
+
+edits.shift_down = function(state){
+	var h_offset;
+	if(state.h == undefined){
+		h_offset = get_h_offset(state);
+	}else{
+		h_offset = state.h;
+	}
+	var v_offset = get_v_offset(state);
+	var lines = state.text.split("\n");
+	if(v_offset == lines.length-1){
+		return edits.shift_end(state);
+	}
+
+	var direction;
+	var new_offset = hv2i(state, parseInt(v_offset)+1, h_offset);
 	if(state.direction== "f"){
 		var start = Math.min(new_offset, state.start);
 		var end = Math.max(new_offset, state.start);

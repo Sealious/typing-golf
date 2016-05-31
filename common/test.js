@@ -420,5 +420,23 @@ de(edits.shift_up(s("ala\n\nma", 6, 6)),
 de(edits.shift_up(s("ala\n\nma", 4, 6, "b", 1)),
    s("ala\n\nma", 1, 6, "b", 1));
 
+de(edits.shift_down(s("ala ma kota", 0, 0)),
+   s("ala ma kota", 0, 11, "f"));
+
+de(edits.shift_down(s("ala ma kota", 0, 1, "f")),
+   s("ala ma kota", 0, 11, "f"));
+
+de(edits.shift_down(s("ala ma kota", 0, 1, "b")),
+   s("ala ma kota", 1, 11, "f"))
+
+de(edits.shift_down(s("ala\n\nma", 1, 1)),
+   s("ala\n\nma", 1, 4, "f", 1))
+
+de(edits.shift_down(s("ala\n\nma", 1, 4, "f", 1)),
+   s("ala\n\nma", 1, 6, "f", 1));
+
+de(edits.shift_down(s("ala\n\nma", 1, 6, "f", 1)),
+   s("ala\n\nma", 1, 7, "f"));
+
 
 console.log("Passed all tests! :)")

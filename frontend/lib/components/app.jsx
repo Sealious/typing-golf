@@ -1,12 +1,13 @@
-var Example = {};
+var TypingGolf = {};
 
 var React = require("react");
 var Router = require("react-router");
-module.exports = Example;
+module.exports = TypingGolf;
 
-Example.Field = require('./field.jsx');
+TypingGolf.Input = require('./field.jsx');
+TypingGolf.Cheatsheet = require('./cheatsheet.jsx');
 
-Example.App = React.createClass({
+TypingGolf.App = React.createClass({
 	mixins: [Router.State, Router.Navigation],
 	// componentDidMount: function() {
 	// 	var self = this;
@@ -15,7 +16,8 @@ Example.App = React.createClass({
 		return {
 			text: "Ala ma kota",
 			selectionStart: 3,
-			selectionEnd: 7
+			selectionEnd: 7,
+			showCheatsheet: true
 		};
 	},
 	handleChange: function(event) {
@@ -27,17 +29,42 @@ Example.App = React.createClass({
 			direction: eventDirection
 		});
 	},
+	coverCheatsheet: function() {
+		var new_value = (this.state.showCheatsheet == true) ? false : true;
+		this.setState({
+			showCheatsheet : new_value
+		});
+	},
 	render: function() {
+		console.log('---')
+		console.log('this.state.text', this.state.text);
+		console.log('this.state.selectionStart', this.state.selectionStart);
+		console.log('this.state.selectionEnd', this.state.selectionEnd);
 		return (
 			<div>
-				"text": {this.state.text}<br/>
-				"start": {this.state.selectionStart}<br/>
-				"end": {this.state.selectionEnd}<br/>
-				<Example.Field
+				<div className="nav">
+					<div className="logo-item">
+						<div className="logo animated flipInY">typing…·golf</div>
+					</div>
+					<div className="nav-item">
+						<a href="index.html" className="link">random task </a>
+					</div>
+					<div className="nav-item">
+						<a href="ranking.html" className="link">ranking</a>
+					</div>
+				</div>
+
+				<TypingGolf.Input
 					text={this.state.text}
 					selectionStart={this.state.selectionStart}
 					selectionEnd={this.state.selectionEnd}
 					handleChange={this.handleChange}/>
+
+				<TypingGolf.Cheatsheet
+					showCheatsheet={this.state.showCheatsheet}
+					coverCheatsheet={this.coverCheatsheet}/>
+
+				<div className="cheatsheet-box" onClick={this.coverCheatsheet}>?</div>
 			</div>
 		)
 	}

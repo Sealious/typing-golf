@@ -100,7 +100,7 @@ body {
 
 
 #overlay {
-	visibility: hidden;
+	/*visibility: hidden;*/
 	position: absolute;
 	z-index: 1000;
 	top: 4rem;

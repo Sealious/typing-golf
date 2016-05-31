@@ -1,7 +1,7 @@
 var React = require('react');
 var ReactDOM = require("react-dom");
 
-var Field = React.createClass({
+var Input = React.createClass({
 	componentDidMount: function() {
 		this.selectText();
 	},
@@ -15,10 +15,10 @@ var Field = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<input 
-					className="input" 
-					type="text" 
-					value={this.props.text} 
+				<textarea
+					className="input"
+					type="text"
+					value={this.props.text}
 					onChange={this.props.handleChange}
 					onSelect={this.props.handleChange}
 					ref="input" />
@@ -27,4 +27,4 @@ var Field = React.createClass({
 	}
 });
 
-module.exports = Field;
+module.exports = Input;

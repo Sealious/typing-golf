@@ -37,7 +37,6 @@ body {
 	background-attachment: fixed;
 }
 
-html, body {height:100%;overflow:auto}
 
 #app {
 	/*padding-top: 1rem;*/
@@ -92,22 +91,32 @@ html, body {height:100%;overflow:auto}
 #overlay {
 	visibility: hidden;
 	position: absolute;
-	width:64rem;
 	z-index: 1000;
-	top: 0;
+	top: 1rem;
 	left: 0;
 	width: 100%;
-	height: 100%;
+	height: auto;
 	/*background: #FFF;*/
-	background: hsla(0, 0%, 100%, 0.95);
+	/*background: hsla(0, 0%, 100%, 0.95);*/
 	/*padding: 10rem;*/
 }
 
 #overlay .flex-container,
-#overaly .shortcuts{
+#overlay .shortcuts{
 	/*width: 64rem;*/
 	height: auto;
-	background: hsla(0, 0%, 100%, 0.85);
+	/*background: hsla(0, 0%, 100%, 0.85);*/
+}
+
+#overlay .cancel{
+	position: absolute;
+	top: 1rem;
+	font-size: 2rem;
+	font-family: 'Inconsolata', monospace;
+	vertical-align: bottom;
+	cursor: pointer;
+	width: 2rem;
+	height: 2rem;
 }
 
 img{
@@ -160,10 +169,11 @@ img{
 
 .descripiton {
 	text-align: center;
+	color: #fff
 }
 
 .end-text{
-	font-family: 'Inconsolata';
+	font-family: 'Inconsolata', monospace;;
 }
 
 .end-text-title,
@@ -180,22 +190,43 @@ img{
 .shortcuts, .counters {
 	max-width: 60rem;
 	margin: 0 auto;
-	/* padding-bottom: 3rem; */
-	display: -webkit-flex;
-	-webkit-flex-wrap: wrap;
-	display: flex;
-	flex-wrap: wrap;
-	-webkit-justify-content: center;
-	justify-content: center;
-	font-weight: 300;
+	background: #282A36;
+	color: #fff;
+	border-radius: 0.4rem;
+	/*! border: 2rem solid transparent; */
+	padding: 2rem;
 }
 
-.shortcut-item {
-	width: 12rem;
-	height: auto;
-	margin: 1rem;
-	text-align: justify;
-/*! background: #ddd; */
+table{
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	border-collapse: collapse;
+}
+
+table, thead{
+	/*border: 1px dashed #ddd;*/
+}
+/*
+tr:nth-child(2n+1) {
+    background-color: #F5F5F5;
+}*/
+
+td {
+    /*border-left: 1px dashed #ddd;*/
+    /*border-bottom: 1px dashed #ddd;*/
+    min-width: 12rem;
+	padding-bottom: 1rem;
+}
+
+td:nth-child(2n+1){
+	font-weight: bold;
+	text-align: right;
+	padding-right: 1rem;
+}
+
+
+thead td{
+	font-weight: bold;
 }
 
 .counter{
@@ -207,10 +238,10 @@ img{
 }
 
 .key{
-	background: #EEE;
-	font-weight: bold;
-	padding: 1rem;
-	margin-bottom: 0.6rem;
+	padding: 0.4rem;
+	color: #000;
+	font-family: 'Inconsolata', monospace;
+	background: hsl(265, 6%, 50%);
 }
 
 
@@ -244,7 +275,7 @@ a:active {
 	background-color: hsl(66, 100%, 90%);
 	border: 0px solid hsl(0, 0%, 100%);
 	transition: all 400ms;
-	font-family: 'Inconsolata';
+	font-family: 'Inconsolata', monospace;
 	resize: none;
 }
 

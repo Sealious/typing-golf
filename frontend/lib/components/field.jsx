@@ -18,7 +18,7 @@ var Input = React.createClass({
 				<textarea
 					className="input"
 					type="text"
-					value={this.props.text}
+					value={this.props.beginText}
 					onChange={this.props.handleChange}
 					onSelect={this.props.handleChange}
 					ref="input" />

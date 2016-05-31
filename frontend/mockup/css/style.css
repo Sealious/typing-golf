@@ -95,7 +95,6 @@ body {
 .logo {
 	font-family: 'Lobster';
 	font-size: 1.8rem;
-	/*color: hsl(0, 0%, 20%);*/
 	color: #fff;
 }
 
@@ -107,19 +106,12 @@ body {
 	top: 4rem;
 	left: 0;
 	width: 100%;
-	height: auto;
-	/*background: #FFF;*/
-	/*background: hsla(0, 0%, 100%, 0.95);*/
-	/*padding: 10rem;*/
 }
 
 #overlay .flex-container,
 #overlay .shortcuts{
-	/*width: 64rem;*/
-	height: auto;
 	display: table;
 	margin: 0 auto;
-	/*background: hsla(0, 0%, 100%, 0.85);*/
 }
 
 #overlay .cancel{
@@ -140,10 +132,7 @@ img{
 	height: 3rem;
 	width: 3rem;
 	cursor: pointer;
-	/*margin-right: 2rem;*/
-	/*margin-left: 2rem;*/
 	padding: 0.4rem;
-	/*vertical-align: bottom;*/
 }
 
 
@@ -171,6 +160,11 @@ img{
 .content {
 	width: 100%;
 	padding: 1rem;
+}
+
+#overlay .content{
+	height: 80vh;
+	overflow-y: scroll;
 }
 
 .end-text,

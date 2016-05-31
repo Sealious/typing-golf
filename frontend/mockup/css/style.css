@@ -25,23 +25,35 @@ summary {
 body {
 	font-family: 'Source Sans Pro Regular', 'Open Sans', 'Liberation Sans', 'Nimbus Sans L', 'Trebuchet MS', 'Arial';
 	font-weight: 300;
-	color: hsl(0, 0%, 36%);
+	color: hsl(0, 0%, 27%);
 	/*background: #E1E3E4;*/
 	/*background-color: #f1f1f1;*/
-	background: hsl(52, 68%, 72%);
-	background: #fff;
+	/*background: hsl(52, 68%, 72%);*/
+	background: #F9FFCB;
+	/*background: #fff;*/
 	/*background: #f4f4f8;*/
+	background-image: url(../images/bckgd_body.png);
+	background-repeat: repeat;
+	background-attachment: fixed;
 }
 
+html, body {height:100%;overflow:auto}
 
 #app {
-	padding-top: 1rem;
+	/*padding-top: 1rem;*/
 	margin: 0 auto;
-	width: 60rem;
+	width: 64rem;
+	background-color: #FFF;
+}
+
+.nav{
+	position: fixed;
+	left: 0;
+	top: 0;
 }
 
 .flex-container {
-	height: 100%;
+	/*! height: 100%; */
 	padding: 0;
 	display: -webkit-box;
 	display: -moz-box;
@@ -49,32 +61,85 @@ body {
 	display: -webkit-flex;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	-webkit-justify-content: space-between;
+	justify-content: flex-start;
+	-webkit-justify-content: flex-start;
 	background-color: hsl(0, 0%, 100%);
 }
 
 .flex-container:nth-child(1) {
-	margin-bottom: 1rem;
+	/*! margin-bottom: 1rem; */
 }
 
 .logo-item {
-	background-color: hsl(54, 96%, 75%);
+	background-color: hsl(265, 6%, 42%);
 	font-size: 1.6rem;
 	text-align: center;
 	padding: 1.6rem;
 }
 .logo {
 	font-family: 'Lobster';
-	font-size: 2rem;
+	font-size: 1.8rem;
 	/*color: hsl(0, 0%, 20%);*/
-	color: hsl(231, 28%, 46%);
+	color: #fff;
 }
 
 .flex-item {
 	font-size: 1.5rem;
-	padding-right: 4rem;
+	/*padding-right: 4rem;*/
 	line-height: 1.5rem;
+}
+
+#overlay {
+	visibility: hidden;
+	position: absolute;
+	width:64rem;
+	z-index: 1000;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	/*background: #FFF;*/
+	background: hsla(0, 0%, 100%, 0.95);
+	/*padding: 10rem;*/
+}
+
+#overlay .flex-container,
+#overaly .shortcuts{
+	/*width: 64rem;*/
+	height: auto;
+	background: hsla(0, 0%, 100%, 0.85);
+}
+
+img{
+	background-repeat: no-repeat;
+	background-position: 50%;
+	background-size: contain;
+	height: 6rem;
+	width: 6rem;
+	cursor: pointer;
+	/*margin-right: 2rem;*/
+	/*margin-left: 2rem;*/
+	padding: 0.8rem;
+	vertical-align: bottom;
+}
+
+
+.cheatsheet-box{
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+	height: 4.6rem;
+	width: 4.6rem;
+	z-index: 1;
+	display: inline;
+	background-color: #48A0DC;
+	border-radius: 50%;
+	font-size: 4rem;
+	margin: 0 auto;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 4.6rem;
+	color: #FFF;
 }
 
 
@@ -85,21 +150,16 @@ body {
 }
 
 .end-text,
-.changed-word,
 .descripiton {
 	font-size: 1.8rem;
 	line-height: 2rem;
-	padding-top: 0.4rem;
+	padding-top: 1.2rem;
 	padding-bottom: 1.2rem;
-	color: hsl(231, 18%, 66%);
+	color: hsl(231, 18%, 30%);
 }
 
 .descripiton {
 	text-align: center;
-}
-
-.changed-word {
-	color: hsl(138, 49%, 60%);
 }
 
 .end-text{
@@ -117,7 +177,7 @@ body {
 	width: auto;
 }
 
-.shortcuts {
+.shortcuts, .counters {
 	max-width: 60rem;
 	margin: 0 auto;
 	/* padding-bottom: 3rem; */
@@ -135,7 +195,15 @@ body {
 	height: auto;
 	margin: 1rem;
 	text-align: justify;
-/*    background: #ddd;*/
+/*! background: #ddd; */
+}
+
+.counter{
+	width: 4rem;
+	height: 4rem;
+	border-radius: 50%;
+	margin: 1rem;
+	background-color: hsl(231, 18%, 90%);
 }
 
 .key{
@@ -151,15 +219,18 @@ a {
 	text-decoration: none;
 	display: inline-block;
 	transition: all 400ms;
-	color: hsl(0, 0%, 36%);
+	color: #FFF;
 }
 
 a:hover {
-	color: hsl(231, 18%, 66%);
+	/*color: hsl(231, 18%, 66%);*/
 	/*border-bottom: solid 0.05rem hsl(54, 96%, 85%);*/
 }
 
 a:active {
+	color: hsl(231, 18%, 66%);
+}
+.link{
 	color: hsl(231, 18%, 66%);
 }
 .input {
@@ -170,7 +241,7 @@ a:active {
 	width: 100%;
 	height: auto;
 	overflow: visible;
-	background-color: hsl(54, 96%, 90%);
+	background-color: hsl(66, 100%, 90%);
 	border: 0px solid hsl(0, 0%, 100%);
 	transition: all 400ms;
 	font-family: 'Inconsolata';
@@ -220,12 +291,15 @@ a:active {
 }
 
 footer {
+	position: fixed;
+	bottom: 0;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
-	text-align: center;
+	text-align: center;;
 	width: 100%;
-	bottom: 1rem;
-	color: hsl(230, 18%, 86%);
+	/*bottom: 1rem;*/
+	/*color: hsl(230, 18%, 86%);*/
+	/*background: #FFF;*/
 }
 
 

@@ -10,38 +10,102 @@
 	<meta name="robots" content="all" />
 	<meta name="viewport" content="width=device-width" />
 </head>
-
 <body>
 	<div id="app">
-		<div class="flex-container">
+		<div class="nav">
 			<div class="logo-item">
 				<div class="logo animated flipInY">typing…·golf</div>
 			</div>
 			<div class="flex-item">
-				<a href="cheatsheet.html">» cheatsheet</a>
+				<a href="index.html"><img src="images/icons/random-task.svg" alt="random-task" /></a>
+				<a href="ranking.html"><img src="images/icons/ranking.svg" alt="ranking"  /></a>
 			</div>
-			<div class="flex-item">
-				<a href="index.html">» random new task</a>
-			</div>
-			<div class="flex-item">
-				<a href="#">» local ranking</a>
+		</div>
+		<div class="flex-container">
+			<div class="content">
+				<p class="end-text-title">turn this ⤵</p>
 			</div>
 		</div>
 		<div class="flex-container">
 			<textarea spellcheck='false' class="input" value="begin-text"></textarea>
-			
+		</div>
+		<div class="flex-container">
+
 		</div>
 		<div class="flex-container">
 			<div class="content">
-				<p class="end-text-title">turn this ⤴</p>
-				<p class="end-text"><span class="changed-word">Laboriosam</span> consequuntur non eos aliquid nesciunt ex molestiae eligendi et. <span class="changed-word">Deserunt placeat</span></p>
-				<p class="end-text-details">into this in 6 steps ⤴</p>
+				<p class="end-text-details">into this ⤵</p>
+				<p class="end-text">Laboriosam consequuntur non eos aliquid nesciunt ex molestiae eligendi et. Deserunt placeat</p>
+				<p class="end-text-details">
+					in 6 steps
+				</p>
 			</div>
 		</div>
-		<footer>
-			made by a <span class="changed-word">🏌</span> from <a href="http://sealcode.org">sealcode.org</a>
-		</footer>
+		<div class="cheatsheet-box">
+			<a href="cheatsheet.html">?</a>
+		</div>
+		<div id="overlay">
+		     <div>
+				 <div class="flex-container">
+		             <div class="content">
+		                 <p class="descripiton">The typing-golf application gives you quickly solution to learn shortcuts on keyboard for increase your productivity.</p>
+		                 <p class="end-text-details">look on cheatsheet ⤵</p>
+		             </div>
+		         </div>
+		         <div class="shortcuts">
+		             <div class="shortcut-item">
+		                 <div class="key">BACKSPACE</div>
+		                 Deletes one character to the left of caret.
+		             </div>
+		             <div class="shortcut-item">
+		                 <div class="key">DELETE</div>
+		                 Deletes one character to the right of caret.
+		             </div>
+		             <div class="shortcut-item">
+		                 <div class="key">CTRL + BACKSPACE</div>
+		                 Deletes one word or punctuation mark to the left of caret.
+		             </div>
+		             <div class="shortcut-item">
+		                 <div class="key">CTRL + DELETE</div>
+		                 Deletes one word or punctuation mark to the right of caret.
+		             </div>
+		             <div class="shortcut-item">
+		                 <div class="key">HOME</div>
+		                 Moves to beginning of the line.
+		             </div>
+		             <div class="shortcut-item">
+		                 <div class="key">END</div>
+		                 Moves to end of the line.
+		             </div>
+		             <div class="shortcut-item">
+		                 <div class="key">SHIFT + HOME</div>
+		                 Selects all characters from caret position to beginning of the line.
+		             </div>
+		             <div class="shortcut-item">
+		                 <div class="key">SHIFT + END</div>
+		                 Selects characters from caret position to end of the line.
+		             </div>
+		             <div class="shortcut-item">
+		                 <div class="key">CTRL + ←</div>
+		                 Depending on the caret position moves to beginning of the previous word, mark the end of the sentence or before the first character current word.
+		             </div>
+		             <div class="shortcut-item">
+		                 <div class="key">CTRL + →</div>
+		                 Depending on the caret position moves to end of the next word or to the last character current word.
+		             </div>
+		         </div>
+		     </div>
+		</div>
 	</div>
+	<footer>
+		made by a 🏌 from <a class="link" href="http://sealcode.org">sealcode.org</a>
+	</footer>
+	<script>
+	function overlay() {
+		el = document.getElementById("overlay");
+		el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+	}
+	</script>
 </body>
 
 </html>

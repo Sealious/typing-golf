@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"coun",
+				"counter	 style.css"
+			],
+			[
+				"flex",
+				"flex-container	 style.css"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"f",
+				"flipInY	 animate.min.css"
+			],
+			[
+				"fed",
+				"fadeInDownBig	 animate.min.css"
+			],
+			[
+				"fadei",
+				"fadeInRight	 animate.min.css"
+			],
+			[
 				"fon",
 				"font-family"
 			],
@@ -38,10 +62,6 @@
 			[
 				"bor",
 				"border"
-			],
-			[
-				"f",
-				"flipOutX	 animate.min.css"
 			],
 			[
 				"fa",
@@ -174,10 +194,6 @@
 			[
 				"sle",
 				"selectionEnd"
-			],
-			[
-				"fed",
-				"feedback_sent_title"
 			],
 			[
 				"em",
@@ -498,56 +514,16 @@
 			[
 				"st",
 				"stripped"
-			],
-			[
-				"cw",
-				"cwun	React: componentWillUnmount: fn() { ... }"
-			],
-			[
-				"fu",
-				"function"
-			],
-			[
-				"En",
-				"EventEmitter"
-			],
-			[
-				"rea",
-				"readAndStoreEntries"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "frontend/mockup/css/style.css",
+			"contents": "// MT generator\nvar MersenneTwister = require('mersenne-twister');\nvar generator = new MersenneTwister();\n\n// LC generator\nvar lcg = require ('lcg-rnd');\nlcg.srand = 10;\n\nfunction distancePoints(a,b,dimension3D) {\n    var dist = 0;\n    if (!dimension3D || dimension3D === undefined) {\n        dist = Math.sqrt(Math.pow(b['x'] - a['x'],2)+ Math.pow(b['y'] - a['y'], 2))\n    } else {\n        dist = Math.sqrt(Math.pow(b['x'] - a['x'], 2) + Math.pow(b['y'] - a['y'], 2) + Math.pow(b['z'] - a['z'], 2))\n    }\n    return dist\n}\n\n\n// Pi test\nfunction pi(n, randomFunction) {\n    var x, y;\n    var range = 100; // [0;100]\n\n    var isq = 0; // number of suggested points\n    var ic = 0 // number of points satisfying the condition\n\n    while (isq < n) {\n        x = randomFunction()*100;\n        y = randomFunction()*100;\n        isq = isq + 1;\n        if (x * x + y * y <= m * m) ic = ic + 1;\n    }\n    var pi = 4*ic/isq;\n    return pi\n}\n\n\n// Parking lot test\nfunction parking(randomFunction) {\n    var array = []\n    array.push({\n        x: randomFunction()*100,\n        y: randomFunction()*100\n    })\n\n    function parkNewPoint(randomFunction) {\n        var newPoint = {\n            x: randomFunction()*100,\n            y: randomFunction()*100\n        }\n\n        var isCorrectPoint = true;\n\n        for (var i = 0; i < array.length; i++) {\n            if (distancePoints(array[i], newPoint) < 1) {\n                isCorrectPoint = false;\n                break;\n            }\n        }\n\n        if (isCorrectPoint) array.push(newPoint)\n    }\n\n    for (var i = 0; i < 12000; i++) {\n        parkNewPoint()\n    }\n    return array.length\n}\n\n// Minimum distance test\nfunction minimumDistance(randomFunction) {\n    var array = [];\n    for (var i = 0; i < 8000; i++)\n        array.push({\n            x: randomFunction()*10000,\n            y: randomFunction()*10000\n        })\n    \n\n    var pairs = (Math.pow(8000, 2) - 8000) / 2;\n    var minimum = Infinity;\n\n    for (var i = 0; i < pairs; i++) {\n        var id = Math.floor(Math.random()*(7999-1))+1;\n        var id2 = Math.floor(Math.random()*(7999-1))+1;\n\n        while (id === id2) {\n            id2 = Math.floor(Math.random()*(7999-1))+1;\n        }\n        var distance = distancePoints(array[id], array[id2]);\n\n        if (minimum > distance) minimum = distance;\n    }\n    return Math.pow(minimum, 2)\n\n// Random spheres test\nfunction randomSpheres(randomFunction) {\n    var array = [];\n    for (var i = 0; i < 4000; i++) {\n        tab.push({\n            x: randomFunction()*10000,\n            y: randomFunction()*10000,\n            z: randomFunction()*10000\n        })\n    }\n    var minimum = Infinity;\n    for (var i = 0; i < 4000; i++) {\n        for (var i = j; j < 4000; j++) {\n            var distance = distancePoints(array[i], array[j], true);\n            if (minimum > distance) minimum = distance;\n        }\n    }\n    return minimum\n\n}\n\n\nconsole.log('Mersenne Twister')\nconsole.log('----------------')\nconsole.log('PI test', pi(2000, generator.random_incl))\nconsole.log('Parking lot test', parking(generator.random_incl))\nconsole.log('Minimum distance test', minimumDistance(generator.random_incl))\nconsole.log('Random spheres test', randomSpheres(generator.random_incl))\n\n\nconsole.log('Linear Congruential Generator')\nconsole.log('-----------------------------')\nconsole.log('PI test', pi(2000, lcg.random))\nconsole.log('Parking lot test', parking(lcg.random))\nconsole.log('Minimum distance test', minimumDistance(lcg.random))\nconsole.log('Random spheres test', randomSpheres(lcg.random))\n\n\nconsole.log(`JavaScript's Math.random`)\nconsole.log('------------------------')\nconsole.log('PI test', pi(2000, Math.random))\nconsole.log('Parking lot test', parking(Math.random))\nconsole.log('Minimum distance test', minimumDistance(Math.random))\nconsole.log('Random spheres test', randomSpheres(Math.random))\n",
 			"settings":
 			{
-				"buffer_size": 4110,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "frontend/mockup/css/fonts.css",
-			"settings":
-			{
-				"buffer_size": 1264,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "frontend/mockup/cheatsheet.html",
-			"settings":
-			{
-				"buffer_size": 3488,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "frontend/mockup/index.html",
-			"settings":
-			{
-				"buffer_size": 1518,
+				"buffer_size": 3853,
 				"line_ending": "Unix"
 			}
 		}
@@ -623,10 +599,22 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 400.0,
-		"last_filter": "remo",
+		"height": 208.0,
+		"last_filter": "javas",
 		"selected_items":
 		[
+			[
+				"javas",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"js",
+				"Set Syntax: JSON"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
 			[
 				"remo",
 				"Package Control: Remove Package"
@@ -692,10 +680,6 @@
 				"Set Syntax: Markdown"
 			],
 			[
-				"js",
-				"Set Syntax: JavaScript"
-			],
-			[
 				"isntall ",
 				"Package Control: Install Package"
 			],
@@ -706,10 +690,6 @@
 			[
 				"set js",
 				"Set Syntax: JavaScript"
-			],
-			[
-				"html",
-				"Set Syntax: HTML"
 			],
 			[
 				"rem",
@@ -876,17 +856,22 @@
 		"/home/arkadiusz/Projects/typing-golf/frontend/mockup",
 		"/home/arkadiusz/Projects/typing-golf/frontend/mockup/css",
 		"/home/arkadiusz/Projects/typing-golf/frontend/mockup/css/fonts",
+		"/home/arkadiusz/Projects/typing-golf/frontend/mockup/images",
 		"/home/arkadiusz/Projects/typing-golf/frontend/public",
 		"/home/arkadiusz/Projects/typing-golf/frontend/public/css"
 	],
 	"file_history":
 	[
-		"/home/arkadiusz/Projects/typing-golf/frontend/mockup/index.html",
+		"/home/arkadiusz/Downloads/atom-amd64.deb",
+		"/home/arkadiusz/Downloads/min_1.2.2_amd64.deb",
+		"/home/arkadiusz/Projects/typing-golf/frontend/mockup/ranking.html",
+		"/home/arkadiusz/Projects/typing-golf/frontend/mockup/css/style.css",
 		"/home/arkadiusz/Projects/typing-golf/frontend/mockup/cheatsheet.html",
+		"/home/arkadiusz/Projects/typing-golf/frontend/mockup/index.html",
+		"/home/arkadiusz/Documents/answers-job.txt",
+		"/home/arkadiusz/Projects/typing-golf/frontend/mockup/css/fonts.css",
 		"/home/arkadiusz/Projects/typing-golf/common/text-edits.js",
 		"/home/arkadiusz/Projects/typing-golf/frontend/public/index.html",
-		"/home/arkadiusz/Projects/typing-golf/frontend/mockup/css/style.css",
-		"/home/arkadiusz/Projects/typing-golf/frontend/mockup/css/fonts.css",
 		"/home/arkadiusz/Projects/typing-golf/frontend/lib/components/work.jsx",
 		"/home/arkadiusz/.config/sublime-text-3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
 		"/home/arkadiusz/.config/sublime-text-3/Packages/Normalize Indentation/Default (Linux).sublime-keymap",
@@ -911,7 +896,6 @@
 		"/home/arkadiusz/Documents/studia/TSI/8-uzytecznosc/ex2.mdown",
 		"/home/arkadiusz/Documents/studia/TSI/6-wyklad/prototype.md",
 		"/home/arkadiusz/Documents/studia/TSI/integracja/integracja.md",
-		"/home/arkadiusz/Documents/answers-job.txt",
 		"/home/arkadiusz/Documents/katalog-pyrkon/lib/field-types/author.js",
 		"/home/arkadiusz/Documents/katalog-pyrkon/lib/field-types/rola.js",
 		"/home/arkadiusz/Documents/katalog-pyrkon/lib/resource-types/kategoria-wystawcy.js",
@@ -1005,10 +989,7 @@
 		"/media/arkadiusz/7479088D089D8471/backup-ThinkpadX200-2/Dokumenty/WMI-3/SOP/ćwiczenia/zolwik/skrypt.sh",
 		"/home/arkadiusz/Desktop/blns.txt",
 		"/media/arkadiusz/7479088D089D8471/backup-ThinkpadX200-2/Dokumenty/aero2.sh",
-		"/media/arkadiusz/7479088D089D8471/backup-ThinkpadX200-2/Dokumenty/WMI-4/GRK/CopyOfOBJ2XML.java",
-		"/media/arkadiusz/7479088D089D8471/backup-ThinkpadX200-2/Dokumenty/WMI-4/FIZ/Fizyka_Zadanie.txt",
-		"/media/arkadiusz/7479088D089D8471/backup-ThinkpadX200-2/Dokumenty/WMI-3/SOP/ćwiczenia/dariusz/plik2",
-		"/media/arkadiusz/7479088D089D8471/backup-ThinkpadX200-2/Dokumenty/WMI-3/SOP/ćwiczenia/dariusz/skrypt1"
+		"/media/arkadiusz/7479088D089D8471/backup-ThinkpadX200-2/Dokumenty/WMI-4/GRK/CopyOfOBJ2XML.java"
 	],
 	"find":
 	{
@@ -1030,6 +1011,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Pani",
+			"1s",
+			"eligendi",
+			"blink",
+			": ",
+			"50%",
+			"background",
 			"end",
 			"animated",
 			"*/",
@@ -1150,14 +1138,7 @@
 			"attributes",
 			"true",
 			"false",
-			"+",
-			"true",
-			"page.ti",
-			"meta",
-			"is_prop",
-			"utils",
-			"init_parser",
-			"params"
+			"+"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1194,39 +1175,23 @@
 			[
 				{
 					"buffer": 0,
-					"file": "frontend/mockup/css/style.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4110,
+						"buffer_size": 3853,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2700,
-								2700
+								1867,
+								1867
 							]
 						],
 						"settings":
 						{
 							"BracketHighlighterBusy": false,
-							"auto_complete_triggers":
-							[
-								{
-									"characters": "<",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								}
-							],
 							"bh_regions":
 							[
 								"bh_c_define",
@@ -1234,31 +1199,6 @@
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
@@ -1269,330 +1209,57 @@
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
-							],
-							"color_scheme": "Packages/User/Color Highlighter/themes/AgolaNimbus (SL).tmTheme",
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2070.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "frontend/mockup/css/fonts.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1264,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								988,
-								988
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"auto_complete_triggers":
-							[
-								{
-									"characters": "<",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								}
-							],
-							"bh_regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
+								"bh_square_content"
 							],
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"default_dir": "/home/arkadiusz/Projects/typing-golf",
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 756.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "frontend/mockup/cheatsheet.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3488,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1166,
-								1166
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"auto_complete_triggers":
-							[
-								{
-									"characters": "<",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								}
-							],
-							"bh_regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
-							],
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "frontend/mockup/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1518,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1251,
-								1251
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"auto_complete_triggers":
-							[
-								{
-									"characters": "<",
-									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
-								}
-							],
-							"bh_regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
-							],
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]

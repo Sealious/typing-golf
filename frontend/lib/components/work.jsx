@@ -20,4 +20,4 @@ var Work = React.createClass({
 	}
 });
 
-module.exports = Work;
+module.exports = Work

@@ -29,7 +29,7 @@ body {
 	/*background: #E1E3E4;*/
 	/*background-color: #f1f1f1;*/
 	/*background: hsl(52, 68%, 72%);*/
-	background: #F9FFCB;
+	/*background: #F9FFCB;*/
 	/*background: #fff;*/
 	/*background: #f4f4f8;*/
 	background-image: url(../images/bckgd_body.png);
@@ -47,9 +47,14 @@ body {
 
 .nav{
 	position: fixed;
+	width: 16rem;
 	left: 0;
 	top: 0;
+	background-color: #fff;
+	padding: 0;
+	display: inline-block;
 }
+
 
 .flex-container {
 	/*! height: 100%; */
@@ -64,10 +69,22 @@ body {
 	-webkit-justify-content: flex-start;
 	background-color: hsl(0, 0%, 100%);
 }
-
-.flex-container:nth-child(1) {
-	/*! margin-bottom: 1rem; */
+.link{
+	color: hsl(231, 18%, 66%);
 }
+
+.nav-item .link{
+	width: 100%;
+	line-height: 2.8rem;
+	font-size: 1.4rem;
+	padding-left: 0.7rem;
+	vertical-align: middle;
+}
+
+.nav-item .link:hover{
+	background-color: #F9FFCB;
+}
+
 
 .logo-item {
 	background-color: hsl(265, 6%, 42%);
@@ -82,17 +99,12 @@ body {
 	color: #fff;
 }
 
-.flex-item {
-	font-size: 1.5rem;
-	/*padding-right: 4rem;*/
-	line-height: 1.5rem;
-}
 
 #overlay {
 	visibility: hidden;
 	position: absolute;
 	z-index: 1000;
-	top: 1rem;
+	top: 4rem;
 	left: 0;
 	width: 100%;
 	height: auto;
@@ -105,6 +117,8 @@ body {
 #overlay .shortcuts{
 	/*width: 64rem;*/
 	height: auto;
+	display: table;
+	margin: 0 auto;
 	/*background: hsla(0, 0%, 100%, 0.85);*/
 }
 
@@ -123,14 +137,15 @@ img{
 	background-repeat: no-repeat;
 	background-position: 50%;
 	background-size: contain;
-	height: 6rem;
-	width: 6rem;
+	height: 3rem;
+	width: 3rem;
 	cursor: pointer;
 	/*margin-right: 2rem;*/
 	/*margin-left: 2rem;*/
-	padding: 0.8rem;
-	vertical-align: bottom;
+	padding: 0.4rem;
+	/*vertical-align: bottom;*/
 }
+
 
 
 .cheatsheet-box{
@@ -178,7 +193,7 @@ img{
 
 .end-text-title,
 .end-text-details {
-	font-size: 1rem;
+	font-size: 1.4rem;
 	text-align: center;
 	color: hsl(231, 18%, 66%);
 }
@@ -244,8 +259,6 @@ thead td{
 	background: hsl(265, 6%, 50%);
 }
 
-
-
 a {
 	text-decoration: none;
 	display: inline-block;
@@ -261,9 +274,7 @@ a:hover {
 a:active {
 	color: hsl(231, 18%, 66%);
 }
-.link{
-	color: hsl(231, 18%, 66%);
-}
+
 .input {
 	padding: 1rem;
 	font-size: 1.8rem;
@@ -381,4 +392,20 @@ footer {
 /* Styling of overlay */
 .bm-overlay {
 	background: rgba(0, 0, 0, 0.3);
+}
+
+
+@media all and (max-width: 80rem) {
+	.nav{
+		position: relative;
+		width: 100%;
+		left: 0;
+		top: 0;
+		background-color: #fff;
+		padding: 0;
+		display: table;
+	}
+	#app{
+		width: 100%;
+	}
 }

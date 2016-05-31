@@ -70,7 +70,7 @@ body {
 	background-color: hsl(0, 0%, 100%);
 }
 .link{
-	color: hsl(231, 18%, 66%);
+
 }
 
 .nav-item .link{
@@ -79,6 +79,7 @@ body {
 	font-size: 1.4rem;
 	padding-left: 0.7rem;
 	vertical-align: middle;
+	color: hsl(231, 18%, 66%);
 }
 
 .nav-item .link:hover{
@@ -103,7 +104,7 @@ body {
 	/*visibility: hidden;*/
 	position: absolute;
 	z-index: 1000;
-	top: 4rem;
+	top: 0;
 	left: 0;
 	width: 100%;
 }
@@ -258,7 +259,7 @@ a {
 	text-decoration: none;
 	display: inline-block;
 	transition: all 400ms;
-	color: #FFF;
+	color: hsl(0, 0%, 27%);
 	cursor: pointer;
 }
 

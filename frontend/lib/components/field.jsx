@@ -5,12 +5,15 @@ var Input = React.createClass({
 	componentDidMount: function() {
 		this.selectText();
 	},
-	selectText: function(){
-		this.refs.input.focus();
+	selectText: function(with_focus){
+		this.refs.input.focus()
 		var direction;
 		if (this.props.selectionStart <= this.props.selectionEnd) direction = "forward"
 		else direction = "backward"
 		this.refs.input.setSelectionRange(this.props.selectionStart, this.props.selectionEnd, direction);
+	},
+	alertOnMouse: function() {
+		// if (!this.props.showCheatsheet)	alert('Nie oszukuj :)')
 	},
 	render: function() {
 		return (
@@ -21,6 +24,8 @@ var Input = React.createClass({
 					value={this.props.beginText}
 					onChange={this.props.handleChange}
 					onSelect={this.props.handleChange}
+					onFocus={this.selectText}
+					onClick={this.alertOnMouse}
 					ref="input" />
 			</div>
 		);

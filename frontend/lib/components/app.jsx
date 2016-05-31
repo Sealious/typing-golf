@@ -33,6 +33,7 @@ TypingGolf.App = React.createClass({
 			direction: eventDirection
 		});
 	},
+
 	coverCheatsheet: function() {
 		var new_value = (this.state.showCheatsheet == true) ? false : true;
 		this.setState({

@@ -24,7 +24,7 @@ TypingGolf.App = React.createClass({
 
 			targetText: "Ala ma kota",
 			targetSelectionStart:1,
-			targetSelectionEnd:1,
+			targetSelectionEnd:2,
 			targetSelectionDirection: "b",
 
 			counter: 0,

@@ -196,6 +196,7 @@ img{
 
 .selection{
 	background-color: rgb(72, 160, 220);
+	color: #FFF;
 }
 
 .blink {
@@ -416,16 +417,17 @@ footer {
 
 
 @media all and (max-width: 80rem) {
-	.nav{
-		position: relative;
-		width: 100%;
-		left: 0;
-		top: 0;
-		background-color: #fff;
-		padding: 0;
-		display: table;
-	}
-	#app{
-		width: 100%;
-	}
+}
+
+.nav{
+	position: relative;
+	width: 100%;
+	left: 0;
+	top: 0;
+	background-color: #fff;
+	padding: 0;
+	display: table;
+}
+#app{
+	width: 100%;
 }

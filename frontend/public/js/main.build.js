@@ -7,7 +7,7 @@ var ReactDOM = require("react-dom");
 
 module.exports = TypingGolf;
 
-TypingGolf.Input = require('./field.jsx');
+TypingGolf.Input = require('./input.jsx');
 TypingGolf.Target= require('./target.jsx');
 TypingGolf.Cheatsheet = require('./cheatsheet.jsx');
 
@@ -19,9 +19,12 @@ TypingGolf.App = React.createClass({displayName: "App",
 	getInitialState: function() {
 		return {
 			beginText: "Ala ma foka",
-			targetText: "Ala ma kota",
 			selectionStart: 3,
 			selectionEnd: 7,
+			targetText: "Ala ma kota",
+			targetSelectionStart: 1,
+			targetSelectionEnd: 3,
+			counter: 0,
 			showCheatsheet: true
 		};
 	},
@@ -41,12 +44,17 @@ TypingGolf.App = React.createClass({displayName: "App",
 			showCheatsheet : new_value
 		});
 	},
+	increaseCounter: function(){
+		this.setState({
+			counter: this.state.counter + 1
+		})
+	},
 	render: function() {
-		console.log('---')
-		console.log('this.state.beginText', this.state.beginText);
-		console.log('this.state.targetText', this.state.targetText);
-		console.log('this.state.selectionStart', this.state.selectionStart);
-		console.log('this.state.selectionEnd', this.state.selectionEnd);
+		// console.log('---')
+		// console.log('this.state.beginText', this.state.beginText);
+		// console.log('this.state.targetText', this.state.targetText);
+		// console.log('this.state.selectionStart', this.state.selectionStart);
+		// console.log('this.state.selectionEnd', this.state.selectionEnd);
 		return (
 			React.createElement("div", null, 
 				React.createElement("div", {className: "nav"}, 
@@ -66,10 +74,16 @@ TypingGolf.App = React.createClass({displayName: "App",
 					selectionStart: this.state.selectionStart, 
 					selectionEnd: this.state.selectionEnd, 
 					handleChange: this.handleChange, 
-					showCheatsheet: this.state.showCheatsheet}), 
+					showCheatsheet: this.state.showCheatsheet, 
+					increaseCounter: this.increaseCounter}), 
+
+				React.createElement("p", {className: "end-text-details"}, " you've done ", this.state.counter, " steps"), 
 
 				React.createElement(TypingGolf.Target, {
-					targetText: this.state.targetText}), 
+					targetText: this.state.targetText, 
+					targetSelectionStart: this.state.targetSelectionStart, 
+					targetSelectionEnd: this.state.targetSelectionEnd, 
+					counter: this.state.counter}), 
 
 				React.createElement(TypingGolf.Cheatsheet, {
 					showCheatsheet: this.state.showCheatsheet, 
@@ -81,7 +95,7 @@ TypingGolf.App = React.createClass({displayName: "App",
 	}
 });
 
-},{"./cheatsheet.jsx":2,"./field.jsx":3,"./target.jsx":4,"react":230,"react-dom":55,"react-router":85}],2:[function(require,module,exports){
+},{"./cheatsheet.jsx":2,"./input.jsx":3,"./target.jsx":4,"react":230,"react-dom":55,"react-router":85}],2:[function(require,module,exports){
 var React = require('react');
 var PropTypes = React.PropTypes;
 
@@ -318,6 +332,7 @@ var Input = React.createClass({displayName: "Input",
 					onSelect: this.props.handleChange, 
 					onFocus: this.selectText, 
 					onClick: this.alertOnMouse, 
+					onKeyDown: this.props.increaseCounter, 
 					ref: "input"})
 			)
 		);
@@ -331,17 +346,43 @@ var React = require('react');
 var PropTypes = React.PropTypes;
 
 var Target = React.createClass({displayName: "Target",
+    componentDidMount: function() {
+
+    },
+    selectText: function(text, selectionStart, selectionEnd) {
+        var beforeSelection = 0;
+            afterSelection = 0;
+            selection = 0;
+
+        if (selectionStart !== 0) beforeSelection = selectionStart;
+        if (selectionEnd !== 0 || selectionEnd !== text.length) afterSelection = selectionEnd + 1;
+
+
+        substring_1 = text.substr(0, beforeSelection)
+        substring_2 = text.substr(selectionStart, selectionEnd)
+        substring_3 = text.substr(afterSelection, text.length);
+        console.log('substring_1', substring_1);
+        console.log('substring_2', substring_2);
+        console.log('substring_3', substring_3);
+
+        // var targetText = []
+
+        var targetText = React.createElement("p", {className: "end-text"}, substring_1, React.createElement("span", {className: "selection"}, substring_2), substring_3);
+
+        return targetText;
+    },
 
     render: function() {
+        // <p className="end-text">
+        //     {this.props.targetText}
+        // </p>
         return (
             React.createElement("div", {className: "flex-container"}, 
                 React.createElement("div", {className: "content"}, 
                     React.createElement("p", {className: "end-text-details"}, 
                         "into this ⤵"
                     ), 
-                    React.createElement("p", {className: "end-text"}, 
-                        this.props.targetText
-                    ), 
+                    this.selectText(this.props.targetText, this.props.targetSelectionStart, this.props.targetSelectionEnd), 
                     React.createElement("p", {className: "end-text-details"}, 
                         "in 6 steps"
                     )

@@ -6,7 +6,7 @@ var ReactDOM = require("react-dom");
 
 module.exports = TypingGolf;
 
-TypingGolf.Input = require('./field.jsx');
+TypingGolf.Input = require('./input.jsx');
 TypingGolf.Target= require('./target.jsx');
 TypingGolf.Cheatsheet = require('./cheatsheet.jsx');
 
@@ -18,9 +18,12 @@ TypingGolf.App = React.createClass({
 	getInitialState: function() {
 		return {
 			beginText: "Ala ma foka",
-			targetText: "Ala ma kota",
 			selectionStart: 3,
 			selectionEnd: 7,
+			targetText: "Ala ma kota",
+			targetSelectionStart: 1,
+			targetSelectionEnd: 3,
+			counter: 0,
 			showCheatsheet: true
 		};
 	},
@@ -40,12 +43,17 @@ TypingGolf.App = React.createClass({
 			showCheatsheet : new_value
 		});
 	},
+	increaseCounter: function(){
+		this.setState({
+			counter: this.state.counter + 1
+		})
+	},
 	render: function() {
-		console.log('---')
-		console.log('this.state.beginText', this.state.beginText);
-		console.log('this.state.targetText', this.state.targetText);
-		console.log('this.state.selectionStart', this.state.selectionStart);
-		console.log('this.state.selectionEnd', this.state.selectionEnd);
+		// console.log('---')
+		// console.log('this.state.beginText', this.state.beginText);
+		// console.log('this.state.targetText', this.state.targetText);
+		// console.log('this.state.selectionStart', this.state.selectionStart);
+		// console.log('this.state.selectionEnd', this.state.selectionEnd);
 		return (
 			<div>
 				<div className="nav">
@@ -65,10 +73,16 @@ TypingGolf.App = React.createClass({
 					selectionStart={this.state.selectionStart}
 					selectionEnd={this.state.selectionEnd}
 					handleChange={this.handleChange}
-					showCheatsheet={this.state.showCheatsheet}/>
+					showCheatsheet={this.state.showCheatsheet}
+					increaseCounter={this.increaseCounter}/>
+
+				<p className="end-text-details"> you've done {this.state.counter} steps</p>
 
 				<TypingGolf.Target
-					targetText={this.state.targetText}/>
+					targetText={this.state.targetText}
+					targetSelectionStart={this.state.targetSelectionStart}
+					targetSelectionEnd={this.state.targetSelectionEnd}
+					counter={this.state.counter}/>
 
 				<TypingGolf.Cheatsheet
 					showCheatsheet={this.state.showCheatsheet}

@@ -26,6 +26,7 @@ var Input = React.createClass({
 					onSelect={this.props.handleChange}
 					onFocus={this.selectText}
 					onClick={this.alertOnMouse}
+					onKeyDown={this.props.increaseCounter}
 					ref="input" />
 			</div>
 		);

@@ -194,6 +194,10 @@ img{
 	color: hsl(231, 18%, 66%);
 }
 
+.selection{
+	background-color: rgb(72, 160, 220);
+}
+
 .row {
 	width: auto;
 }

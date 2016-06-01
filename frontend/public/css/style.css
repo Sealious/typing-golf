@@ -198,6 +198,25 @@ img{
 	background-color: rgb(72, 160, 220);
 }
 
+.blink {
+    -webkit-animation: blink 1s linear infinite;
+    -moz-animation: blink 1s linear infinite;
+    -ms-animation: blink 1s linear infinite;
+    -o-animation: blink 1s linear infinite;
+    animation: blink 1s linear infinite;
+	color: rgb(72, 160, 220);
+	/*transition: all 2s;*/
+    background-color: rgb(72, 160, 220);
+    width: 0.2rem;
+    display: inline-block;
+}
+
+@keyframes blink {
+  0% { opacity: 0.0; }
+  99% { opacity: 0.99; }
+}
+
+
 .row {
 	width: auto;
 }

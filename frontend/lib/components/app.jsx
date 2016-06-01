@@ -20,9 +20,13 @@ TypingGolf.App = React.createClass({
 			beginText: "Ala ma foka",
 			selectionStart: 3,
 			selectionEnd: 7,
+			selectionDirection: "f",
+
 			targetText: "Ala ma kota",
-			targetSelectionStart:3,
-			targetSelectionEnd: 3,
+			targetSelectionStart:1,
+			targetSelectionEnd:1,
+			targetSelectionDirection: "b",
+
 			counter: 0,
 			showCheatsheet: false
 		};

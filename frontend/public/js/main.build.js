@@ -21,9 +21,13 @@ TypingGolf.App = React.createClass({displayName: "App",
 			beginText: "Ala ma foka",
 			selectionStart: 3,
 			selectionEnd: 7,
+			selectionDirection: "f",
+
 			targetText: "Ala ma kota",
-			targetSelectionStart:3,
-			targetSelectionEnd: 3,
+			targetSelectionStart:1,
+			targetSelectionEnd:1,
+			targetSelectionDirection: "b",
+
 			counter: 0,
 			showCheatsheet: false
 		};
@@ -366,16 +370,14 @@ var Target = React.createClass({displayName: "Target",
             console.log('sub_1', sub_1, 0, selectionStart);
             console.log('sub_2', sub_2, selectionStart+1, selectionEnd);
             console.log('sub_3', sub_3, selectionEnd+1);
-
+            targetText = React.createElement("p", {className: "end-text"}, sub_1, React.createElement("span", {className: "selection"}, sub_2), sub_3);
 
         } else {
             sub_1 = text.slice(0, selectionStart)
-            sub_2 = "|"
+            sub_2 = "﻿"
             sub_3 = text.slice(selectionEnd);
+            targetText = React.createElement("p", {className: "end-text"}, sub_1, React.createElement("span", {className: "blink"}, sub_2), sub_3);
         }
-
-        targetText = React.createElement("p", {className: "end-text"}, sub_1, React.createElement("span", {className: "selection"}, sub_2), sub_3);
-
         return targetText;
     },
 

@@ -22,10 +22,10 @@ TypingGolf.App = React.createClass({displayName: "App",
 			selectionStart: 3,
 			selectionEnd: 7,
 			targetText: "Ala ma kota",
-			targetSelectionStart: 1,
+			targetSelectionStart:3,
 			targetSelectionEnd: 3,
 			counter: 0,
-			showCheatsheet: true
+			showCheatsheet: false
 		};
 	},
 	handleChange: function(event) {
@@ -350,24 +350,31 @@ var Target = React.createClass({displayName: "Target",
 
     },
     selectText: function(text, selectionStart, selectionEnd) {
-        var beforeSelection = 0;
+        var targetText;
+
+        if (selectionStart !== selectionEnd) {
+            var beforeSelection = 0;
             afterSelection = 0;
             selection = 0;
 
-        if (selectionStart !== 0) beforeSelection = selectionStart;
-        if (selectionEnd !== 0 || selectionEnd !== text.length) afterSelection = selectionEnd + 1;
+            // if (selectionStart !== 0) beforeSelection = selectionStart;
+            // if (selectionEnd !== 0 || selectionEnd !== text.length) afterSelection = selectionEnd + 2;
+
+            sub_1 = text.slice(0, selectionStart)
+            sub_2 = text.slice(selectionStart, selectionEnd)
+            sub_3 = text.slice(selectionEnd);
+            console.log('sub_1', sub_1, 0, selectionStart);
+            console.log('sub_2', sub_2, selectionStart+1, selectionEnd);
+            console.log('sub_3', sub_3, selectionEnd+1);
 
 
-        substring_1 = text.substr(0, beforeSelection)
-        substring_2 = text.substr(selectionStart, selectionEnd)
-        substring_3 = text.substr(afterSelection, text.length);
-        console.log('substring_1', substring_1);
-        console.log('substring_2', substring_2);
-        console.log('substring_3', substring_3);
+        } else {
+            sub_1 = text.slice(0, selectionStart)
+            sub_2 = "|"
+            sub_3 = text.slice(selectionEnd);
+        }
 
-        // var targetText = []
-
-        var targetText = React.createElement("p", {className: "end-text"}, substring_1, React.createElement("span", {className: "selection"}, substring_2), substring_3);
+        targetText = React.createElement("p", {className: "end-text"}, sub_1, React.createElement("span", {className: "selection"}, sub_2), sub_3);
 
         return targetText;
     },

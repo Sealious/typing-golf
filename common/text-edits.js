@@ -8,7 +8,7 @@ function splice(str, index, count, add) {
     return str.slice(0, index) + (add || "") + str.slice(index + count);
 }
 
-var any_char = "𝛆";
+var any_char = "Ź";
 
 edits.insert_char = function(state) {
     var new_text = splice(state.text, state.start, state.end - state.start, any_char);
@@ -476,6 +476,7 @@ edits.shift_down = function(state){
 
 module.exports = {
     edits: edits,
+//	edits: {i: edits.insert_char, e: edits.end},
     any_char: any_char,
 	get_h_offset: get_h_offset,
 	get_v_offset: get_v_offset,

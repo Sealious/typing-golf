@@ -40,9 +40,13 @@ de(
 )
 
 de(
-    edits.insert_char(s("ala ma kota", 1, 1)),
-    s("a" + any_char + "la ma kota", 2, 2)
+    edits.insert_char(s("ala ma kota", 0,0)),
+    s(any_char + "ala ma kota", 1, 1)
 )
+
+de(
+	edits.delete(s(any_char + "ala ma kota", 1, 1)),
+	s(any_char + "la ma kota", 1, 1));
 
 de(
     edits.insert_char(s("ala ma kota", 0, 11)),
@@ -53,6 +57,11 @@ de(
     edits.insert_char(s("ala ma kota", 1, 11)),
     s("a" + any_char, 2, 2)
 )
+
+de(
+	edits.insert_char(s("ala ma kota", 1, 1)),
+	s("a" + any_char + "la ma kota", 2, 2)
+);
 
 de(
     edits.delete(s("ala ma kota", 0, 0)),
@@ -269,7 +278,6 @@ de(edits.shift_end(s("ala ma kota", 0, 0)),
 de(edits.shift_end(s("ala ma kota", 11, 11)),
    s("ala ma kota", 11, 11, "f"));
 
-
 de(edits.shift_end(s("ala\nma\nkota", 5, 5)),
    s("ala\nma\nkota", 5, 6, "f"));
 
@@ -277,7 +285,7 @@ de(edits.shift_end(s("ala\nma\nkota", 4, 5, "b")),
    s("ala\nma\nkota", 5, 6, "f"));
 
 de(edits.shift_end(s("ala\nma\nkota\ni\npsa", 5, 16, "b")),
-   s("ala\nma\nkota\ni\npsa", 6, 16, "f"))
+   s("ala\nma\nkota\ni\npsa", 6, 16, "b"))
 
 de(edits.shift_end(s("ala\nma\nkota\ni\npsa", 5, 16, "f")),
    s("ala\nma\nkota\ni\npsa", 5, 17, "f"))
@@ -437,6 +445,9 @@ de(edits.shift_down(s("ala\n\nma", 1, 4, "f", 1)),
 
 de(edits.shift_down(s("ala\n\nma", 1, 6, "f", 1)),
    s("ala\n\nma", 1, 7, "f"));
+
+de(edits.shift_end(s("ala\nma\nkota", 1, 5, "b")),
+   s("ala\nma\nkota", 3, 5, "b"));
 
 
 console.log("Passed all tests! :)")

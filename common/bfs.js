@@ -11,18 +11,18 @@ function bfs(root, children, accept){
 		var new_elements = children(element);
 		for(var i in new_elements){
 			the_element = new_elements[i];
-			new_elements[i].parent = element;
-			if(accept(new_elements[i])){
+			the_element.parent = element;
+			if(accept(the_element)){
 				found = true;
 				break;
 			}else{
-				queue.push(new_elements[i]);
+				queue.push(the_element);
 			}
 		}
 		iteration++;
-		if(iteration % 100 == 0) console.log("iteration: ", iteration);
+		if(iteration % 10000 == 0) console.log("iteration: ", iteration);
 	}
-	console.log("found!", the_element);
+	return the_element;
 }
 
 module.exports = bfs;

@@ -19,6 +19,8 @@ edits.insert_char = function(state) {
     }
 }
 
+edits.insert_char.desc = "[letter]"
+
 edits.delete = function(state) {
     if (state.start != state.end) {
         var new_text = splice(state.text, state.start, Math.abs(state.end - state.start), "");
@@ -37,6 +39,8 @@ edits.delete = function(state) {
     }
 }
 
+edits.delete.desc = "DEL";
+
 edits.end = function(state) {
     return {
         text: state.text,
@@ -45,6 +49,8 @@ edits.end = function(state) {
     }
 }
 
+edits.end.desc = "END";
+
 edits.home = function(state) {
     return {
         text: state.text,
@@ -52,6 +58,8 @@ edits.home = function(state) {
         end: 0
     }
 }
+
+edits.home.desc = "HOME";
 
 edits.ctrl_shift_end = function(state) {
     if (state.direction == "f") {
@@ -71,6 +79,8 @@ edits.ctrl_shift_end = function(state) {
     }
 }
 
+edits.ctrl_shift_end.desc = "CTRL+SHIFT+END";
+
 edits.ctrl_shift_home = function(state) {
     if (state.direction == "f") {
         return {
@@ -89,9 +99,20 @@ edits.ctrl_shift_home = function(state) {
     }
 }
 
+edits.ctrl_shift_home.desc = "CTRL+SHIFT+HOME";
+
 edits.backspace = function(state) {
     if (state.end == state.start) {
-        if (state.start == 0) return state;
+        if (state.start == 0) {
+			var ret = {
+				text: state.text,
+				start: state.start,
+				end: state.start,
+				direction: state.direction
+			}
+			if(ret.direction == undefined) delete ret.direction;
+			return ret;
+		}
         return {
             text: splice(state.text, state.start - 1, 1, ""),
             start: state.start - 1,
@@ -106,6 +127,8 @@ edits.backspace = function(state) {
         }
     }
 }
+
+edits.backspace.desc = "BACKSPACE";
 
 edits.next_word = function(state) {
     if (state.start == state.end) {
@@ -145,6 +168,8 @@ edits.next_word = function(state) {
     }
 }
 
+edits.next_word.desc = "CTRL+→";
+
 edits.prev_word = function(state) {
     if (state.start == state.end) {
         var left_half = state.text.slice(0, state.start);
@@ -164,6 +189,7 @@ edits.prev_word = function(state) {
     }
 }
 
+edits.prev_word.desc = "CTRL+←";
 
 edits.select_prev_word = function(state) {
     var prev = edits.prev_word(state);
@@ -186,6 +212,8 @@ edits.select_prev_word = function(state) {
 		}
 	}
 }
+
+edits.select_prev_word.desc = "CTRL+SHIFT+←"
 
 edits.select_next_word = function(state){
 	var next = edits.next_word(state);
@@ -210,6 +238,8 @@ edits.select_next_word = function(state){
 	}
 }
 
+edits.select_next_word.desc = "CTRL+SHIFT+→";
+
 edits.delete_prev_word = function(state) {
 	if(state.start == state.end){
 		state = edits.select_prev_word(state);
@@ -217,12 +247,16 @@ edits.delete_prev_word = function(state) {
 	return edits.backspace(state);
 }
 
+edits.delete_prev_word.desc = "CTRL+BACKSPACE";
+
 edits.delete_next_word = function(state){
 	if(state.start == state.end){
 		state = edits.select_next_word(state);
 	}
 	return edits["delete"](state);
 }
+
+edits.delete_next_word.desc = "CTRL+DEL";
 
 edits.shift_home = function(state){
 	var moving_index = "start";
@@ -250,25 +284,26 @@ edits.shift_home = function(state){
 	}
 }
 
+edits.shift_home.desc = "SHIFT+HOME";
+
 edits.shift_end = function(state){
 	var moving_index = "start";
 	if(state.direction == "f"){
 		moving_index = "end";
 	}
 	var right_half = state.text.slice(state[moving_index], Infinity);
-	var m = right_half.indexOf("\n");
-	var new_index;
-	if(m == -1){
-		new_index = state.text.length;
-	}else{
-		new_index = state[moving_index] + m;
+	var m = right_half;
+	if(right_half.indexOf("\n")!=-1){
+		m = right_half.slice(0, right_half.indexOf("\n"));
 	}
+	var new_index;
+	new_index = Math.min(state[moving_index] + m.length, state.text.length);
 	if(moving_index == "start"){
 		return {
 			text: state.text,
 			start: Math.min(state.end, new_index),
 			end: Math.max(state.end, new_index),
-			direction: new_index > state.start ? "f" : state.direction || "f"
+			direction: new_index > state.end ? "f" : state.direction || "f"
 		}
 	}else{
 		return {
@@ -280,6 +315,8 @@ edits.shift_end = function(state){
 	}
 }
 
+edits.shift_end.desc = "SHIFT+END";
+
 edits.select_all = function(state){
 	return {
 		text: state.text,
@@ -288,6 +325,8 @@ edits.select_all = function(state){
 		direction: "f",
 	}
 }
+
+edits.select_all.desc = "CTRL+A";
 
 edits.select_left = function(state){
 	if(state.direction == "f"){
@@ -308,6 +347,8 @@ edits.select_left = function(state){
 	}
 }
 
+edits.select_left.desc = "SHIFT+←";
+
 edits.select_right = function(state){
 	if(state.direction == "b"){
 		var new_start = Math.min(state.text.length, state.start + 1);
@@ -327,6 +368,8 @@ edits.select_right = function(state){
 	}
 }
 
+edits.select_right.desc = "SHIFT+→";
+
 edits.control_home = function(state){
 	return {
 		text: state.text,
@@ -335,6 +378,8 @@ edits.control_home = function(state){
 	}
 }
 
+edits.control_home.desc = "CTRL+HOME";
+
 edits.control_end = function(state){
 	return {
 		text: state.text,
@@ -342,6 +387,8 @@ edits.control_end = function(state){
 		end: state.text.length
 	}
 }
+
+edits.control_end.desc = "CTRL+END";
 
 function get_h_offset(state){
 	var moving_index = "end";
@@ -431,6 +478,8 @@ edits.shift_up = function(state){
 	}
 }
 
+edits.shift_up.desc = "SHIFT+↑";
+
 edits.shift_down = function(state){
 	var h_offset;
 	if(state.h == undefined){
@@ -472,6 +521,8 @@ edits.shift_down = function(state){
 		h: h_offset
 	}
 }
+
+edits.shift_down.desc = "SHIFT+↓";
 
 
 module.exports = {

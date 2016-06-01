@@ -19,7 +19,9 @@ function s(text, start, end, direction, h){
 function children_fn(element){
 	var children = [];
 	for(var i in edits){
-		children.push(edits[i](element));
+		var new_element = edits[i](element);
+		new_element.edge = edits[i];
+		children.push(new_element);
 	}
 	return children;
 }
@@ -39,6 +41,10 @@ function accept_generator(solution){
 			}
 		}
 
+		if(element.text.length == solution.text.length){
+//			console.log(element.text);
+		}
+		
 		var to_replace = ".+?[]()*$^"
 		var t = element.text;
 		for(var i in to_replace){
@@ -54,9 +60,27 @@ function accept_generator(solution){
 //var acceptor = accept_generator(s("ala ma kota", 0, 11,"f"));
 //console.log(acceptor(edits.select_all(s("ala ma kota", 0, 0))));
 
+module.exports = function(root, solution){
+	console.log("Task: transform:\n\n");
+	console.log(root.text);
+	console.log("\n\ninto:\n\n");
+	console.log(solution.text);
+	console.log("\n\n");
+	root.edge = null;
+	var solution = bfs(
+		root,
+		children_fn,
+		accept_generator(solution)
+	);
 
-bfs(
-	s("ala ma kota", 11, 11),
-	children_fn,
-	accept_generator(s("ala ma kota12345", 0, 0, "f"))
-);
+	console.log("Solution:");
+	var steps = [];
+	while(solution.parent != null && solution.parent != solution){
+		steps.unshift(solution);
+		solution = solution.parent;
+	}
+
+	console.log(steps.map(function(s){return s.edge.desc}));
+	console.log(steps.map(function(s){return {text: s.text, start: s.start, end:s.end, key: s.edge.desc, direction: s.direction}}));
+	console.log("\n\n\n-------- \n\n\n");
+}

@@ -1,52 +1,28 @@
-var start = 1;
-var end = 35;
+function bfs(root, children, accept){
+	var iteration = 0;
+	var queue = []
+	queue.push(root);
 
-var options = [];
-var counter = 0;
-var current_length = 0;
-
-function successor(element){
-	// console.log('adding', element+1, element+2)
-	return [element+1, element+2]
-}
-
-function search(){
-	var a = successor(options[0])
-	for (var i = 0; i < a.length; i++) {
-		if (accept(a[i])) {
-			console.log('found')
-			return true
-		}else{
-			options.push(a[i])
+	the_element = root;
+	found = accept(root);
+	
+	while(!found){
+		var element = queue.shift();
+		var new_elements = children(element);
+		for(var i in new_elements){
+			the_element = new_elements[i];
+			new_elements[i].parent = element;
+			if(accept(new_elements[i])){
+				found = true;
+				break;
+			}else{
+				queue.push(new_elements[i]);
+			}
 		}
+		iteration++;
+		if(iteration % 100 == 0) console.log("iteration: ", iteration);
 	}
-
-	options.splice(0, 1);
-	return false;
-
+	console.log("found!", the_element);
 }
 
-function accept(element) {
-	// console.log("comapring", element, end)
-	if (element === end) return true;
-	else return false;
-}
-
-
-function bfs(){
-	options.push(start);
-
-	while (!search()) {
-		counter += 1;
-		if (counter % 90000) {
-			console.log(counter)
-		}
-		// if (counter == 10) {
-		// 	break;
-		// }
-		// console.log(counter)
-	}
-
-}
-
-bfs()
+module.exports = bfs;

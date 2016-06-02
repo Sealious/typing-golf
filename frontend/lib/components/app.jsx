@@ -14,16 +14,18 @@ TypingGolf.App = React.createClass({
 	mixins: [Router.State, Router.Navigation],
 	getInitialState: function() {
 		return {
-			beginText: "Ala ma kota",
-			selectionStart: 6,
-			selectionEnd: 7,
-			selectionDirection: "f",
-
-			targetText: "Ala ma psa",
-			targetSelectionStart: 6,
-			targetSelectionEnd:6	,
-			targetSelectionDirection: "b",
-
+			begin:{
+				text: "Ala ma kota",
+				start: 3,
+				end: 5,
+				direction: "f"
+			},
+			target: {
+				text: "Ala ma psa",
+				start: 2,
+				end: 8,
+				direction: "b"
+			},
 			counter: 0,
 			showCheatsheet: false
 		};
@@ -32,18 +34,22 @@ TypingGolf.App = React.createClass({
 		var eventDirection = ((event.target.selectionDirection).localeCompare("backward") == 0) ? "b" : "f";
  		var currentCounter = this.state.counter;
 
-		if (event.target.value !== this.state.beginText ||
-			event.target.selectionStart !== this.state.selectionStart ||
-			event.target.selectionEnd !== this.state.selectionEnd ||
-			eventDirection !== this.state.selectionDirection) {
+		if (event.target.value !== this.state.begin.text ||
+			event.target.selectionStart !== this.state.begin.start ||
+			event.target.selectionEnd !== this.state.begin.end ||
+			eventDirection !== this.state.begin.direction) {
 			currentCounter += 1;
 		}
 
+		var changed_begin = {
+			text: event.target.value,
+			start: event.target.selectionStart,
+			end: event.target.selectionEnd,
+			direction: eventDirection
+		}
+
 		this.setState({
-			beginText: event.target.value,
-			selectionStart: event.target.selectionStart,
-			selectionEnd: event.target.selectionEnd,
-			selectionDirection: eventDirection,
+			begin: changed_begin,
 			counter: currentCounter
 		});
 	},
@@ -70,20 +76,14 @@ TypingGolf.App = React.createClass({
 				</div>
 
 				<TypingGolf.Input
-					beginText={this.state.beginText}
-					selectionStart={this.state.selectionStart}
-					selectionEnd={this.state.selectionEnd}
+					begin={this.state.begin}
 					handleChange={this.handleChange}
-					showCheatsheet={this.state.showCheatsheet}
-					increaseCounter={this.increaseCounter}/>
+					showCheatsheet={this.state.showCheatsheet}/>
 
 				<p className="end-text-details"> you've done {this.state.counter} steps</p>
 
 				<TypingGolf.Target
-					targetText={this.state.targetText}
-					targetSelectionStart={this.state.targetSelectionStart}
-					targetSelectionEnd={this.state.targetSelectionEnd}
-					counter={this.state.counter}/>
+					target={this.state.target}/>
 
 				<TypingGolf.Cheatsheet
 					showCheatsheet={this.state.showCheatsheet}

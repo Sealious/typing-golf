@@ -15,16 +15,18 @@ TypingGolf.App = React.createClass({displayName: "App",
 	mixins: [Router.State, Router.Navigation],
 	getInitialState: function() {
 		return {
-			beginText: "Ala ma kota",
-			selectionStart: 6,
-			selectionEnd: 7,
-			selectionDirection: "f",
-
-			targetText: "Ala ma psa",
-			targetSelectionStart: 6,
-			targetSelectionEnd:6	,
-			targetSelectionDirection: "b",
-
+			begin:{
+				text: "Ala ma kota",
+				start: 3,
+				end: 5,
+				direction: "f"
+			},
+			target: {
+				text: "Ala ma psa",
+				start: 2,
+				end: 8,
+				direction: "b"
+			},
 			counter: 0,
 			showCheatsheet: false
 		};
@@ -33,18 +35,22 @@ TypingGolf.App = React.createClass({displayName: "App",
 		var eventDirection = ((event.target.selectionDirection).localeCompare("backward") == 0) ? "b" : "f";
  		var currentCounter = this.state.counter;
 
-		if (event.target.value !== this.state.beginText ||
-			event.target.selectionStart !== this.state.selectionStart ||
-			event.target.selectionEnd !== this.state.selectionEnd ||
-			eventDirection !== this.state.selectionDirection) {
+		if (event.target.value !== this.state.begin.text ||
+			event.target.selectionStart !== this.state.begin.start ||
+			event.target.selectionEnd !== this.state.begin.end ||
+			eventDirection !== this.state.begin.direction) {
 			currentCounter += 1;
 		}
 
+		var changed_begin = {
+			text: event.target.value,
+			start: event.target.selectionStart,
+			end: event.target.selectionEnd,
+			direction: eventDirection
+		}
+
 		this.setState({
-			beginText: event.target.value,
-			selectionStart: event.target.selectionStart,
-			selectionEnd: event.target.selectionEnd,
-			selectionDirection: eventDirection,
+			begin: changed_begin,
 			counter: currentCounter
 		});
 	},
@@ -71,20 +77,14 @@ TypingGolf.App = React.createClass({displayName: "App",
 				), 
 
 				React.createElement(TypingGolf.Input, {
-					beginText: this.state.beginText, 
-					selectionStart: this.state.selectionStart, 
-					selectionEnd: this.state.selectionEnd, 
+					begin: this.state.begin, 
 					handleChange: this.handleChange, 
-					showCheatsheet: this.state.showCheatsheet, 
-					increaseCounter: this.increaseCounter}), 
+					showCheatsheet: this.state.showCheatsheet}), 
 
 				React.createElement("p", {className: "end-text-details"}, " you've done ", this.state.counter, " steps"), 
 
 				React.createElement(TypingGolf.Target, {
-					targetText: this.state.targetText, 
-					targetSelectionStart: this.state.targetSelectionStart, 
-					targetSelectionEnd: this.state.targetSelectionEnd, 
-					counter: this.state.counter}), 
+					target: this.state.target}), 
 
 				React.createElement(TypingGolf.Cheatsheet, {
 					showCheatsheet: this.state.showCheatsheet, 
@@ -315,9 +315,9 @@ var Input = React.createClass({displayName: "Input",
 	selectText: function(with_focus){
 		this.refs.input.focus()
 		var direction;
-		if (this.props.selectionStart <= this.props.selectionEnd) direction = "forward"
+		if (this.props.begin.start <= this.props.begin.end) direction = "forward"
 		else direction = "backward"
-		this.refs.input.setSelectionRange(this.props.selectionStart, this.props.selectionEnd, direction);
+		this.refs.input.setSelectionRange(this.props.begin.start, this.props.begin.end, direction);
 	},
 	render: function() {
 		return (
@@ -325,12 +325,10 @@ var Input = React.createClass({displayName: "Input",
 				React.createElement("textarea", {
 					className: "input", 
 					type: "text", 
-					value: this.props.beginText, 
+					value: this.props.begin.text, 
 					onChange: this.props.handleChange, 
 					onSelect: this.props.handleChange, 
 					onFocus: this.selectText, 
-					onClick: this.alertOnMouse, 
-					onKeyDown: this.props.increaseCounter, 
 					ref: "input"})
 			)
 		);
@@ -347,14 +345,14 @@ var Target = React.createClass({displayName: "Target",
     componentDidMount: function() {
 
     },
-    selectText: function(text, selectionStart, selectionEnd) {
+    selectText: function(text, start, end) {
         var targetText;
-		var sub_1 = text.slice(0, selectionStart);
+		var sub_1 = text.slice(0, start);
 		var sub_2 = "﻿";
-		var sub_3 = text.slice(selectionEnd);
+		var sub_3 = text.slice(end);
 
-        if (selectionStart !== selectionEnd) {
-            sub_2 = text.slice(selectionStart, selectionEnd)
+        if (start !== end) {
+            sub_2 = text.slice(start, end)
             targetText = React.createElement("p", {className: "end-text"}, sub_1, React.createElement("span", {className: "selection"}, sub_2), sub_3);
         } else {
             targetText = React.createElement("p", {className: "end-text"}, sub_1, React.createElement("span", {className: "blink"}, sub_2), sub_3);
@@ -369,7 +367,7 @@ var Target = React.createClass({displayName: "Target",
                     React.createElement("p", {className: "end-text-details"}, 
                         "into this ⤵"
                     ), 
-                    this.selectText(this.props.targetText, this.props.targetSelectionStart, this.props.targetSelectionEnd), 
+                    this.selectText(this.props.target.text, this.props.target.start, this.props.target.end), 
                     React.createElement("p", {className: "end-text-details"}, 
                         "in 6 steps"
                     )

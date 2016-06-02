@@ -8,9 +8,9 @@ var Input = React.createClass({
 	selectText: function(with_focus){
 		this.refs.input.focus()
 		var direction;
-		if (this.props.selectionStart <= this.props.selectionEnd) direction = "forward"
+		if (this.props.begin.start <= this.props.begin.end) direction = "forward"
 		else direction = "backward"
-		this.refs.input.setSelectionRange(this.props.selectionStart, this.props.selectionEnd, direction);
+		this.refs.input.setSelectionRange(this.props.begin.start, this.props.begin.end, direction);
 	},
 	render: function() {
 		return (
@@ -18,12 +18,10 @@ var Input = React.createClass({
 				<textarea
 					className="input"
 					type="text"
-					value={this.props.beginText}
+					value={this.props.begin.text}
 					onChange={this.props.handleChange}
 					onSelect={this.props.handleChange}
 					onFocus={this.selectText}
-					onClick={this.alertOnMouse}
-					onKeyDown={this.props.increaseCounter}
 					ref="input" />
 			</div>
 		);

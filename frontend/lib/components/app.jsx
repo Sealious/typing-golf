@@ -41,7 +41,7 @@ TypingGolf.App = React.createClass({
 			currentCounter += 1;
 		}
 
-		var changed_begin = {
+		var new_state = {
 			text: event.target.value,
 			start: event.target.selectionStart,
 			end: event.target.selectionEnd,
@@ -49,7 +49,7 @@ TypingGolf.App = React.createClass({
 		}
 
 		this.setState({
-			begin: changed_begin,
+			begin: new_state,
 			counter: currentCounter
 		});
 	},

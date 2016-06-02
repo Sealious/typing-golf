@@ -26,20 +26,12 @@ body {
 	font-family: 'Source Sans Pro Regular', 'Open Sans', 'Liberation Sans', 'Nimbus Sans L', 'Trebuchet MS', 'Arial';
 	font-weight: 300;
 	color: hsl(0, 0%, 27%);
-	/*background: #E1E3E4;*/
-	/*background-color: #f1f1f1;*/
-	/*background: hsl(52, 68%, 72%);*/
-	/*background: #F9FFCB;*/
-	/*background: #fff;*/
-	/*background: #f4f4f8;*/
 	background-image: url(../images/bckgd_body.png);
 	background-repeat: repeat;
 	background-attachment: fixed;
 }
 
-
 #app {
-	/*padding-top: 1rem;*/
 	margin: 0 auto;
 	width: 64rem;
 	background-color: #FFF;
@@ -55,9 +47,7 @@ body {
 	display: inline-block;
 }
 
-
 .flex-container {
-	/*! height: 100%; */
 	padding: 0;
 	display: -webkit-box;
 	display: -moz-box;
@@ -86,7 +76,6 @@ body {
 	background-color: #F9FFCB;
 }
 
-
 .logo-item {
 	background-color: hsl(265, 6%, 42%);
 	font-size: 1.6rem;
@@ -99,9 +88,7 @@ body {
 	color: #fff;
 }
 
-
 #overlay {
-	/*visibility: hidden;*/
 	position: absolute;
 	z-index: 1000;
 	top: 0;
@@ -136,8 +123,6 @@ img{
 	padding: 0.4rem;
 }
 
-
-
 .cheatsheet-box{
 	position: fixed;
 	bottom: 1rem;
@@ -156,8 +141,6 @@ img{
 	color: #FFF;
 	cursor: pointer;
 }
-
-
 
 .content {
 	width: 100%;
@@ -206,7 +189,6 @@ img{
     -o-animation: blink 1s linear infinite;
     animation: blink 1s linear infinite;
 	color: rgb(72, 160, 220);
-	/*transition: all 2s;*/
     background-color: rgb(72, 160, 220);
     width: 0.2rem;
     display: inline-block;
@@ -216,7 +198,6 @@ img{
   0% { opacity: 0.0; }
   99% { opacity: 0.99; }
 }
-
 
 .row {
 	width: auto;
@@ -228,7 +209,6 @@ img{
 	background: #282A36;
 	color: #fff;
 	border-radius: 0.4rem;
-	/*! border: 2rem solid transparent; */
 	padding: 2rem;
 }
 
@@ -239,16 +219,9 @@ table{
 }
 
 table, thead{
-	/*border: 1px dashed #ddd;*/
 }
-/*
-tr:nth-child(2n+1) {
-    background-color: #F5F5F5;
-}*/
 
 td {
-    /*border-left: 1px dashed #ddd;*/
-    /*border-bottom: 1px dashed #ddd;*/
     min-width: 12rem;
 	padding-bottom: 1rem;
 }
@@ -288,8 +261,7 @@ a {
 }
 
 a:hover {
-	/*color: hsl(231, 18%, 66%);*/
-	/*border-bottom: solid 0.05rem hsl(54, 96%, 85%);*/
+
 }
 
 a:active {
@@ -360,63 +332,10 @@ footer {
 	padding-bottom: 1rem;
 	text-align: center;;
 	width: 100%;
-	/*bottom: 1rem;*/
-	/*color: hsl(230, 18%, 86%);*/
-	/*background: #FFF;*/
 }
-
-
-/*for burger menu*/
-.bm-burger-button {
-	position: fixed;
-	width: 36px;
-	height: 30px;
-	left: 36px;
-	top: 36px;
-}
-
-/* Color/shape of burger icon bars */
-.bm-burger-bars {
-	background: hsl(0, 10%, 45%);
-}
-
-/* Position and sizing of clickable cross button */
-.bm-cross-button {
-	height: 24px;
-	width: 24px;
-}
-
-/* Color/shape of close button cross */
-.bm-cross {
-	background: hsl(204, 8%, 76%);
-}
-
-/* General sidebar styles */
-.bm-menu {
-	background: hsl(0, 10%, 15%);
-	padding: 2.5em 1.5em 0;
-   font-size: 1.15em;
-}
-
-
-/* Morph shape necessary with bubble or elastic */
-.bm-morph-shape {
-	fill: hsl(228, 12%, 24%);
-}
-
-/* Wrapper for item list */
-.bm-item-list {
-	color: hsl(54, 7%, 70%);
-	padding: 0.8em;
-}
-
-/* Styling of overlay */
-.bm-overlay {
-	background: rgba(0, 0, 0, 0.3);
-}
-
 
 @media all and (max-width: 80rem) {
+	/*For presentation*/
 }
 
 .nav{

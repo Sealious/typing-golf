@@ -1,11 +1,11 @@
 var React = require('react');
-var ReactDOM = require("react-dom");
+var PropTypes = React.PropTypes;
 
 var Input = React.createClass({
 	componentDidMount: function() {
 		this.selectText();
 	},
-	selectText: function(with_focus){
+	selectText: function(){
 		this.refs.input.focus()
 		var direction;
 		if (this.props.begin.start <= this.props.begin.end) direction = "forward"

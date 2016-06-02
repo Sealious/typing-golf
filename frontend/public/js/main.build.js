@@ -42,7 +42,7 @@ TypingGolf.App = React.createClass({displayName: "App",
 			currentCounter += 1;
 		}
 
-		var changed_begin = {
+		var new_state = {
 			text: event.target.value,
 			start: event.target.selectionStart,
 			end: event.target.selectionEnd,
@@ -50,7 +50,7 @@ TypingGolf.App = React.createClass({displayName: "App",
 		}
 
 		this.setState({
-			begin: changed_begin,
+			begin: new_state,
 			counter: currentCounter
 		});
 	},
@@ -306,13 +306,13 @@ module.exports = Cheatsheet;
 
 },{"react":230}],3:[function(require,module,exports){
 var React = require('react');
-var ReactDOM = require("react-dom");
+var PropTypes = React.PropTypes;
 
 var Input = React.createClass({displayName: "Input",
 	componentDidMount: function() {
 		this.selectText();
 	},
-	selectText: function(with_focus){
+	selectText: function(){
 		this.refs.input.focus()
 		var direction;
 		if (this.props.begin.start <= this.props.begin.end) direction = "forward"
@@ -337,7 +337,7 @@ var Input = React.createClass({displayName: "Input",
 
 module.exports = Input;
 
-},{"react":230,"react-dom":55}],4:[function(require,module,exports){
+},{"react":230}],4:[function(require,module,exports){
 var React = require('react');
 var PropTypes = React.PropTypes;
 
@@ -399,16 +399,6 @@ ReactDOM.render(
   	),
 	document.getElementById('app')
 );
-
-// ReactDOM.render(
-// 	<Router history={hashHistory}>
-// 		<Route path="/" component={Example.Container}>
-// 			<IndexRoute component={Example.NewSession}/>
-// 			<Route path=":slug" componentst={Example.TimerContainer}/>
-// 		</Route>
-//   	</Router>,
-// 	document.getElementById('app')
-// );
 
 },{"./components/app.jsx":1,"react":230,"react-dom":55,"react-router":85}],6:[function(require,module,exports){
 var pSlice = Array.prototype.slice;

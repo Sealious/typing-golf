@@ -12,19 +12,16 @@ TypingGolf.Cheatsheet = require('./cheatsheet.jsx');
 
 TypingGolf.App = React.createClass({
 	mixins: [Router.State, Router.Navigation],
-	// componentDidMount: function() {
-	// 	var self = this;
-	// },
 	getInitialState: function() {
 		return {
-			beginText: "Ala ma foka",
-			selectionStart: 3,
+			beginText: "Ala ma kota",
+			selectionStart: 6,
 			selectionEnd: 7,
 			selectionDirection: "f",
 
-			targetText: "Ala ma kota",
-			targetSelectionStart:1,
-			targetSelectionEnd:2,
+			targetText: "Ala ma psa",
+			targetSelectionStart: 6,
+			targetSelectionEnd:6	,
 			targetSelectionDirection: "b",
 
 			counter: 0,
@@ -33,11 +30,21 @@ TypingGolf.App = React.createClass({
 	},
 	handleChange: function(event) {
 		var eventDirection = ((event.target.selectionDirection).localeCompare("backward") == 0) ? "b" : "f";
+ 		var currentCounter = this.state.counter;
+
+		if (event.target.value !== this.state.beginText ||
+			event.target.selectionStart !== this.state.selectionStart ||
+			event.target.selectionEnd !== this.state.selectionEnd ||
+			eventDirection !== this.state.selectionDirection) {
+			currentCounter += 1;
+		}
+
 		this.setState({
 			beginText: event.target.value,
 			selectionStart: event.target.selectionStart,
 			selectionEnd: event.target.selectionEnd,
-			direction: eventDirection
+			selectionDirection: eventDirection,
+			counter: currentCounter
 		});
 	},
 
@@ -47,17 +54,7 @@ TypingGolf.App = React.createClass({
 			showCheatsheet : new_value
 		});
 	},
-	increaseCounter: function(){
-		this.setState({
-			counter: this.state.counter + 1
-		})
-	},
 	render: function() {
-		// console.log('---')
-		// console.log('this.state.beginText', this.state.beginText);
-		// console.log('this.state.targetText', this.state.targetText);
-		// console.log('this.state.selectionStart', this.state.selectionStart);
-		// console.log('this.state.selectionEnd', this.state.selectionEnd);
 		return (
 			<div>
 				<div className="nav">

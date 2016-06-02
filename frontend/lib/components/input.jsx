@@ -12,9 +12,6 @@ var Input = React.createClass({
 		else direction = "backward"
 		this.refs.input.setSelectionRange(this.props.selectionStart, this.props.selectionEnd, direction);
 	},
-	alertOnMouse: function() {
-		// if (!this.props.showCheatsheet)	alert('Nie oszukuj :)')
-	},
 	render: function() {
 		return (
 			<div>

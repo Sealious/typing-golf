@@ -13,19 +13,16 @@ TypingGolf.Cheatsheet = require('./cheatsheet.jsx');
 
 TypingGolf.App = React.createClass({displayName: "App",
 	mixins: [Router.State, Router.Navigation],
-	// componentDidMount: function() {
-	// 	var self = this;
-	// },
 	getInitialState: function() {
 		return {
-			beginText: "Ala ma foka",
-			selectionStart: 3,
+			beginText: "Ala ma kota",
+			selectionStart: 6,
 			selectionEnd: 7,
 			selectionDirection: "f",
 
-			targetText: "Ala ma kota",
-			targetSelectionStart:1,
-			targetSelectionEnd:2,
+			targetText: "Ala ma psa",
+			targetSelectionStart: 6,
+			targetSelectionEnd:6	,
 			targetSelectionDirection: "b",
 
 			counter: 0,
@@ -34,11 +31,21 @@ TypingGolf.App = React.createClass({displayName: "App",
 	},
 	handleChange: function(event) {
 		var eventDirection = ((event.target.selectionDirection).localeCompare("backward") == 0) ? "b" : "f";
+ 		var currentCounter = this.state.counter;
+
+		if (event.target.value !== this.state.beginText ||
+			event.target.selectionStart !== this.state.selectionStart ||
+			event.target.selectionEnd !== this.state.selectionEnd ||
+			eventDirection !== this.state.selectionDirection) {
+			currentCounter += 1;
+		}
+
 		this.setState({
 			beginText: event.target.value,
 			selectionStart: event.target.selectionStart,
 			selectionEnd: event.target.selectionEnd,
-			direction: eventDirection
+			selectionDirection: eventDirection,
+			counter: currentCounter
 		});
 	},
 
@@ -48,17 +55,7 @@ TypingGolf.App = React.createClass({displayName: "App",
 			showCheatsheet : new_value
 		});
 	},
-	increaseCounter: function(){
-		this.setState({
-			counter: this.state.counter + 1
-		})
-	},
 	render: function() {
-		// console.log('---')
-		// console.log('this.state.beginText', this.state.beginText);
-		// console.log('this.state.targetText', this.state.targetText);
-		// console.log('this.state.selectionStart', this.state.selectionStart);
-		// console.log('this.state.selectionEnd', this.state.selectionEnd);
 		return (
 			React.createElement("div", null, 
 				React.createElement("div", {className: "nav"}, 
@@ -322,9 +319,6 @@ var Input = React.createClass({displayName: "Input",
 		else direction = "backward"
 		this.refs.input.setSelectionRange(this.props.selectionStart, this.props.selectionEnd, direction);
 	},
-	alertOnMouse: function() {
-		// if (!this.props.showCheatsheet)	alert('Nie oszukuj :)')
-	},
 	render: function() {
 		return (
 			React.createElement("div", null, 
@@ -355,36 +349,20 @@ var Target = React.createClass({displayName: "Target",
     },
     selectText: function(text, selectionStart, selectionEnd) {
         var targetText;
+		var sub_1 = text.slice(0, selectionStart);
+		var sub_2 = "﻿";
+		var sub_3 = text.slice(selectionEnd);
 
         if (selectionStart !== selectionEnd) {
-            var beforeSelection = 0;
-            afterSelection = 0;
-            selection = 0;
-
-            // if (selectionStart !== 0) beforeSelection = selectionStart;
-            // if (selectionEnd !== 0 || selectionEnd !== text.length) afterSelection = selectionEnd + 2;
-
-            sub_1 = text.slice(0, selectionStart)
             sub_2 = text.slice(selectionStart, selectionEnd)
-            sub_3 = text.slice(selectionEnd);
-            console.log('sub_1', sub_1, 0, selectionStart);
-            console.log('sub_2', sub_2, selectionStart+1, selectionEnd);
-            console.log('sub_3', sub_3, selectionEnd+1);
             targetText = React.createElement("p", {className: "end-text"}, sub_1, React.createElement("span", {className: "selection"}, sub_2), sub_3);
-
         } else {
-            sub_1 = text.slice(0, selectionStart)
-            sub_2 = "﻿"
-            sub_3 = text.slice(selectionEnd);
-            targetText = React.createElement("p", {className: "end-text"}, sub_1, React.createElement("div", {className: "blink"}, sub_2), sub_3);
+            targetText = React.createElement("p", {className: "end-text"}, sub_1, React.createElement("span", {className: "blink"}, sub_2), sub_3);
         }
         return targetText;
     },
 
     render: function() {
-        // <p className="end-text">
-        //     {this.props.targetText}
-        // </p>
         return (
             React.createElement("div", {className: "flex-container"}, 
                 React.createElement("div", {className: "content"}, 

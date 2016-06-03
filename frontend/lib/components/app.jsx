@@ -27,32 +27,33 @@ TypingGolf.App = React.createClass({
 				direction: "b"
 			},
 			counter: 0,
-			showCheatsheet: false
+			showCheatsheet: false,
+			showModal: true
 		};
 	},
 	handleChange: function(event) {
 		var eventDirection = ((event.target.selectionDirection).localeCompare("backward") == 0) ? "b" : "f";
- 		var currentCounter = this.state.counter;
+		var currentCounter = this.state.counter;
 
 		if (event.target.value !== this.state.begin.text ||
 			event.target.selectionStart !== this.state.begin.start ||
 			event.target.selectionEnd !== this.state.begin.end ||
 			eventDirection !== this.state.begin.direction) {
-			currentCounter += 1;
-		}
+				currentCounter += 1;
+			}
 
-		var new_state = {
-			text: event.target.value,
-			start: event.target.selectionStart,
-			end: event.target.selectionEnd,
-			direction: eventDirection
-		}
+			var new_state = {
+				text: event.target.value,
+				start: event.target.selectionStart,
+				end: event.target.selectionEnd,
+				direction: eventDirection
+			}
 
-		this.setState({
-			begin: new_state,
-			counter: currentCounter
-		});
-	},
+			this.setState({
+				begin: new_state,
+				counter: currentCounter
+			});
+		},
 
 	coverCheatsheet: function() {
 		var new_value = (this.state.showCheatsheet == true) ? false : true;
@@ -89,7 +90,9 @@ TypingGolf.App = React.createClass({
 					showCheatsheet={this.state.showCheatsheet}
 					coverCheatsheet={this.coverCheatsheet}/>
 
-				<div className="cheatsheet-box" onClick={this.coverCheatsheet}>?</div>
+				<div
+					className="cheatsheet-box"
+					onClick={this.coverCheatsheet}>?</div>
 			</div>
 		)
 	}

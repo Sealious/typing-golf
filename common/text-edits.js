@@ -20,6 +20,7 @@ edits.insert_char = function(state) {
 }
 
 edits.insert_char.desc = "[letter]"
+edits.insert_char.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
 
 edits.delete = function(state) {
     if (state.start != state.end) {
@@ -40,6 +41,8 @@ edits.delete = function(state) {
 }
 
 edits.delete.desc = "DEL";
+edits.delete.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
+
 
 edits.end = function(state) {
     return {
@@ -50,6 +53,7 @@ edits.end = function(state) {
 }
 
 edits.end.desc = "END";
+edits.end.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do"
 
 edits.home = function(state) {
     return {
@@ -60,6 +64,7 @@ edits.home = function(state) {
 }
 
 edits.home.desc = "HOME";
+edits.home.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do"
 
 edits.ctrl_shift_end = function(state) {
     if (state.direction == "f") {
@@ -80,6 +85,7 @@ edits.ctrl_shift_end = function(state) {
 }
 
 edits.ctrl_shift_end.desc = "CTRL+SHIFT+END";
+edits.ctrl_shift_end.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do"
 
 edits.ctrl_shift_home = function(state) {
     if (state.direction == "f") {
@@ -100,6 +106,7 @@ edits.ctrl_shift_home = function(state) {
 }
 
 edits.ctrl_shift_home.desc = "CTRL+SHIFT+HOME";
+edits.ctrl_shift_home.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do"
 
 edits.backspace = function(state) {
     if (state.end == state.start) {
@@ -129,6 +136,7 @@ edits.backspace = function(state) {
 }
 
 edits.backspace.desc = "BACKSPACE";
+edits.backspace.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
 
 edits.next_word = function(state) {
     if (state.start == state.end) {
@@ -169,6 +177,7 @@ edits.next_word = function(state) {
 }
 
 edits.next_word.desc = "CTRL+→";
+edits.next_word.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
 
 edits.prev_word = function(state) {
     if (state.start == state.end) {
@@ -190,6 +199,7 @@ edits.prev_word = function(state) {
 }
 
 edits.prev_word.desc = "CTRL+←";
+edits.prev_word.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
 
 edits.select_prev_word = function(state) {
     var prev = edits.prev_word(state);
@@ -214,6 +224,7 @@ edits.select_prev_word = function(state) {
 }
 
 edits.select_prev_word.desc = "CTRL+SHIFT+←"
+edits.select_prev_word.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed"
 
 edits.select_next_word = function(state){
 	var next = edits.next_word(state);
@@ -239,6 +250,7 @@ edits.select_next_word = function(state){
 }
 
 edits.select_next_word.desc = "CTRL+SHIFT+→";
+edits.select_next_word.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed"
 
 edits.delete_prev_word = function(state) {
 	if(state.start == state.end){
@@ -248,6 +260,7 @@ edits.delete_prev_word = function(state) {
 }
 
 edits.delete_prev_word.desc = "CTRL+BACKSPACE";
+edits.delete_prev_word.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed"
 
 edits.delete_next_word = function(state){
 	if(state.start == state.end){
@@ -257,6 +270,7 @@ edits.delete_next_word = function(state){
 }
 
 edits.delete_next_word.desc = "CTRL+DEL";
+edits.delete_next_word.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed"
 
 edits.shift_home = function(state){
 	var moving_index = "start";
@@ -285,6 +299,7 @@ edits.shift_home = function(state){
 }
 
 edits.shift_home.desc = "SHIFT+HOME";
+edits.shift_home.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
 
 edits.shift_end = function(state){
 	var moving_index = "start";
@@ -316,6 +331,7 @@ edits.shift_end = function(state){
 }
 
 edits.shift_end.desc = "SHIFT+END";
+edits.shift_end.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
 
 edits.select_all = function(state){
 	return {
@@ -327,6 +343,7 @@ edits.select_all = function(state){
 }
 
 edits.select_all.desc = "CTRL+A";
+edits.select_all.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
 
 edits.select_left = function(state){
 	if(state.direction == "f"){
@@ -348,6 +365,7 @@ edits.select_left = function(state){
 }
 
 edits.select_left.desc = "SHIFT+←";
+edits.select_left.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
 
 edits.select_right = function(state){
 	if(state.direction == "b"){
@@ -369,6 +387,7 @@ edits.select_right = function(state){
 }
 
 edits.select_right.desc = "SHIFT+→";
+edits.select_right.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
 
 edits.control_home = function(state){
 	return {
@@ -379,6 +398,7 @@ edits.control_home = function(state){
 }
 
 edits.control_home.desc = "CTRL+HOME";
+edits.control_home.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
 
 edits.control_end = function(state){
 	return {
@@ -389,6 +409,7 @@ edits.control_end = function(state){
 }
 
 edits.control_end.desc = "CTRL+END";
+edits.control_end.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
 
 function get_h_offset(state){
 	var moving_index = "end";
@@ -468,7 +489,7 @@ edits.shift_up = function(state){
 			direction = "b";
 		}
 	}
-	
+
 	return {
 		text: state.text,
 		start:start,
@@ -479,6 +500,7 @@ edits.shift_up = function(state){
 }
 
 edits.shift_up.desc = "SHIFT+↑";
+edits.shift_up.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
 
 edits.shift_down = function(state){
 	var h_offset;
@@ -512,7 +534,7 @@ edits.shift_down = function(state){
 			direction = "b";
 		}
 	}
-	
+
 	return {
 		text: state.text,
 		start:start,
@@ -523,6 +545,7 @@ edits.shift_down = function(state){
 }
 
 edits.shift_down.desc = "SHIFT+↓";
+edits.shift_down.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
 
 
 module.exports = {

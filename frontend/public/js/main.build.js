@@ -7,31 +7,51 @@ var ReactDOM = require("react-dom");
 
 module.exports = TypingGolf;
 
-TypingGolf.Input = require('./field.jsx');
+TypingGolf.Input = require('./input.jsx');
 TypingGolf.Target= require('./target.jsx');
 TypingGolf.Cheatsheet = require('./cheatsheet.jsx');
 
 TypingGolf.App = React.createClass({displayName: "App",
 	mixins: [Router.State, Router.Navigation],
-	// componentDidMount: function() {
-	// 	var self = this;
-	// },
 	getInitialState: function() {
 		return {
-			beginText: "Ala ma foka",
-			targetText: "Ala ma kota",
-			selectionStart: 3,
-			selectionEnd: 7,
-			showCheatsheet: true
+			begin:{
+				text: "Ala ma kota",
+				start: 3,
+				end: 5,
+				direction: "f"
+			},
+			target: {
+				text: "Ala ma psa",
+				start: 2,
+				end: 8,
+				direction: "b"
+			},
+			counter: 0,
+			showCheatsheet: false
 		};
 	},
 	handleChange: function(event) {
 		var eventDirection = ((event.target.selectionDirection).localeCompare("backward") == 0) ? "b" : "f";
-		this.setState({
-			beginText: event.target.value,
-			selectionStart: event.target.selectionStart,
-			selectionEnd: event.target.selectionEnd,
+ 		var currentCounter = this.state.counter;
+
+		if (event.target.value !== this.state.begin.text ||
+			event.target.selectionStart !== this.state.begin.start ||
+			event.target.selectionEnd !== this.state.begin.end ||
+			eventDirection !== this.state.begin.direction) {
+			currentCounter += 1;
+		}
+
+		var new_state = {
+			text: event.target.value,
+			start: event.target.selectionStart,
+			end: event.target.selectionEnd,
 			direction: eventDirection
+		}
+
+		this.setState({
+			begin: new_state,
+			counter: currentCounter
 		});
 	},
 
@@ -42,11 +62,6 @@ TypingGolf.App = React.createClass({displayName: "App",
 		});
 	},
 	render: function() {
-		console.log('---')
-		console.log('this.state.beginText', this.state.beginText);
-		console.log('this.state.targetText', this.state.targetText);
-		console.log('this.state.selectionStart', this.state.selectionStart);
-		console.log('this.state.selectionEnd', this.state.selectionEnd);
 		return (
 			React.createElement("div", null, 
 				React.createElement("div", {className: "nav"}, 
@@ -62,14 +77,14 @@ TypingGolf.App = React.createClass({displayName: "App",
 				), 
 
 				React.createElement(TypingGolf.Input, {
-					beginText: this.state.beginText, 
-					selectionStart: this.state.selectionStart, 
-					selectionEnd: this.state.selectionEnd, 
+					begin: this.state.begin, 
 					handleChange: this.handleChange, 
 					showCheatsheet: this.state.showCheatsheet}), 
 
+				React.createElement("p", {className: "end-text-details"}, " you've done ", this.state.counter, " steps"), 
+
 				React.createElement(TypingGolf.Target, {
-					targetText: this.state.targetText}), 
+					target: this.state.target}), 
 
 				React.createElement(TypingGolf.Cheatsheet, {
 					showCheatsheet: this.state.showCheatsheet, 
@@ -81,7 +96,7 @@ TypingGolf.App = React.createClass({displayName: "App",
 	}
 });
 
-},{"./cheatsheet.jsx":2,"./field.jsx":3,"./target.jsx":4,"react":230,"react-dom":55,"react-router":85}],2:[function(require,module,exports){
+},{"./cheatsheet.jsx":2,"./input.jsx":3,"./target.jsx":4,"react":230,"react-dom":55,"react-router":85}],2:[function(require,module,exports){
 var React = require('react');
 var PropTypes = React.PropTypes;
 
@@ -291,21 +306,18 @@ module.exports = Cheatsheet;
 
 },{"react":230}],3:[function(require,module,exports){
 var React = require('react');
-var ReactDOM = require("react-dom");
+var PropTypes = React.PropTypes;
 
 var Input = React.createClass({displayName: "Input",
 	componentDidMount: function() {
 		this.selectText();
 	},
-	selectText: function(with_focus){
+	selectText: function(){
 		this.refs.input.focus()
 		var direction;
-		if (this.props.selectionStart <= this.props.selectionEnd) direction = "forward"
+		if (this.props.begin.start <= this.props.begin.end) direction = "forward"
 		else direction = "backward"
-		this.refs.input.setSelectionRange(this.props.selectionStart, this.props.selectionEnd, direction);
-	},
-	alertOnMouse: function() {
-		// if (!this.props.showCheatsheet)	alert('Nie oszukuj :)')
+		this.refs.input.setSelectionRange(this.props.begin.start, this.props.begin.end, direction);
 	},
 	render: function() {
 		return (
@@ -313,11 +325,10 @@ var Input = React.createClass({displayName: "Input",
 				React.createElement("textarea", {
 					className: "input", 
 					type: "text", 
-					value: this.props.beginText, 
+					value: this.props.begin.text, 
 					onChange: this.props.handleChange, 
 					onSelect: this.props.handleChange, 
 					onFocus: this.selectText, 
-					onClick: this.alertOnMouse, 
 					ref: "input"})
 			)
 		);
@@ -326,11 +337,28 @@ var Input = React.createClass({displayName: "Input",
 
 module.exports = Input;
 
-},{"react":230,"react-dom":55}],4:[function(require,module,exports){
+},{"react":230}],4:[function(require,module,exports){
 var React = require('react');
 var PropTypes = React.PropTypes;
 
 var Target = React.createClass({displayName: "Target",
+    componentDidMount: function() {
+
+    },
+    selectText: function(text, start, end) {
+        var targetText;
+		var sub_1 = text.slice(0, start);
+		var sub_2 = "﻿";
+		var sub_3 = text.slice(end);
+
+        if (start !== end) {
+            sub_2 = text.slice(start, end)
+            targetText = React.createElement("p", {className: "end-text"}, sub_1, React.createElement("span", {className: "selection"}, sub_2), sub_3);
+        } else {
+            targetText = React.createElement("p", {className: "end-text"}, sub_1, React.createElement("span", {className: "blink"}, sub_2), sub_3);
+        }
+        return targetText;
+    },
 
     render: function() {
         return (
@@ -339,9 +367,7 @@ var Target = React.createClass({displayName: "Target",
                     React.createElement("p", {className: "end-text-details"}, 
                         "into this ⤵"
                     ), 
-                    React.createElement("p", {className: "end-text"}, 
-                        this.props.targetText
-                    ), 
+                    this.selectText(this.props.target.text, this.props.target.start, this.props.target.end), 
                     React.createElement("p", {className: "end-text-details"}, 
                         "in 6 steps"
                     )
@@ -373,16 +399,6 @@ ReactDOM.render(
   	),
 	document.getElementById('app')
 );
-
-// ReactDOM.render(
-// 	<Router history={hashHistory}>
-// 		<Route path="/" component={Example.Container}>
-// 			<IndexRoute component={Example.NewSession}/>
-// 			<Route path=":slug" componentst={Example.TimerContainer}/>
-// 		</Route>
-//   	</Router>,
-// 	document.getElementById('app')
-// );
 
 },{"./components/app.jsx":1,"react":230,"react-dom":55,"react-router":85}],6:[function(require,module,exports){
 var pSlice = Array.prototype.slice;

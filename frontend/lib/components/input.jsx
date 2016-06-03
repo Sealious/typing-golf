@@ -1,19 +1,16 @@
 var React = require('react');
-var ReactDOM = require("react-dom");
+var PropTypes = React.PropTypes;
 
 var Input = React.createClass({
 	componentDidMount: function() {
 		this.selectText();
 	},
-	selectText: function(with_focus){
+	selectText: function(){
 		this.refs.input.focus()
 		var direction;
-		if (this.props.selectionStart <= this.props.selectionEnd) direction = "forward"
+		if (this.props.begin.start <= this.props.begin.end) direction = "forward"
 		else direction = "backward"
-		this.refs.input.setSelectionRange(this.props.selectionStart, this.props.selectionEnd, direction);
-	},
-	alertOnMouse: function() {
-		// if (!this.props.showCheatsheet)	alert('Nie oszukuj :)')
+		this.refs.input.setSelectionRange(this.props.begin.start, this.props.begin.end, direction);
 	},
 	render: function() {
 		return (
@@ -21,11 +18,10 @@ var Input = React.createClass({
 				<textarea
 					className="input"
 					type="text"
-					value={this.props.beginText}
+					value={this.props.begin.text}
 					onChange={this.props.handleChange}
 					onSelect={this.props.handleChange}
 					onFocus={this.selectText}
-					onClick={this.alertOnMouse}
 					ref="input" />
 			</div>
 		);

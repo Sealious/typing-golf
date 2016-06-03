@@ -6,31 +6,51 @@ var ReactDOM = require("react-dom");
 
 module.exports = TypingGolf;
 
-TypingGolf.Input = require('./field.jsx');
+TypingGolf.Input = require('./input.jsx');
 TypingGolf.Target= require('./target.jsx');
 TypingGolf.Cheatsheet = require('./cheatsheet.jsx');
 
 TypingGolf.App = React.createClass({
 	mixins: [Router.State, Router.Navigation],
-	// componentDidMount: function() {
-	// 	var self = this;
-	// },
 	getInitialState: function() {
 		return {
-			beginText: "Ala ma foka",
-			targetText: "Ala ma kota",
-			selectionStart: 3,
-			selectionEnd: 7,
-			showCheatsheet: true
+			begin:{
+				text: "Ala ma kota",
+				start: 3,
+				end: 5,
+				direction: "f"
+			},
+			target: {
+				text: "Ala ma psa",
+				start: 2,
+				end: 8,
+				direction: "b"
+			},
+			counter: 0,
+			showCheatsheet: false
 		};
 	},
 	handleChange: function(event) {
 		var eventDirection = ((event.target.selectionDirection).localeCompare("backward") == 0) ? "b" : "f";
-		this.setState({
-			beginText: event.target.value,
-			selectionStart: event.target.selectionStart,
-			selectionEnd: event.target.selectionEnd,
+ 		var currentCounter = this.state.counter;
+
+		if (event.target.value !== this.state.begin.text ||
+			event.target.selectionStart !== this.state.begin.start ||
+			event.target.selectionEnd !== this.state.begin.end ||
+			eventDirection !== this.state.begin.direction) {
+			currentCounter += 1;
+		}
+
+		var new_state = {
+			text: event.target.value,
+			start: event.target.selectionStart,
+			end: event.target.selectionEnd,
 			direction: eventDirection
+		}
+
+		this.setState({
+			begin: new_state,
+			counter: currentCounter
 		});
 	},
 
@@ -41,11 +61,6 @@ TypingGolf.App = React.createClass({
 		});
 	},
 	render: function() {
-		console.log('---')
-		console.log('this.state.beginText', this.state.beginText);
-		console.log('this.state.targetText', this.state.targetText);
-		console.log('this.state.selectionStart', this.state.selectionStart);
-		console.log('this.state.selectionEnd', this.state.selectionEnd);
 		return (
 			<div>
 				<div className="nav">
@@ -61,14 +76,14 @@ TypingGolf.App = React.createClass({
 				</div>
 
 				<TypingGolf.Input
-					beginText={this.state.beginText}
-					selectionStart={this.state.selectionStart}
-					selectionEnd={this.state.selectionEnd}
+					begin={this.state.begin}
 					handleChange={this.handleChange}
 					showCheatsheet={this.state.showCheatsheet}/>
 
+				<p className="end-text-details"> you've done {this.state.counter} steps</p>
+
 				<TypingGolf.Target
-					targetText={this.state.targetText}/>
+					target={this.state.target}/>
 
 				<TypingGolf.Cheatsheet
 					showCheatsheet={this.state.showCheatsheet}

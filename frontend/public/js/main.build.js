@@ -574,7 +574,7 @@ TypingGolf.Cheatsheet = require('./cheatsheet.jsx');
 TypingGolf.App = React.createClass({displayName: "App",
 	mixins: [Router.State, Router.Navigation],
 	getDefaultProps: function() {
-		//only for test rest function
+		//only for test reset function
 		return {
 			begin:{
 				text: "Ala ma kota",
@@ -614,24 +614,29 @@ TypingGolf.App = React.createClass({displayName: "App",
 				currentCounter += 1;
 			}
 
-			var new_state = {
-				text: event.target.value,
-				start: event.target.selectionStart,
-				end: event.target.selectionEnd,
-				direction: eventDirection
-			}
+		var new_state = {
+			text: event.target.value,
+			start: event.target.selectionStart,
+			end: event.target.selectionEnd,
+			direction: eventDirection
+		}
 
-			this.setState({
-				begin: new_state,
-				counter: currentCounter
-			});
-		},
-
+		this.setState({
+			begin: new_state,
+			counter: currentCounter
+		});
+	},
 	coverCheatsheet: function() {
 		var new_value = (this.state.showCheatsheet == true) ? false : true;
 		this.setState({
 			showCheatsheet : new_value
 		});
+	},
+	resetTask: function() {
+		this.setState({
+			begin: this.props.begin,
+			counter: 0
+		})
 	},
 	render: function() {
 		return (
@@ -641,7 +646,7 @@ TypingGolf.App = React.createClass({displayName: "App",
 						React.createElement("div", {className: "logo animated flipInY"}, "typing…·golf")
 					), 
 					React.createElement("div", {className: "nav-item"}, 
-						React.createElement("a", {className: "link"}, "random task ")
+						React.createElement("a", {className: "link", onClick: this.resetTask}, "random task ")
 					), 
 					React.createElement("div", {className: "nav-item"}, 
 						React.createElement("a", {className: "link"}, "ranking")
@@ -673,10 +678,10 @@ TypingGolf.App = React.createClass({displayName: "App",
 },{"./cheatsheet.jsx":3,"./input.jsx":4,"./target.jsx":5,"react":231,"react-dom":56,"react-router":86}],3:[function(require,module,exports){
 var React = require('react');
 var PropTypes = React.PropTypes;
+var edits = require('../../../common/text-edits.js').edits;
 
 var Cheatsheet = React.createClass({displayName: "Cheatsheet",
     loadCheatsheet: function() {
-        var edits = require('../../../common/text-edits.js').edits;
         var shortcuts = [];
 
         for (var key in edits) {

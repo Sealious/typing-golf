@@ -1,9 +1,9 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
+var edits = require('../../../common/text-edits.js').edits;
 
 var Cheatsheet = React.createClass({
     loadCheatsheet: function() {
-        var edits = require('../../../common/text-edits.js').edits;
         var shortcuts = [];
 
         for (var key in edits) {

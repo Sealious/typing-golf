@@ -13,7 +13,7 @@ TypingGolf.Cheatsheet = require('./cheatsheet.jsx');
 TypingGolf.App = React.createClass({
 	mixins: [Router.State, Router.Navigation],
 	getDefaultProps: function() {
-		//only for test rest function
+		//only for test reset function
 		return {
 			begin:{
 				text: "Ala ma kota",
@@ -53,24 +53,29 @@ TypingGolf.App = React.createClass({
 				currentCounter += 1;
 			}
 
-			var new_state = {
-				text: event.target.value,
-				start: event.target.selectionStart,
-				end: event.target.selectionEnd,
-				direction: eventDirection
-			}
+		var new_state = {
+			text: event.target.value,
+			start: event.target.selectionStart,
+			end: event.target.selectionEnd,
+			direction: eventDirection
+		}
 
-			this.setState({
-				begin: new_state,
-				counter: currentCounter
-			});
-		},
-
+		this.setState({
+			begin: new_state,
+			counter: currentCounter
+		});
+	},
 	coverCheatsheet: function() {
 		var new_value = (this.state.showCheatsheet == true) ? false : true;
 		this.setState({
 			showCheatsheet : new_value
 		});
+	},
+	resetTask: function() {
+		this.setState({
+			begin: this.props.begin,
+			counter: 0
+		})
 	},
 	render: function() {
 		return (
@@ -80,7 +85,7 @@ TypingGolf.App = React.createClass({
 						<div className="logo animated flipInY">typing…·golf</div>
 					</div>
 					<div className="nav-item">
-						<a className="link">random task </a>
+						<a className="link" onClick={this.resetTask}>random task </a>
 					</div>
 					<div className="nav-item">
 						<a className="link">ranking</a>

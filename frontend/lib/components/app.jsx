@@ -12,6 +12,17 @@ TypingGolf.Cheatsheet = require('./cheatsheet.jsx');
 
 TypingGolf.App = React.createClass({
 	mixins: [Router.State, Router.Navigation],
+	getDefaultProps: function() {
+		//only for test rest function
+		return {
+			begin:{
+				text: "Ala ma kota",
+				start: 3,
+				end: 5,
+				direction: "f"
+			}
+		};
+	},
 	getInitialState: function() {
 		return {
 			begin:{

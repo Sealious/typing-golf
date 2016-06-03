@@ -2,13 +2,33 @@ var React = require('react');
 var PropTypes = React.PropTypes;
 
 var Cheatsheet = React.createClass({
-    componentDidMount: function() {
-        console.log('this.props.showCheatsheet', this.props.showCheatsheet);
+    loadCheatsheet: function() {
+        var edits = require('../../../common/text-edits.js').edits;
+        var shortcuts = [];
+
+        for (var key in edits) {
+            var current_shortcut = [];
+            var keys = edits[key].desc.split('+');
+            if (key !== 'insert_char') {
+                if (keys.length > 1) {
+                    for (var i = 0; i < keys.length; i++) {
+                        current_shortcut.push(<kbd key={i} className="key">{keys[i]}</kbd>)
+                        if (keys.length - i > 1) current_shortcut.push(' + ')
+                    }
+                } else current_shortcut = <kbd className="key">{keys[0]}</kbd>
+                shortcuts.push(
+                    <tr key={key}>
+                        <td>{current_shortcut}</td>
+                        <td>{edits[key].spec}</td>
+                    </tr>
+                )
+            }
+        }
+        return shortcuts;
     },
     render: function() {
         return (
             <div>
-
                 {(this.props.showCheatsheet === true)
                     ? <div id="overlay">
                         <div>
@@ -20,174 +40,7 @@ var Cheatsheet = React.createClass({
                                     <p className="descripiton">Shortcuts</p>
                                 <table>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">BACKSPACE</kbd>
-                                            </td>
-                                            <td>
-                                                Deletes one character to the left of caret.
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">DELETE</kbd>
-                                            </td>
-                                            <td>
-                                                Deletes one character to the right of caret.
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">HOME</kbd>
-                                            </td>
-                                            <td>
-                                                Moves to beginning of the line.
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">END</kbd>
-                                            </td>
-                                            <td>
-                                                Moves to end of the line.
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">SHIFT</kbd> + <kbd className="key">HOME</kbd>
-                                            </td>
-                                            <td>
-                                                Selects all characters from caret position to beginning of the line.
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">SHIFT</kbd> + <kbd className="key">END</kbd>
-                                            </td>
-                                            <td>
-                                                Selects characters from caret position to end of the line.
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">CTRL</kbd> + <kbd className="key">BACKSPACE</kbd>
-                                            </td>
-                                            <td>
-                                                Deletes one word or punctuation mark to the left of caret.
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">CTRL</kbd> + <kbd className="key">DELETE</kbd>
-                                            </td>
-                                            <td>
-                                                Deletes one word or punctuation mark to the right of caret.
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">CTRL</kbd> + <kbd className="key">←</kbd>
-                                            </td>
-                                            <td>
-                                                Depending on the caret position moves
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">CTRL</kbd> + <kbd className="key">→</kbd>
-                                            </td>
-                                            <td>
-                                                Depending on the caret position moves to
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">CTRL</kbd> + <kbd className="key">A</kbd>
-                                            </td>
-                                            <td>
-                                                Selects all content.
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">SHIFT</kbd> + <kbd className="key">↑</kbd>
-                                            </td>
-                                            <td>
-                                                Depending on the caret position moves t
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">SHIFT</kbd> + <kbd className="key">↓</kbd>
-                                            </td>
-                                            <td>
-                                                Depending on the caret position moves
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">SHIFT</kbd> + <kbd className="key">→</kbd>
-                                            </td>
-                                            <td>
-                                                Depending on the caret position moves t
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">SHIFT</kbd> + <kbd className="key">←</kbd>
-                                            </td>
-                                            <td>
-                                                Depending on the caret position moves
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">SHIFT</kbd> + <kbd className="key">CTRL</kbd> + <kbd className="key">→</kbd>
-                                            </td>
-                                            <td>
-                                                Depending on the caret position moves t
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">SHIFT</kbd> + <kbd className="key">CTRL</kbd> + <kbd className="key">←</kbd>
-                                            </td>
-                                            <td>
-                                                Depending on the caret position moves
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">CTRL</kbd> + <kbd className="key">HOME</kbd>
-                                            </td>
-                                            <td>
-                                                Depending on the caret position moves
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">CTRL</kbd> + <kbd className="key">END</kbd>
-                                            </td>
-                                            <td>
-                                                Depending on the caret position moves
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">CTRL</kbd> + <kbd className="key">SHIFT</kbd> + <kbd className="key">HOME</kbd>
-                                            </td>
-                                            <td>
-                                                Depending on the caret position moves
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <kbd className="key">CTRL</kbd> + <kbd className="key">SHIFT</kbd> + <kbd className="key">END</kbd>
-                                            </td>
-                                            <td>
-                                                Depending on the caret position moves
-                                            </td>
-                                        </tr>
+                                        {this.loadCheatsheet()}
                                     </tbody>
                                 </table>
                             </div>
@@ -197,10 +50,8 @@ var Cheatsheet = React.createClass({
                     : null
                 }
             </div>
-
         );
     }
-
 });
 
 module.exports = Cheatsheet;

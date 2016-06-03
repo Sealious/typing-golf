@@ -81,6 +81,6 @@ module.exports = function(root, solution){
 	}
 
 	console.log(steps.map(function(s){return s.edge.desc}));
-	console.log(steps.map(function(s){return {text: s.text, start: s.start, end:s.end, key: s.edge.desc, direction: s.direction}}));
+	//console.log(steps.map(function(s){return {text: s.text, start: s.start, end:s.end, key: s.edge.desc, direction: s.direction}}));
 	console.log("\n\n\n-------- \n\n\n");
 }

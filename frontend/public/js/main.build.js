@@ -634,15 +634,16 @@ TypingGolf.App = React.createClass({displayName: "App",
 		this.setState({ showCheatsheet : new_value });
 	},
 	handleKeyboard: function(event){
+		event.preventDefault();
 		if (event.keyCode === 27) {
 			if (this.state.showCheatsheet == true) this.coverCheatsheet();
 			else this.resetTask();
 		}
-		if (event.keyCode === 112) {
+		if (event.keyCode === 113) {
 			alert('function → generate new task')
 		}
 
-		if (event.keyCode === 113) {
+		if (event.keyCode === 115) {
 			alert('function → ranking')
 		}
 	},
@@ -657,21 +658,21 @@ TypingGolf.App = React.createClass({displayName: "App",
 		return (
 			React.createElement("div", null, 
 				React.createElement("div", {className: "logo-item"}, 
-					React.createElement("div", {className: "logo animated flipInY"}, "typing…·golf")
+					React.createElement("div", {className: "logo animated flipInX"}, "typing…·golf")
 				), 
 				React.createElement("div", {className: "nav"}, 
 					React.createElement("div", {className: "nav-item"}, 
 						React.createElement("a", {className: "link", onClick: this.resetTask}, "#reset current task [ESC] ")
 					), 
 					React.createElement("div", {className: "nav-item"}, 
-						React.createElement("a", {className: "link"}, "#random new task [F1]")
+						React.createElement("a", {className: "link"}, "#random new task [F2]")
 					), 
 					React.createElement("div", {className: "nav-item"}, 
-						React.createElement("a", {className: "link"}, "#ranking [F2]")
+						React.createElement("a", {className: "link"}, "#ranking [F4]")
 					)
 				), 
 
-				React.createElement("p", {className: "end-text-details"}, "Turn this"), 
+				React.createElement("p", {className: "end-text-details"}, "Turn this ⤵"), 
 
 				React.createElement(TypingGolf.Input, {
 					begin: this.state.begin, 
@@ -683,7 +684,7 @@ TypingGolf.App = React.createClass({displayName: "App",
 				React.createElement(TypingGolf.Target, {
 					target: this.state.target}), 
 
-				React.createElement("p", {className: "end-text-details"}, " you've done ", this.state.counter, " steps"), 
+				React.createElement("p", {className: "end-text-details"}, "You've done ", this.state.counter, " steps"), 
 
 				React.createElement(TypingGolf.Cheatsheet, {
 					showCheatsheet: this.state.showCheatsheet, 

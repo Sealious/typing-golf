@@ -276,8 +276,8 @@ a:active {
 	width: 100%;
 	height: auto;
 	overflow: visible;
-	background-color: hsl(66, 100%, 90%);
-	border: 0px solid hsl(0, 0%, 100%);
+	background-color: hsl(62, 100%, 90%);
+	border: 1px solid hsl(0, 0%, 80%);
 	transition: all 400ms;
 	font-family: 'Inconsolata', monospace;
 	resize: none;
@@ -320,9 +320,9 @@ a:active {
 }
 
 .end-text {
-	-webkit-animation: fadeIn 1.6s 1;
+	/*-webkit-animation: fadeIn 1.6s 1;
 	-moz-animation: fadeIn 1.6s 1;
-	-ms-animation: fadeIn 1.6s 1;
+	-ms-animation: fadeIn 1.6s 1;*/
 }
 
 footer {

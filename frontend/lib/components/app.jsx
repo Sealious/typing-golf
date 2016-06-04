@@ -73,15 +73,16 @@ TypingGolf.App = React.createClass({
 		this.setState({ showCheatsheet : new_value });
 	},
 	handleKeyboard: function(event){
+		event.preventDefault();
 		if (event.keyCode === 27) {
 			if (this.state.showCheatsheet == true) this.coverCheatsheet();
 			else this.resetTask();
 		}
-		if (event.keyCode === 112) {
+		if (event.keyCode === 113) {
 			alert('function → generate new task')
 		}
 
-		if (event.keyCode === 113) {
+		if (event.keyCode === 115) {
 			alert('function → ranking')
 		}
 	},
@@ -96,21 +97,21 @@ TypingGolf.App = React.createClass({
 		return (
 			<div>
 				<div className="logo-item">
-					<div className="logo animated flipInY">typing…·golf</div>
+					<div className="logo animated flipInX">typing…·golf</div>
 				</div>
 				<div className="nav">
 					<div className="nav-item">
 						<a className="link" onClick={this.resetTask}>#reset current task [ESC] </a>
 					</div>
 					<div className="nav-item">
-						<a className="link">#random new task [F1]</a>
+						<a className="link">#random new task [F2]</a>
 					</div>
 					<div className="nav-item">
-						<a className="link">#ranking [F2]</a>
+						<a className="link">#ranking [F4]</a>
 					</div>
 				</div>
 
-				<p className="end-text-details">Turn this</p>
+				<p className="end-text-details">Turn this ⤵</p>
 
 				<TypingGolf.Input
 					begin={this.state.begin}
@@ -122,7 +123,7 @@ TypingGolf.App = React.createClass({
 				<TypingGolf.Target
 					target={this.state.target}/>
 
-				<p className="end-text-details"> you've done {this.state.counter} steps</p>
+				<p className="end-text-details">You've done {this.state.counter} steps</p>
 
 				<TypingGolf.Cheatsheet
 					showCheatsheet={this.state.showCheatsheet}

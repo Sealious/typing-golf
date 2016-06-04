@@ -74,7 +74,7 @@ TypingGolf.App = React.createClass({
 	},
 	handleKeyboard: function(event){
 		if (event.keyCode === 27) {
-			if (this.state.showCheatsheet == true) this.coverCheatsheet(); // this line doesn't work
+			if (this.state.showCheatsheet == true) this.coverCheatsheet();
 			else this.resetTask();
 		}
 		if (event.keyCode === 112) {
@@ -90,7 +90,7 @@ TypingGolf.App = React.createClass({
 			begin: this.props.begin,
 			counter: 0
 		})
-		this.refs.input.selectText()
+		this.refs.input.selectText(this.state.begin)
 	},
 	render: function() {
 		return (

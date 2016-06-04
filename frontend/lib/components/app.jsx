@@ -31,6 +31,12 @@ TypingGolf.App = React.createClass({
 				end: 5,
 				direction: "f"
 			},
+			last:{
+				text: "Ala ma kota ekhm",
+				start: 3,
+				end: 5,
+				direction: "f"
+			},
 			target: {
 				text: "Ala ma psa",
 				start: 2,
@@ -38,8 +44,7 @@ TypingGolf.App = React.createClass({
 				direction: "b"
 			},
 			counter: 0,
-			showCheatsheet: false,
-			showModal: true
+			showCheatsheet: false
 		};
 	},
 	handleChange: function(event) {
@@ -51,7 +56,7 @@ TypingGolf.App = React.createClass({
 			event.target.selectionEnd !== this.state.begin.end ||
 			eventDirection !== this.state.begin.direction) {
 				currentCounter += 1;
-			}
+		}
 
 		var new_state = {
 			text: event.target.value,
@@ -61,6 +66,7 @@ TypingGolf.App = React.createClass({
 		}
 
 		this.setState({
+			last: this.state.begin,
 			begin: new_state,
 			counter: currentCounter
 		});
@@ -71,36 +77,57 @@ TypingGolf.App = React.createClass({
 			showCheatsheet : new_value
 		});
 	},
+	handleKeyboard: function(event){
+		if (event.keyCode === 27) {
+			if (this.state.showCheatsheet == true) {
+				this.coverCheatsheet();
+			} else {
+				this.resetTask();
+				alert('huegh')
+			}
+		}
+		if (event.keyCode === 112) {
+			alert('new task')
+		}
+	},
 	resetTask: function() {
 		this.setState({
 			begin: this.props.begin,
 			counter: 0
 		})
+		this.refs.input.selectText()
 	},
 	render: function() {
 		return (
-			<div>
+			<div onKeyUp={this.handleKeyboard}>
+				<div className="logo-item">
+					<div className="logo animated flipInY">typing…·golf</div>
+				</div>
 				<div className="nav">
-					<div className="logo-item">
-						<div className="logo animated flipInY">typing…·golf</div>
+					<div className="nav-item">
+						<a className="link" onClick={this.resetTask}>#reset current task [ESC] </a>
 					</div>
 					<div className="nav-item">
-						<a className="link" onClick={this.resetTask}>random task </a>
+						<a className="link" onClick={this.resetTask}>#random new task [F1]</a>
 					</div>
 					<div className="nav-item">
-						<a className="link">ranking</a>
+						<a className="link">#ranking</a>
 					</div>
 				</div>
 
+				<p className="end-text-details">Turn this</p>
+
 				<TypingGolf.Input
 					begin={this.state.begin}
+					last={this.state.last}
 					handleChange={this.handleChange}
-					showCheatsheet={this.state.showCheatsheet}/>
-
-				<p className="end-text-details"> you've done {this.state.counter} steps</p>
+					showCheatsheet={this.state.showCheatsheet}
+					ref="input"/>
 
 				<TypingGolf.Target
 					target={this.state.target}/>
+
+				<p className="end-text-details"> you've done {this.state.counter} steps</p>
 
 				<TypingGolf.Cheatsheet
 					showCheatsheet={this.state.showCheatsheet}

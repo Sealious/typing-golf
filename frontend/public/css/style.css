@@ -67,9 +67,9 @@ body {
 	width: 100%;
 	line-height: 2.8rem;
 	font-size: 1.4rem;
-	padding-left: 0.7rem;
 	vertical-align: middle;
 	color: hsl(231, 18%, 66%);
+	padding: 0.2rem 1rem;
 }
 
 .nav-item .link:hover{
@@ -206,7 +206,7 @@ img{
 .shortcuts, .counters {
 	max-width: 60rem;
 	margin: 0 auto;
-	background: #282A36;
+	background: HSL(268, 6%, 28%);
 	color: #fff;
 	border-radius: 0.4rem;
 	padding: 2rem;
@@ -247,9 +247,9 @@ thead td{
 
 .key{
 	padding: 0.4rem;
-	color: #000;
+	color: #FFF;
 	font-family: 'Inconsolata', monospace;
-	background: hsl(265, 6%, 50%);
+	background: hsl(265, 6%, 40%);
 }
 
 a {
@@ -345,7 +345,7 @@ footer {
 	top: 0;
 	background-color: #fff;
 	padding: 0;
-	display: table;
+	display: flex;
 }
 #app{
 	width: 100%;

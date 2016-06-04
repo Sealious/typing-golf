@@ -592,6 +592,12 @@ TypingGolf.App = React.createClass({displayName: "App",
 				end: 5,
 				direction: "f"
 			},
+			last:{
+				text: "Ala ma kota ekhm",
+				start: 3,
+				end: 5,
+				direction: "f"
+			},
 			target: {
 				text: "Ala ma psa",
 				start: 2,
@@ -599,8 +605,7 @@ TypingGolf.App = React.createClass({displayName: "App",
 				direction: "b"
 			},
 			counter: 0,
-			showCheatsheet: false,
-			showModal: true
+			showCheatsheet: false
 		};
 	},
 	handleChange: function(event) {
@@ -612,7 +617,7 @@ TypingGolf.App = React.createClass({displayName: "App",
 			event.target.selectionEnd !== this.state.begin.end ||
 			eventDirection !== this.state.begin.direction) {
 				currentCounter += 1;
-			}
+		}
 
 		var new_state = {
 			text: event.target.value,
@@ -622,6 +627,7 @@ TypingGolf.App = React.createClass({displayName: "App",
 		}
 
 		this.setState({
+			last: this.state.begin,
 			begin: new_state,
 			counter: currentCounter
 		});
@@ -632,36 +638,57 @@ TypingGolf.App = React.createClass({displayName: "App",
 			showCheatsheet : new_value
 		});
 	},
+	handleKeyboard: function(event){
+		if (event.keyCode === 27) {
+			if (this.state.showCheatsheet == true) {
+				this.coverCheatsheet();
+			} else {
+				this.resetTask();
+				alert('huegh')
+			}
+		}
+		if (event.keyCode === 112) {
+			alert('new task')
+		}
+	},
 	resetTask: function() {
 		this.setState({
 			begin: this.props.begin,
 			counter: 0
 		})
+		this.refs.input.selectText()
 	},
 	render: function() {
 		return (
-			React.createElement("div", null, 
+			React.createElement("div", {onKeyUp: this.handleKeyboard}, 
+				React.createElement("div", {className: "logo-item"}, 
+					React.createElement("div", {className: "logo animated flipInY"}, "typing…·golf")
+				), 
 				React.createElement("div", {className: "nav"}, 
-					React.createElement("div", {className: "logo-item"}, 
-						React.createElement("div", {className: "logo animated flipInY"}, "typing…·golf")
+					React.createElement("div", {className: "nav-item"}, 
+						React.createElement("a", {className: "link", onClick: this.resetTask}, "#reset current task [ESC] ")
 					), 
 					React.createElement("div", {className: "nav-item"}, 
-						React.createElement("a", {className: "link", onClick: this.resetTask}, "random task ")
+						React.createElement("a", {className: "link", onClick: this.resetTask}, "#random new task [F1]")
 					), 
 					React.createElement("div", {className: "nav-item"}, 
-						React.createElement("a", {className: "link"}, "ranking")
+						React.createElement("a", {className: "link"}, "#ranking")
 					)
 				), 
 
+				React.createElement("p", {className: "end-text-details"}, "Turn this"), 
+
 				React.createElement(TypingGolf.Input, {
 					begin: this.state.begin, 
+					last: this.state.last, 
 					handleChange: this.handleChange, 
-					showCheatsheet: this.state.showCheatsheet}), 
-
-				React.createElement("p", {className: "end-text-details"}, " you've done ", this.state.counter, " steps"), 
+					showCheatsheet: this.state.showCheatsheet, 
+					ref: "input"}), 
 
 				React.createElement(TypingGolf.Target, {
 					target: this.state.target}), 
+
+				React.createElement("p", {className: "end-text-details"}, " you've done ", this.state.counter, " steps"), 
 
 				React.createElement(TypingGolf.Cheatsheet, {
 					showCheatsheet: this.state.showCheatsheet, 
@@ -740,15 +767,17 @@ var PropTypes = React.PropTypes;
 
 var Input = React.createClass({displayName: "Input",
 	componentDidMount: function() {
-		this.selectText();
+		this.selectText(this.props.begin);
 	},
-	selectText: function(){
+	selectText: function(state){
 		this.refs.input.focus()
 		var direction;
-		if (this.props.begin.start <= this.props.begin.end) direction = "forward"
+		if (state.start <= state.end) direction = "forward"
 		else direction = "backward"
-		this.refs.input.setSelectionRange(this.props.begin.start, this.props.begin.end, direction);
+		this.refs.input.setSelectionRange(state.start, state.end, direction);
 	},
+	focusInput: function(){ this.selectText(this.props.begin); },
+	clickInput: function(){ alert(`Please don't cheat! :)`); this.selectText(this.props.last); },
 	render: function() {
 		return (
 			React.createElement("div", null, 
@@ -758,7 +787,8 @@ var Input = React.createClass({displayName: "Input",
 					value: this.props.begin.text, 
 					onChange: this.props.handleChange, 
 					onSelect: this.props.handleChange, 
-					onFocus: this.selectText, 
+					onFocus: this.focusInput, 
+					onClick: this.clickInput, 
 					ref: "input"})
 			)
 		);

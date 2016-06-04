@@ -12,8 +12,7 @@ TypingGolf.Cheatsheet = require('./cheatsheet.jsx');
 
 TypingGolf.App = React.createClass({
 	mixins: [Router.State, Router.Navigation],
-	getDefaultProps: function() {
-		//only for test reset function
+	getDefaultProps: function() { //it is here only for test resetTask function
 		return {
 			begin:{
 				text: "Ala ma kota",
@@ -31,12 +30,7 @@ TypingGolf.App = React.createClass({
 				end: 5,
 				direction: "f"
 			},
-			last:{
-				text: "Ala ma kota ekhm",
-				start: 3,
-				end: 5,
-				direction: "f"
-			},
+			last:{},
 			target: {
 				text: "Ala ma psa",
 				start: 2,
@@ -46,6 +40,9 @@ TypingGolf.App = React.createClass({
 			counter: 0,
 			showCheatsheet: false
 		};
+	},
+	componentDidMount: function() {
+		window.addEventListener('keyup', this.handleKeyboard)
 	},
 	handleChange: function(event) {
 		var eventDirection = ((event.target.selectionDirection).localeCompare("backward") == 0) ? "b" : "f";
@@ -73,21 +70,19 @@ TypingGolf.App = React.createClass({
 	},
 	coverCheatsheet: function() {
 		var new_value = (this.state.showCheatsheet == true) ? false : true;
-		this.setState({
-			showCheatsheet : new_value
-		});
+		this.setState({ showCheatsheet : new_value });
 	},
 	handleKeyboard: function(event){
 		if (event.keyCode === 27) {
-			if (this.state.showCheatsheet == true) {
-				this.coverCheatsheet();
-			} else {
-				this.resetTask();
-				alert('huegh')
-			}
+			if (this.state.showCheatsheet == true) this.coverCheatsheet(); // this line doesn't work
+			else this.resetTask();
 		}
 		if (event.keyCode === 112) {
-			alert('new task')
+			alert('function → generate new task')
+		}
+
+		if (event.keyCode === 113) {
+			alert('function → ranking')
 		}
 	},
 	resetTask: function() {
@@ -99,7 +94,7 @@ TypingGolf.App = React.createClass({
 	},
 	render: function() {
 		return (
-			<div onKeyUp={this.handleKeyboard}>
+			<div>
 				<div className="logo-item">
 					<div className="logo animated flipInY">typing…·golf</div>
 				</div>
@@ -108,10 +103,10 @@ TypingGolf.App = React.createClass({
 						<a className="link" onClick={this.resetTask}>#reset current task [ESC] </a>
 					</div>
 					<div className="nav-item">
-						<a className="link" onClick={this.resetTask}>#random new task [F1]</a>
+						<a className="link">#random new task [F1]</a>
 					</div>
 					<div className="nav-item">
-						<a className="link">#ranking</a>
+						<a className="link">#ranking [F2]</a>
 					</div>
 				</div>
 

@@ -48,7 +48,7 @@ body {
 }
 
 .flex-container {
-	padding: 0;
+	padding: 0 1rem;
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
@@ -145,11 +145,17 @@ img{
 .content {
 	width: 100%;
 	padding: 1rem;
+	max-width:40rem;
+	margin: 0 auto;
 }
 
 #overlay .content{
 	height: 80vh;
 	overflow-y: scroll;
+}
+
+.end-text {
+	padding:1rem;
 }
 
 .end-text,
@@ -183,11 +189,11 @@ img{
 }
 
 .blink {
-    -webkit-animation: blink 1s linear infinite;
-    -moz-animation: blink 1s linear infinite;
-    -ms-animation: blink 1s linear infinite;
-    -o-animation: blink 1s linear infinite;
-    animation: blink 1s linear infinite;
+    /* -webkit-animation: blink 1s linear infinite; */
+    /* -moz-animation: blink 1s linear infinite; */
+    /* -ms-animation: blink 1s linear infinite; */
+    /* -o-animation: blink 1s linear infinite; */
+    /* animation: blink 1s linear infinite; */
 	color: rgb(72, 160, 220);
     background-color: rgb(72, 160, 220);
     width: 0.2rem;

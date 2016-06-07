@@ -7,3 +7,4 @@ TypingGolf.NewTask = require('./components/new-task.jsx');
 TypingGolf.Input = require('./components/input.jsx');
 TypingGolf.Target = require('./components/target.jsx');
 TypingGolf.InputOrTarget = require('./components/input-or-target.jsx');
+TypingGolf.Solution = require("./components/solution.jsx");

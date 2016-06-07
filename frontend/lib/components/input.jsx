@@ -50,9 +50,10 @@ var Input = React.createClass({
     },
     render: function() {
         return (
-            <div>
-
-                <textarea
+            <div className="flex-container">
+			<div className="content">
+				<h3>{this.props.title || ""}</h3>
+				<textarea
                     className="input"
                     type="text"
                     value={this.props.state.text}
@@ -62,6 +63,8 @@ var Input = React.createClass({
                     onClick={this.clickInput}
                     onBlur={this.props.onBlur}
                     ref="input" />
+			</div>
+
 
             </div>
         )

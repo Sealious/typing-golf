@@ -12,7 +12,9 @@ var InputOrTarget = React.createClass({
                     <TypingGolf.Input
                         state={this.props.state}
                         onBlur={this.props.onBlur}
-                        onChange={this.props.onChange}/>
+                		onChange={this.props.onChange}
+						title={this.props.title}
+					/>
                 </div>
             )
         } else {
@@ -20,7 +22,9 @@ var InputOrTarget = React.createClass({
                 <div onClick={this.props.onFocus}>
                     <TypingGolf.Target
                         state={this.props.state}
-                        onBlur={this.props.onBlur}/>
+                		onBlur={this.props.onBlur}
+						title={this.props.title}
+					/>
                 </div>
             );
         }

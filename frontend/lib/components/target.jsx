@@ -20,10 +20,10 @@ var Target = React.createClass({
     render: function() {
         return (
             <div className="flex-container">
-                <div className="content">
-                    <p className="end-text-details">
-                        into this ⤵
-                    </p>
+            		<div className="content">
+                    <h3>
+                        {this.props.title || "into this ⤵"}
+                    </h3>
                     {this.selectText(this.props.state.text, this.props.state.start, this.props.state.end)}
                 </div>
             </div>

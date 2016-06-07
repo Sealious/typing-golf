@@ -19,7 +19,8 @@ var NewTask = React.createClass({
                 end: 0
             },
             active: "from",
-            solution: []
+            solution: null,
+			loaded: null
         };
     },
     componentDidMount: function() {
@@ -67,18 +68,18 @@ var NewTask = React.createClass({
         })
     },
     render: function(){
-        // console.log(this.state.from)
-        // console.log(this.state.to)
-        console.log(this.state.solution)
         return (
             <div>
-
+			<div className="content">
+				<h2>Create a new Task</h2>
+			</div>
                 <TypingGolf.InputOrTarget
                     state={this.state.from}
                     is_active={this.state.active == "from"}
                     onChange={this.updateFrom}
                     onBlur={this.onBlur}
-                    onFocus={this.onFocusFrom}
+            		onFocus={this.onFocusFrom}
+					title="Initial state:"
                     ref="from"/>
 
                 <TypingGolf.InputOrTarget
@@ -86,10 +87,17 @@ var NewTask = React.createClass({
                     is_active={this.state.active == "to"}
                     onChange={this.updateTo}
                     onBlur={this.onBlur}
-                    onFocus={this.onFocusTo}
+            		onFocus={this.onFocusTo}
+					title="Goal:"
                     ref="to"/>
-
-                <button onClick={this.sendTask}>Send task</button>
+				<div className="flex-container">
+					<div className="content">
+						<button onClick={this.sendTask}>Find shortest solution!</button>
+					</div>
+				</div>
+				<TypingGolf.Solution
+					solution={this.state.solution}
+				/>	
             </div>
         );
     }

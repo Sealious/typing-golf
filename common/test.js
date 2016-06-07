@@ -464,5 +464,6 @@ de(edits.shift_down(s("ala\n\nma", 1, 6, "f", 1)),
 de(edits.shift_end(s("ala\nma\nkota", 1, 5, "b")),
    s("ala\nma\nkota", 3, 5, "b"));
 
+de(edits.
 
 console.log("Passed all tests! :)")

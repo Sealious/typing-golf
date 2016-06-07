@@ -1,6 +1,7 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 var TypingGolf = require('../typing-golf-components.js');
+var Handler = require('../modules/handler.js');
 
 console.log(TypingGolf)
 
@@ -17,11 +18,28 @@ var NewTask = React.createClass({
                 start: 0,
                 end: 0
             },
-            active: "from"
+            active: "from",
+            solution: []
         };
     },
     componentDidMount: function() {
         console.log('hej')
+    },
+    sendTask: function(){
+        console.log('uekgkhmkemk')
+        var data = {
+            from: this.state.from,
+            to: this.state.to
+        }
+
+        var self = this;
+        Handler.sendTask(data)
+        .then(function(response){
+            self.setState({
+                solution: response
+            })
+        })
+
     },
     updateFrom: function(state){
         this.setState({
@@ -49,8 +67,9 @@ var NewTask = React.createClass({
         })
     },
     render: function(){
-        console.log(this.state.from)
-        console.log(this.state.to)
+        // console.log(this.state.from)
+        // console.log(this.state.to)
+        console.log(this.state.solution)
         return (
             <div>
 
@@ -69,6 +88,8 @@ var NewTask = React.createClass({
                     onBlur={this.onBlur}
                     onFocus={this.onFocusTo}
                     ref="to"/>
+
+                <button onClick={this.sendTask}>Send task</button>
             </div>
         );
     }

@@ -5,7 +5,7 @@ var TypingGolf = require('../typing-golf-components.js');
 var InputOrTarget = React.createClass({
 
     render: function() {
-        console.log(this.props)
+        // console.log(this.props)
         if (this.props.is_active) {
             return(
                 <div onClick={this.props.onFocus}>

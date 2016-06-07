@@ -1,5 +1,7 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
+var TypingGolf = require('./app.jsx');
+TypingGolf.Step = require('./solution-step.jsx');
 
 var Target = React.createClass({
     componentDidMount: function() {
@@ -34,10 +36,10 @@ var Target = React.createClass({
                         <p className="end-text-details">
                             in {this.props.solution.length} steps
                         </p>
-                        <p className="end-text-details">
-                            optimal combination
-                            
-                        </p>
+                            {this.props.solution.map(function(step){
+                                return <TypingGolf.SolutionStep
+                                            step={step.edge.desc}/>;
+                            })}
                     </div>
                     : <p className="end-text-details">Searching solution...</p>
                     }

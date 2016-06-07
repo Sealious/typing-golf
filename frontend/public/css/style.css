@@ -250,6 +250,7 @@ thead td{
 	color: #FFF;
 	font-family: 'Inconsolata', monospace;
 	background: hsl(265, 6%, 40%);
+	font-weight: bold;
 }
 
 a {

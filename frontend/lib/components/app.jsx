@@ -7,8 +7,9 @@ var solver = require('../../../common/solver.js');
 
 module.exports = TypingGolf;
 
+TypingGolf.SolutionStep = require('./solution-step.jsx');
 TypingGolf.Input = require('./input.jsx');
-TypingGolf.Target= require('./target.jsx');
+TypingGolf.Target = require('./target.jsx');
 TypingGolf.Cheatsheet = require('./cheatsheet.jsx');
 
 TypingGolf.App = React.createClass({

@@ -30,6 +30,21 @@ function s(text, start, end, direction, h){
 de = assert.deepEqual;
 
 de(
+	edits.insert_char(s("a", 1, 1)),
+	s("a" + any_char, 2, 2)
+);
+
+de(
+	edits.insert_char(s("bac", "1", "1")),
+	s("b" + any_char + "ac", 2, 2)
+);
+
+de(
+	edits.insert_char(s("bac", 1, 1)),
+	s("b" + any_char + "ac", 2, 2)
+);
+
+de(
     edits.insert_char(s("ala ma kota", 11, 11)),
     s("ala ma kota" + any_char, 12, 12)
 )

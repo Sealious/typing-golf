@@ -11,11 +11,11 @@ function splice(str, index, count, add) {
 var any_char = "Ź";
 
 edits.insert_char = function(state) {
-    var new_text = splice(state.text, state.start, state.end - state.start, any_char);
+    var new_text = splice(state.text, parseInt(state.start), parseInt(state.end) - parseInt(state.start), any_char);
     return {
         text: new_text,
-        start: state.start + 1,
-        end: state.start + 1
+        start: parseInt(state.start) + 1,
+        end: parseInt(state.start) + 1
     }
 }
 

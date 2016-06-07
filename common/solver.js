@@ -28,6 +28,7 @@ function children_fn(element){
 
 function accept_generator(solution){
 	return function(element){
+		console.log("testing", element.text, element.start, element.end);
 		//		console.log(element.text);
 		if(element.start != solution.start){
 			return false;

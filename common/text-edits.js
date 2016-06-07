@@ -153,7 +153,7 @@ edits.next_word = function(state) {
                 end: state.text.length
             }
         }
-        var new_index = state.start + match_result.index + shift
+        var new_index = parseInt(state.start) + match_result.index + shift
         if (new_index == -1) {
             return {
                 text: state.text,
@@ -312,7 +312,7 @@ edits.shift_end = function(state){
 		m = right_half.slice(0, right_half.indexOf("\n"));
 	}
 	var new_index;
-	new_index = Math.min(state[moving_index] + m.length, state.text.length);
+	new_index = Math.min(parseInt(state[moving_index]) + m.length, state.text.length);
 	if(moving_index == "start"){
 		return {
 			text: state.text,
@@ -369,7 +369,7 @@ edits.select_left.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing el
 
 edits.select_right = function(state){
 	if(state.direction == "b"){
-		var new_start = Math.min(state.text.length, state.start + 1);
+		var new_start = Math.min(state.text.length, parseInt(state.start) + 1);
 		return {
 			text: state.text,
 			start: Math.min(new_start, state.end),
@@ -380,7 +380,7 @@ edits.select_right = function(state){
 		return {
 			text: state.text,
 			start: state.start,
-			end: Math.min(state.text.length, state.end + 1),
+			end: Math.min(state.text.length, parseInt(state.end) + 1),
 			direction: "f",
 		}
 	}

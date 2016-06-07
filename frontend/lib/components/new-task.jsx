@@ -3,8 +3,6 @@ var PropTypes = React.PropTypes;
 var TypingGolf = require('../typing-golf-components.js');
 var Handler = require('../modules/handler.js');
 
-console.log(TypingGolf)
-
 var NewTask = React.createClass({
     getInitialState: function() {
         return {
@@ -95,9 +93,13 @@ var NewTask = React.createClass({
 						<button onClick={this.sendTask}>Find shortest solution!</button>
 					</div>
 				</div>
+
+            	<button onClick={this.sendTask}>Send task</button>
+
 				<TypingGolf.Solution
 					solution={this.state.solution}
 				/>	
+			
             </div>
         );
     }

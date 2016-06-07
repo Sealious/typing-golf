@@ -19,7 +19,7 @@ var Container = React.createClass({
                         <Link className="link" to='ranking'>ranking</Link>
                     </div>
                     <div className="nav-item">
-                        <Link className="link" to='new task'>new task</Link>
+                        <Link className="link" to='new-task'>new task</Link>
                     </div>
                 </div>
                 {this.props.children}

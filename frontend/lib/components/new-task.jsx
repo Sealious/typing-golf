@@ -3,9 +3,12 @@ var PropTypes = React.PropTypes;
 var TypingGolf = require('../typing-golf-components.js');
 var Handler = require('../modules/handler.js');
 
+var qwest = require("qwest");
+
 var NewTask = React.createClass({
     getInitialState: function() {
         return {
+			title: "",
             from:{
                 text: "",
                 start: 0,
@@ -18,24 +21,22 @@ var NewTask = React.createClass({
             },
             active: "from",
             solution: null,
-			loaded: null
+			loading: false
         };
     },
-    componentDidMount: function() {
-        console.log('hej')
-    },
     sendTask: function(){
-        console.log('uekgkhmkemk')
         var data = {
             from: this.state.from,
             to: this.state.to
         }
 
         var self = this;
+		self.setState({loading: true})
         Handler.sendTask(data)
         .then(function(response){
             self.setState({
-                solution: response
+                solution: response,
+				loading: false
             })
         })
 
@@ -65,12 +66,34 @@ var NewTask = React.createClass({
             active: "to"
         })
     },
+	changeTitle: function(e){
+		this.setState({title: e.target.value});
+	},
+	save: function(){
+		var data = {
+			from: this.state.from,
+			to: this.state.to,
+			title: this.state.title,
+			solution: this.state.solution
+		};
+
+		var data_str = JSON.stringify(data);
+		qwest.post("/api/v1/resources/task",{
+			json: data_str
+		}).then(function(){
+			alert("saved!");
+		});
+		
+	},
     render: function(){
         return (
             <div>
 			<div className="content">
 				<h2>Create a new Task</h2>
 			</div>
+				 <div className="content">
+					<input type="text" placeholder="Task title" value={this.state.title} onChange={this.changeTitle}/>
+				 </div>			
                 <TypingGolf.InputOrTarget
                     state={this.state.from}
                     is_active={this.state.active == "from"}
@@ -90,15 +113,25 @@ var NewTask = React.createClass({
                     ref="to"/>
 				<div className="flex-container">
 					<div className="content">
-						<button onClick={this.sendTask}>Find shortest solution!</button>
+						<button onClick={this.sendTask}>Find the shortest solution!</button>
 					</div>
 				</div>
 
-            	<button onClick={this.sendTask}>Send task</button>
-
-				<TypingGolf.Solution
-					solution={this.state.solution}
-				/>	
+			<div className="flex-container">
+				<div className="content">
+					<TypingGolf.Solution
+						solution={this.state.solution}
+						is_loading={this.state.loading}  
+					 />
+				</div>
+			</div>
+			<div>
+			{this.state.solution!=null	?
+				<div className="content">
+					<button onClick={this.save}> Save this task</button>
+				</div>
+				: null}
+			</div>
 			
             </div>
         );

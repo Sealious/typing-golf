@@ -55,7 +55,8 @@ var Input = React.createClass({
 				<h3>{this.props.title || ""}</h3>
 				<textarea
                     className="input"
-                    type="text"
+            		type="text"
+					rows="1"
                     value={this.props.state.text}
                     onChange={this.handleChange}
                     onSelect={this.handleChange}

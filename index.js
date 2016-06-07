@@ -17,4 +17,15 @@ www_server.route({
 	}
 });
 
+var object = new Sealious.FieldType({
+	name: "object"
+});
+
+var Task = new Sealious.ResourceType({
+	name: "task",
+	fields: [
+		{name: "json", type: "text", required: true}
+	]
+});
+
 Sealious.start();

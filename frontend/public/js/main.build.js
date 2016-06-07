@@ -1,1 +1,1 @@
-console.error("ReactifyError: /home/kuba/projects/university/typing-golf/frontend/lib/components/solution.jsx: Parse Error: Line 21: Unexpected token ) while parsing file: /home/kuba/projects/university/typing-golf/frontend/lib/components/solution.jsx");
+console.error("Error: Cannot find module './components/view-task.jsx' from '/home/kuba/projects/university/typing-golf/frontend/lib'");

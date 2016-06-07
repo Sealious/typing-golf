@@ -35,6 +35,7 @@ body {
 	margin: 0 auto;
 	width: 64rem;
 	background-color: #FFF;
+	padding-bottom: 4rem;
 }
 
 .nav{
@@ -155,7 +156,7 @@ img{
 }
 
 .end-text {
-	padding:1rem;
+	padding: 1rem!important;
 }
 
 .end-text,
@@ -281,7 +282,7 @@ a:active {
 	color: hsl(231, 10%, 37%);
 	margin: 0 0px 0px;
 	width: 100%;
-	height: auto;
+	/* height: auto; */
 	overflow: visible;
 	background-color: hsl(62, 100%, 90%);
 	border: 1px solid hsl(0, 0%, 80%);
@@ -356,4 +357,14 @@ footer {
 }
 #app{
 	width: 100%;
+}
+
+.steps-list{
+	padding-left: 0;
+	margin: -.5rem;
+}
+
+.steps-list li{
+	display: inline-block;
+	margin: .5rem;
 }

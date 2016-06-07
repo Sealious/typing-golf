@@ -3,6 +3,7 @@ var TypingGolf = {};
 var React = require("react");
 var Router = require("react-router");
 var ReactDOM = require("react-dom");
+var solver = require('../../../common/solver.js');
 
 module.exports = TypingGolf;
 
@@ -15,9 +16,9 @@ TypingGolf.App = React.createClass({
 	getDefaultProps: function() { //it is here only for test resetTask function
 		return {
 			begin:{
-				text: "Ala ma kota",
-				start: 3,
-				end: 5,
+				text: "ala ma kota",
+				start: 7,
+				end: 7,
 				direction: "f"
 			}
 		};
@@ -25,24 +26,44 @@ TypingGolf.App = React.createClass({
 	getInitialState: function() {
 		return {
 			begin:{
-				text: "Ala ma kota",
-				start: 3,
-				end: 5,
+				text: "ala ma kota",
+				start: 7,
+				end: 7,
 				direction: "f"
 			},
 			last:{},
 			target: {
-				text: "Ala ma psa",
-				start: 2,
-				end: 8,
-				direction: "b"
+				text: "ala ma koty",
+				start: 11,
+				end: 11,
+				direction: "f"
 			},
+			solution:[],
+			resolved: false,
 			counter: 0,
 			showCheatsheet: false
 		};
 	},
 	componentDidMount: function() {
 		window.addEventListener('keyup', this.handleKeyboard)
+
+		window.setTimeout(function(){
+			var steps = solver(this.state.begin, this.state.target)
+			this.setState({
+				solution: steps
+			})
+		}.bind(this),1000)
+
+	},
+	componentDidUpdate: function(prevProps, prevState) {
+		if (this.state.begin.text === this.state.target.text) {
+			if (this.state.resolved === false) {
+				this.setState({
+					resolved: true
+				})
+				alert('Brawo! [ENTER]')
+			}
+		}
 	},
 	handleChange: function(event) {
 		var eventDirection = ((event.target.selectionDirection).localeCompare("backward") == 0) ? "b" : "f";
@@ -89,7 +110,8 @@ TypingGolf.App = React.createClass({
 	resetTask: function() {
 		this.setState({
 			begin: this.props.begin,
-			counter: 0
+			counter: 0,
+			resolved: false
 		})
 		this.refs.input.selectText(this.state.begin)
 	},
@@ -121,7 +143,8 @@ TypingGolf.App = React.createClass({
 					ref="input"/>
 
 				<TypingGolf.Target
-					target={this.state.target}/>
+					target={this.state.target}
+					solution={this.state.solution}/>
 
 				<p className="end-text-details">You've done {this.state.counter} steps</p>
 

@@ -23,6 +23,10 @@ var examples = [
 		from: s("ala ma kota", 0, 0),
 		to:   s("ela ma kota", 1, 1)
 	},
+    {
+        from: s("ala ma kota", 7, 7),
+        to:   s("ala ma koty", 10, 10)
+    },
 	{
 		from: s("ala ma kota", 11, 11),
 		to:   s("ela ma kota", 11, 11)
@@ -39,10 +43,9 @@ var examples = [
 
 
 
- for(var i in examples){						    
+ for(var i in examples){
  	solver(examples[i].from, examples[i].to);
  }
 
 
 //solver(examples[0].from, examples[0].to);
-

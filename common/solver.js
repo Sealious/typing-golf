@@ -44,7 +44,7 @@ function accept_generator(solution){
 		if(element.text.length == solution.text.length){
 //			console.log(element.text);
 		}
-		
+
 		var to_replace = ".+?[]()*$^"
 		var t = element.text;
 		for(var i in to_replace){
@@ -83,4 +83,6 @@ module.exports = function(root, solution){
 	console.log(steps.map(function(s){return s.edge.desc}));
 	//console.log(steps.map(function(s){return {text: s.text, start: s.start, end:s.end, key: s.edge.desc, direction: s.direction}}));
 	console.log("\n\n\n-------- \n\n\n");
+
+    return steps;
 }

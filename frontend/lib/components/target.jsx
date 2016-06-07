@@ -28,9 +28,19 @@ var Target = React.createClass({
                         into this ⤵
                     </p>
                     {this.selectText(this.props.target.text, this.props.target.start, this.props.target.end)}
-                    <p className="end-text-details">
-                        in 6 steps
-                    </p>
+                    {(this.props.solution !== undefined && this.props.solution.length !== 0)
+
+                    ? <div>
+                        <p className="end-text-details">
+                            in {this.props.solution.length} steps
+                        </p>
+                        <p className="end-text-details">
+                            optimal combination
+                            
+                        </p>
+                    </div>
+                    : <p className="end-text-details">Searching solution...</p>
+                    }
                 </div>
             </div>
 

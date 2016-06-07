@@ -1,12 +1,8 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
-var TypingGolf = require('./app.jsx');
-TypingGolf.Step = require('./solution-step.jsx');
+var TypingGolf = require('../typing-golf-components.js');
 
 var Target = React.createClass({
-    componentDidMount: function() {
-
-    },
     selectText: function(text, start, end) {
         var targetText;
 		var sub_1 = text.slice(0, start);
@@ -21,7 +17,6 @@ var Target = React.createClass({
         }
         return targetText;
     },
-
     render: function() {
         return (
             <div className="flex-container">
@@ -29,20 +24,7 @@ var Target = React.createClass({
                     <p className="end-text-details">
                         into this ⤵
                     </p>
-                    {this.selectText(this.props.target.text, this.props.target.start, this.props.target.end)}
-                    {(this.props.solution !== undefined && this.props.solution.length !== 0)
-
-                    ? <div>
-                        <p className="end-text-details">
-                            in {this.props.solution.length} steps
-                        </p>
-                            {this.props.solution.map(function(step){
-                                return <TypingGolf.SolutionStep
-                                            step={step.edge.desc}/>;
-                            })}
-                    </div>
-                    : <p className="end-text-details">Searching solution...</p>
-                    }
+                    {this.selectText(this.props.state.text, this.props.state.start, this.props.state.end)}
                 </div>
             </div>
 

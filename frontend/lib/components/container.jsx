@@ -2,8 +2,18 @@ var React = require('react');
 var PropTypes = React.PropTypes;
 var ReactRouter = require('react-router')
 var Link = ReactRouter.Link;
+var TypingGolf = require('../typing-golf-components.js');
 
 var Container = React.createClass({
+    getInitialState: function() {
+        return {
+            showCheatsheet: false
+        };
+    },
+    coverCheatsheet: function() {
+        var new_value = (this.state.showCheatsheet == true) ? false : true;
+        this.setState({ showCheatsheet : new_value });
+    },
 
     render: function() {
         return (
@@ -22,7 +32,15 @@ var Container = React.createClass({
                         <Link className="link" to='new-task'>new task</Link>
                     </div>
                 </div>
+                
                 {this.props.children}
+
+                <TypingGolf.Cheatsheet
+                    showCheatsheet={this.state.showCheatsheet}
+                    coverCheatsheet={this.coverCheatsheet}/>
+                <div
+                    className="cheatsheet-box"
+                    onClick={this.coverCheatsheet}>?</div>
             </div>
         );
     }

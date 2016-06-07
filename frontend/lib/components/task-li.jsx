@@ -6,7 +6,7 @@ var TaskLi = React.createClass({
 	render: function(){
 		try{
 			var body = JSON.parse(this.props.data.body.json);
-			console.log("body: ", body);
+			// console.log("body: ", body);
 			return (
 				<li>
 					<h2><Link to={"/tasks/" + this.props.data.id}>{body.title}</Link></h2>

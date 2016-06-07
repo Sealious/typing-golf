@@ -1,0 +1,1 @@
+console.error("Error: Cannot find module '/home/kuba/projects/university/typing-golf/frontend/lib/main.jsx' from '/home/kuba/projects/university/typing-golf'");

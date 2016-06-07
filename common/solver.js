@@ -61,6 +61,7 @@ function accept_generator(solution){
 //console.log(acceptor(edits.select_all(s("ala ma kota", 0, 0))));
 
 module.exports = function(root, solution){
+	console.log(root, solution);
 	console.log("Task: transform:\n\n");
 	console.log(root.text);
 	console.log("\n\ninto:\n\n");
@@ -75,14 +76,15 @@ module.exports = function(root, solution){
 
 	console.log("Solution:");
 	var steps = [];
-	while(solution.parent != null && solution.parent != solution){
-		steps.unshift(solution);
-		solution = solution.parent;
+	var current = solution;
+	while(current.parent != null && current.parent != current){
+		current.edge = {desc: current.edge.desc, spec: current.edge.spec};
+		steps.unshift(current);
+		current = current.parent;
 	}
 
-	console.log(steps.map(function(s){return s.edge.desc}));
+	return steps.map(function(s){return s.edge});
 	//console.log(steps.map(function(s){return {text: s.text, start: s.start, end:s.end, key: s.edge.desc, direction: s.direction}}));
-	console.log("\n\n\n-------- \n\n\n");
 
-    return steps;
+//    return steps;
 }

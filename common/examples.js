@@ -16,28 +16,8 @@ function s(text, start, end, direction, h){
 
 var examples = [
 	{
-		from: s("ala ma kota", 7,7),
-		to:   s("ala ma psa", 10, 10)
-	},
-	{
-		from: s("ala ma kota", 0, 0),
-		to:   s("ela ma kota", 1, 1)
-	},
-    {
-        from: s("ala ma kota", 7, 7),
-        to:   s("ala ma koty", 10, 10)
-    },
-	{
-		from: s("ala ma kota", 11, 11),
-		to:   s("ela ma kota", 11, 11)
-	},
-	{
-		from: s("ala\nma\nkota\ni\npsa", 5, 5),
-		to:   s("ala\nm", 5, 5)
-	},
-	{
-		from: s("Jakub Orlik", 5, 5),
-		to:   s("Jan Orlik", 3, 3)
+		from: s("aaa", 3,3),
+		to:   s("aaaaa", 5, 5)
 	}
 ]
 

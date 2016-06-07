@@ -83,7 +83,9 @@ module.exports = function(root, solution){
 		current = current.parent;
 	}
 
-	return steps.map(function(s){return s.edge});
+	var ret = steps.map(function(s){return s.edge});
+	console.log(ret);
+	return ret;
 	//console.log(steps.map(function(s){return {text: s.text, start: s.start, end:s.end, key: s.edge.desc, direction: s.direction}}));
 
 //    return steps;

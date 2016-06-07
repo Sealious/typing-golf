@@ -4,13 +4,15 @@ var ReactRouter = require('react-router');
 var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var IndexRoute = ReactRouter.IndexRoute;
-var Example = require('./components/app.jsx');
+var DefaultRoute = ReactRouter.DefaultRoute;
+var TypingGolf = require('./components/app.jsx');
 var hashHistory = ReactRouter.hashHistory;
 
 ReactDOM.render(
 	<Router history={hashHistory}>
-		<Route path="/" component={Example.Container}>
-			<IndexRoute component={Example.App}/>
+		<Route path="/" component={TypingGolf.Container}>
+			<IndexRoute component={TypingGolf.App}/>
+			<Route name="task" path="task" component={TypingGolf.TaskView}/>
 		</Route>
   	</Router>,
 	document.getElementById('app')

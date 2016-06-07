@@ -16,7 +16,7 @@
   "dependencies": {
     "event-emitter": "^0.3.4",
     "merge": "^1.2.0",
-    "qwest": "^4.4.2",
+    "qwest": "^4.4.3",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "react-router": "^2.4.0"

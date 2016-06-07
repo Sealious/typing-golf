@@ -7,10 +7,14 @@ var solver = require('../../../common/solver.js');
 
 module.exports = TypingGolf;
 
+TypingGolf.Container = require('./container.jsx');
+TypingGolf.TaskView = require('./task-view.jsx');
 TypingGolf.SolutionStep = require('./solution-step.jsx');
 TypingGolf.Input = require('./input.jsx');
 TypingGolf.Target = require('./target.jsx');
 TypingGolf.Cheatsheet = require('./cheatsheet.jsx');
+TypingGolf.Form = require('./form.jsx');
+TypingGolf.NewTask = require('./new-task.jsx');
 
 TypingGolf.App = React.createClass({
 	mixins: [Router.State, Router.Navigation],
@@ -133,29 +137,31 @@ TypingGolf.App = React.createClass({
 						<a className="link">#ranking [F4]</a>
 					</div>
 				</div>
+				<div>
+					<p className="end-text-details">Turn this ⤵</p>
 
-				<p className="end-text-details">Turn this ⤵</p>
+					<TypingGolf.Input
+						begin={this.state.begin}
+						last={this.state.last}
+						handleChange={this.handleChange}
+						showCheatsheet={this.state.showCheatsheet}
+						ref="input"/>
 
-				<TypingGolf.Input
-					begin={this.state.begin}
-					last={this.state.last}
-					handleChange={this.handleChange}
-					showCheatsheet={this.state.showCheatsheet}
-					ref="input"/>
+					<TypingGolf.Target
+						target={this.state.target}
+						solution={this.state.solution}/>
 
-				<TypingGolf.Target
-					target={this.state.target}
-					solution={this.state.solution}/>
+					<p className="end-text-details">You've done {this.state.counter} steps</p>
 
-				<p className="end-text-details">You've done {this.state.counter} steps</p>
+					<TypingGolf.Cheatsheet
+						showCheatsheet={this.state.showCheatsheet}
+						coverCheatsheet={this.coverCheatsheet}/>
 
-				<TypingGolf.Cheatsheet
-					showCheatsheet={this.state.showCheatsheet}
-					coverCheatsheet={this.coverCheatsheet}/>
-
-				<div
-					className="cheatsheet-box"
-					onClick={this.coverCheatsheet}>?</div>
+					<div
+						className="cheatsheet-box"
+						onClick={this.coverCheatsheet}>?</div>
+				</div>
+				{this.props.children}
 			</div>
 		)
 	}

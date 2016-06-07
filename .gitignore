@@ -1,5 +1,5 @@
 frontend/node_modules/*
-public/js
+frontend/public/js
 
 node_modules
 #~

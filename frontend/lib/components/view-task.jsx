@@ -15,10 +15,61 @@ var ViewTask = React.createClass({
         }
     },
 
-    render: function() {
+    getInitialState: function() {
         if (this.props.task !== undefined) {
             var body = JSON.parse(this.props.task.body.json);
-            console.log(body)
+            return {
+                from: body.from,
+                to: body.to,
+                solution: body.solution,
+                title: body.title,
+                resolved: false,
+    			counter: 0,
+            };
+        } else {
+            return null;
+        }
+    },
+    componentDidUpdate: function(prevProps, prevState) {
+        if (this.state.from.text === this.state.to.text) {
+            if (this.state.resolved === false) {
+                this.setState({
+                    resolved: true
+                })
+                alert(`You've done task in `+this.state.counter+` steps`)
+            }
+        }
+    },
+    handleChange: function(event) {
+        console.log('ekhm')
+        console.log('event', event);
+        var direction = ((event.direction).localeCompare("backward") == 0) ? "b" : "f";
+        var currentCounter = this.state.counter;
+
+        if (event.text !== this.state.from.text ||
+            event.start !== this.state.from.start ||
+            event.end !== this.state.from.end ||
+            direction !== this.state.from.direction) {
+                currentCounter += 1;
+        }
+
+        var new_state = {
+            text: event.text,
+            start: event.start,
+            end: event.end,
+            direction: direction
+        }
+
+        this.setState({
+            from: new_state,
+            counter: currentCounter
+        });
+    },
+
+    render: function() {
+        if (this.props.task !== undefined) {
+            var body = this.state;
+            console.log('body:',body)
             return (
                 <div>
                     <div className="content">
@@ -27,11 +78,13 @@ var ViewTask = React.createClass({
                     <div>
                         <TypingGolf.Input
                             state={body.from}
+                            onChange={this.handleChange}
+        					onSelect={this.handleChange}
                             title="Turn this"/>
                         <TypingGolf.Target
                             state={body.to}
                             title={"Into this state below in "+body.solution.length+" steps" }/>
-                        <p className="end-text-details">You've done 0 steps</p>
+                        <p className="end-text-details">You've done {this.state.counter} steps</p>
                     </div>
                 </div>
             );

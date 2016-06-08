@@ -12,7 +12,8 @@ ReactDOM.render(
 	<Router history={hashHistory}>
 		<Route path="/" component={TypingGolf.Container}>
 			<Route path="new-task" component={TypingGolf.NewTask}/>
-			<Route path="tasks" component={TypingGolf.Tasks}>
+			<Route path="tasks">
+				<IndexRoute component={TypingGolf.Tasks}/>
 				<Route path=":id" component={TypingGolf.ViewTask}/>
 			</Route>
 		</Route>

@@ -1,65 +1,72 @@
-
 var React = require('react');
 var PropTypes = React.PropTypes;
 var router = require('react-router');
 var equal = require('deep-equal');
 var TypingGolf = require('../typing-golf-components.js')
 
+var qwest = require("qwest");
+
 var ViewTask = React.createClass({
     contextTypes: {
       router: React.PropTypes.object.isRequired
     },
-    componentWillMount: function() {
-        if (this.props.task === undefined) {
-            this.context.router.push('/tasks')
-        }
-    },
-
+	fetch: function(){
+		this.setState({loaded: false});
+		var self = this;
+		qwest.get("/api/v1/resources/task/" + this.props.params.id)
+		.then(function(xhr, data){
+			var task = JSON.parse(data.body.json);
+			self.setState({
+				loaded: true,
+				title: task.title,
+				to: task.to,
+				from: task.from
+			});
+		});
+	},
     getInitialState: function() {
-        if (this.props.task !== undefined) {
-            var body = JSON.parse(this.props.task.body.json);
-            return {
-                from: body.from,
-                to: body.to,
-                solution: body.solution,
-                title: body.title,
-                resolved: false,
-    			counter: 0,
-            };
-        } else {
-            return null;
-        }
+         return {
+			 to: {},
+			 from: {},
+			 title: "",
+			 solution: [],
+			 resolved: false,
+			 counter: 0,
+		};
     },
+	componentDidMount: function(){
+		console.log("hello!");
+	},
     componentDidUpdate: function(prevProps, prevState) {
-        console.log('from',this.state.from)
-        console.log('to  ',this.state.to)
-        if (equal(this.state.from, this.state.to) ) {
+		try{
+        if (equal(this.state.from, this.state.to) && this.state.loaded ) {
             if (this.state.resolved === false) {
                 this.setState({
                     resolved: true
                 })
-                alert(`You've done this task in `+this.state.counter+` steps`)
-                this.context.router.push('/tasks')
+                alert("You've done this task in "+this.state.counter+" steps")
+//                this.context.router.push('/tasks')
             }
         }
+		}catch(e){
+			console.log(e);
+		}
     },
-    handleChange: function(event) {
-
-        console.log(event.direction)
-        var direction = ((event.direction).localeCompare("b") == 0) ? "b" : "f";
+    handleChange: function(new_data) {
+        var direction = ((new_data.direction).localeCompare("b") == 0) ? "b" : "f";
         var counter = this.state.counter;
 
-        if (event.text !== this.state.from.text ||
-            event.start !== this.state.from.start ||
-            event.end !== this.state.from.end ||
+        if (new_data.text !== this.state.from.text ||
+            new_data.start !== this.state.from.start ||
+            new_data.end !== this.state.from.end ||
             direction !== this.state.from.direction) {
                 counter += 1;
         }
 
         var new_state = {
-            text: event.text,
-            start: event.start,
-            end: event.end,
+            text: new_data.text,
+            start: new_data.start,
+            end: new_data.end,
             direction: direction
         }
 
@@ -67,37 +74,47 @@ var ViewTask = React.createClass({
             from: new_state,
             counter: counter
         });
-    },
 
+    },
+	componentDidMount: function(){
+		this.fetch();
+	},
     render: function() {
-        if (this.props.task !== undefined) {
-            var body = this.state;
-            var direction = ""
-            if (this.state.to.start !== this.state.to.end) {
-                if (this.state.to.direction === "b") direction += "(Direction selection: ←)"
-                else direction += "(Direction selection: →)"
-            }
-            return (
-                <div>
-                    <div className="content">
-                        <h2>Task: {body.title}</h2>
-                    </div>
-                    <div>
-                        <TypingGolf.Input
-                            state={body.from}
-                            onChange={this.handleChange}
-        					onSelect={this.handleChange}
-                            title="Turn this:"/>
-                        <TypingGolf.Target
-                            state={body.to}
-                            title={"Into this state below in "+body.solution.length+" steps: " +direction}/>
-                        <p className="end-text-details">You've done {this.state.counter} steps</p>
-                    </div>
-                </div>
-            );
-        } else {
-            return null;
-        }
+		try{
+			var ret;
+			if(!this.state.loaded){
+				ret =  <div className="content">Loading...</div>
+			}else{
+				var body = this.state;
+				var direction = ""
+				if (body.to.start !== body.to.end) {
+					if (body.to.direction === "b") direction += "(Direction selection: ←)"
+					else direction += "(Direction selection: →)"
+				}
+				ret = (
+					<div>
+						<div className="content">
+							<h2>Task: {body.title}</h2>
+						</div>
+						<div>
+							<TypingGolf.Input
+								state={body.from}
+								onChange={this.handleChange}
+								onSelect={this.handleChange}
+								title="Turn this:"/>
+							<p className="end-text-details">You've done {body.counter} steps</p>
+							<TypingGolf.Target
+								state={body.to}
+								title={"Into this state below in "+body.solution.length+" steps: " +direction}
+							/>
+						</div>
+					</div>
+				);
+			}
+			return ret;
+		}catch(e){
+			console.log(e);
+		}
     }
 
 });

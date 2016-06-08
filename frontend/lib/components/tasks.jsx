@@ -27,29 +27,15 @@ var Tasks = React.createClass({
 		this.refresh();
 	},
 	render: function(){
-		if (this.props.params.id !== undefined) {
-			var data = this.state.data;
-			var choosen_task;
-			for (var i = 0; i < data.length; i++) {
-				if (data[i].id === this.props.params.id) choosen_task = data[i]
-			}
+		if(!this.state.loaded){
+			return <div className="content"> Loading...</div>
+		}else{
+			var elements = this.state.data.map(function(task){return <Task data={task} key={task.id}/>});
 			return (
-				<div>
-					{React.cloneElement(this.props.children, { task: choosen_task })}
+				<div className="content">
+				{elements}
 				</div>
 			)
-		} else {
-
-			if(!this.state.loaded){
-				return <div className="content"> Loading...</div>
-			}else{
-				var elements = this.state.data.map(function(task){return <Task data={task} key={task.id}/>});
-				return (
-					<div className="content">
-					{elements}
-					</div>
-				)
-			}
 		}
 	}
 });

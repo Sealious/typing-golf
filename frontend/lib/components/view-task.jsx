@@ -20,7 +20,9 @@ var ViewTask = React.createClass({
 				loaded: true,
 				title: task.title,
 				to: task.to,
-				from: task.from
+				from: task.from,
+				current_state: task.from,
+				solution: task.solution
 			});
 		});
 	},
@@ -39,12 +41,16 @@ var ViewTask = React.createClass({
 	},
     componentDidUpdate: function(prevProps, prevState) {
 		try{
-        if (equal(this.state.from, this.state.to) && this.state.loaded ) {
+        if (equal(this.state.current_state, this.state.to) && this.state.loaded ) {
             if (this.state.resolved === false) {
                 this.setState({
                     resolved: true
                 })
-                alert("You've done this task in "+this.state.counter+" steps")
+				var message = "Congratulations! \nYou've solve the task in "+this.state.counter+" steps.";
+				if(this.state.counter > this.state.solution.length){
+					message += "\nCan you solve it in " + this.state.solution.length + "? :)";
+				}
+                alert(message)
 //                this.context.router.push('/tasks')
             }
         }
@@ -56,10 +62,10 @@ var ViewTask = React.createClass({
         var direction = ((new_data.direction).localeCompare("b") == 0) ? "b" : "f";
         var counter = this.state.counter;
 
-        if (new_data.text !== this.state.from.text ||
-            new_data.start !== this.state.from.start ||
-            new_data.end !== this.state.from.end ||
-            direction !== this.state.from.direction) {
+        if (new_data.text !== this.state.current_state.text ||
+            new_data.start !== this.state.current_state.start ||
+            new_data.end !== this.state.current_state.end ||
+            direction !== this.state.current_state.direction) {
                 counter += 1;
         }
 
@@ -71,13 +77,17 @@ var ViewTask = React.createClass({
         }
 
         this.setState({
-            from: new_state,
+            current_state: new_state,
             counter: counter
         });
 
     },
 	componentDidMount: function(){
 		this.fetch();
+	},
+	reset: function(){
+		this.setState({current_state: this.state.from, counter: 0});
+		this.refs.input.focusInput();
 	},
     render: function() {
 		try{
@@ -95,12 +105,14 @@ var ViewTask = React.createClass({
 					<div>
 						<div className="content">
 							<h2>Task: {body.title}</h2>
+							<button onClick={this.reset}>Reset task</button>
 						</div>
-						<div>
+					<div>
 							<TypingGolf.Input
-								state={body.from}
+								state={body.current_state}
 								onChange={this.handleChange}
 								onSelect={this.handleChange}
+								ref="input"
 								title="Turn this:"/>
 							<p className="end-text-details">You've done {body.counter} steps</p>
 							<TypingGolf.Target

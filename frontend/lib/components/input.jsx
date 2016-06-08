@@ -11,30 +11,15 @@ var Input = React.createClass({
         if(event.nativeEvent.button != undefined){
             return event.preventDefault();
         }
+
         var eventDirection = ((event.target.selectionDirection).localeCompare("backward") == 0) ? "b" : "f";
-        // var currentCounter = this.state.counter;
-
-        if (event.target.value !== this.props.state.text ||
-            event.target.selectionStart !== this.props.state.start ||
-            event.target.selectionEnd !== this.props.state.end ||
-            eventDirection !== this.props.state.direction) {
-                // currentCounter += 1;
-            }
-
             var new_state = {
                 text: event.target.value,
                 start: event.target.selectionStart,
                 end: event.target.selectionEnd,
                 direction: eventDirection
             }
-
             this.props.onChange(new_state)
-
-            // this.setState({
-            // 	last: this.state.begin,
-            // 	begin: new_state,
-            // 	counter: currentCounter
-            // });
     },
     selectText: function(state){
         this.refs.input.focus()

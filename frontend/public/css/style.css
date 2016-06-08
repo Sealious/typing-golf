@@ -95,6 +95,7 @@ body {
 	top: 0;
 	left: 0;
 	width: 100%;
+	margin-top: 4rem;
 }
 
 #overlay .flex-container,
@@ -150,8 +151,12 @@ img{
 	margin: 0 auto;
 }
 
+.shortcuts .content{
+	max-width:60rem;
+}
+
 #overlay .content{
-	height: 80vh;
+	height: 60vh;
 	overflow-y: scroll;
 }
 
@@ -211,7 +216,7 @@ img{
 }
 
 .shortcuts, .counters {
-	max-width: 60rem;
+	/*! max-width: 60rem; */
 	margin: 0 auto;
 	background: HSL(268, 6%, 28%);
 	color: #fff;

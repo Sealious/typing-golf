@@ -86,7 +86,7 @@ var ViewTask = React.createClass({
 		this.fetch();
 	},
 	reset: function(){
-		this.setState({current_state: this.state.from, counter: 0});
+		this.setState({current_state: this.state.from, counter: 0, resolved: false});
 		this.refs.input.focusInput();
 	},
     render: function() {

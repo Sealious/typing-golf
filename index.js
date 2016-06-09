@@ -28,4 +28,12 @@ var Task = new Sealious.ResourceType({
 	]
 });
 
+var Rank = new Sealious.ResourceType({
+	name: "rank",
+	fields: [
+		{name: "user", type: "text", required: true},
+		{name: "highscore", type: "int", required: true}
+	]
+});
+
 Sealious.start();

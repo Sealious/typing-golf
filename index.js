@@ -28,11 +28,12 @@ var Task = new Sealious.ResourceType({
 	]
 });
 
-var Rank = new Sealious.ResourceType({
-	name: "rank",
+var RankingEntry = new Sealious.ResourceType({
+	name: "ranking_entry",
 	fields: [
-		{name: "user", type: "text", required: true},
-		{name: "highscore", type: "int", required: true}
+		{name: "nick", type: "text", required: true},
+		{name: "best_score", type: "int", required: true},
+		{name: "task", type: "single_reference", params: {resource_type: "task"}}
 	]
 });
 

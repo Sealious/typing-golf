@@ -46,6 +46,9 @@ var Input = React.createClass({
         e.preventDefault();
         this.selectText(this.props.state);
     },
+	componentDidUpdate: function(){
+		this.selectText(this.props.state);
+	},
     render: function() {
         return (
             <div className="flex-container">
@@ -63,8 +66,6 @@ var Input = React.createClass({
                     onBlur={this.props.onBlur}
                     ref="input" />
 			</div>
-
-
             </div>
         )
     }

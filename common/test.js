@@ -149,6 +149,9 @@ de(edits.backspace(s("ala ma kota", 0, 3)),
 de(edits.backspace(s("ala ma kota", 3, 11)),
    s("ala", 3, 3)) 
 
+de(edits.next_word(s("ala   ma kota", 4, 4)),
+   s("ala   ma kota", 8, 8));
+
 de(edits.next_word(s("ala ma kota", 0, 0)),
    s("ala ma kota", 3, 3))
 
@@ -464,6 +467,7 @@ de(edits.shift_down(s("ala\n\nma", 1, 6, "f", 1)),
 de(edits.shift_end(s("ala\nma\nkota", 1, 5, "b")),
    s("ala\nma\nkota", 3, 5, "b"));
 
-de(edits.
+de(edits.next_word(s("http://sealcode.org", 0, 0)),
+   s("http://sealcode.org", 7, 7));
 
 console.log("Passed all tests! :)")

@@ -141,32 +141,19 @@ edits.backspace.spec = "When any text is selected, remove it. Otherwise delete t
 edits.next_word = function(state) {
     if (state.start == state.end) {
         var right_half = state.text.slice(state.end, Infinity);
-		var shift = 0;
-		var pre_match = right_half.match("^(\\W+)\\w");
-		if(pre_match != null) shift = pre_match[1].length
-		right_half = right_half.slice(shift);
-        var match_result = right_half.match(/\W/);
-        if (match_result == null) {
-            return {
-                text: state.text,
-                start: state.text.length,
-                end: state.text.length
-            }
-        }
-        var new_index = parseInt(state.start) + match_result.index + shift
-        if (new_index == -1) {
-            return {
-                text: state.text,
-                start: state.text.length,
-                start: state.text.length
-            }
-        } else {
-            return {
-                text: state.text,
-                start: new_index,
-                end: new_index
-            }
-        }
+		var i = 0;
+		var regexen = [ /\s/, /\w/,  /[^\s\w]/ ];
+		for(var j in regexen){
+			var r = regexen[j];
+			while(r.test(right_half[i]) && i<right_half.length){
+				i++;
+			}
+		}
+		return {
+			text: state.text,
+			start: state.start + i,
+			end: state.start + i
+		}
     } else {
         return {
             text: state.text,

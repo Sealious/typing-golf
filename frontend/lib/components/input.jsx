@@ -24,8 +24,6 @@ var Input = React.createClass({
 		}
 
 		if(!de(new_state, this.props.state)){
-			console.log(event);
-			console.log(new_state, this.props.state);
 			this.props.onChange(new_state)
 		}
 
@@ -44,7 +42,7 @@ var Input = React.createClass({
     focusInput: function(){ this.selectText(this.props.state); },
     clickInput: function(e) {
         e.preventDefault();
-        this.selectText(this.props.state);
+        this.t(this.props.state);
     },
 	componentDidUpdate: function(){
 		this.selectText(this.props.state);

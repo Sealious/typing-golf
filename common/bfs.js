@@ -3,10 +3,10 @@ function bfs(root, children, hash_fn, accept){
 	var queue = []
 	queue.push(root);
 
-	visited = {}
+	visited = new Set();
 
 	the_element = root;
-	visited[hash_fn(the_element)] = true;
+	visited.add(hash_fn(the_element));
 	found = accept(root);
 	
 	while(!found){
@@ -15,8 +15,9 @@ function bfs(root, children, hash_fn, accept){
 		for(var i in new_elements){
 			the_element = new_elements[i];
 			var hash = hash_fn(the_element);
-			if(!(hash in visited)){
-				visited[hash] = true;
+			//console.log(hash);
+			if(!visited.has(hash)){
+				visited.add(hash);
 				the_element.parent = element;
 				if(accept(the_element)){
 					found = true;

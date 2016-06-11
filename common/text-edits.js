@@ -1,4 +1,5 @@
 var assert = require("assert")
+var clone = require("clone");
 
 var edits = {}
 
@@ -533,6 +534,45 @@ edits.shift_down = function(state){
 
 edits.shift_down.desc = "SHIFT+↓";
 edits.shift_down.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
+
+edits.left = function(state){
+	if(state.start == state.end){
+		return {
+			text: state.text,
+			start: Math.max(state.start - 1, 0),
+			end: Math.max(state.start - 1, 0)
+		}
+	}else{
+		return {
+			text: state.text,
+			start: state.start,
+			end: state.start
+		}
+	}
+}
+
+edits.left.desc ="←";
+edits.left.spec = "If no text is selected, move caret one character to the left. If some text is selected, deselect it and move caret to the left end of the selection."
+
+edits.right = function(state){
+	if(state.start == state.end){
+		return {
+			text: state.text,
+			start: Math.min(state.start - 1, state.text.length),
+			end: Math.min(state.start - 1, state.text.length)
+		}
+	}else{
+		return {
+			text: state.text,
+			start: state.end,
+			end: state.end
+		}
+	}
+}
+
+edits.right.desc ="→";
+edits.right.spec = "If no text is selected, move caret one character to the right. If some text is selected, deselect it and move caret to the right end of the selection."
+
 
 
 module.exports = {

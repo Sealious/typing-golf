@@ -152,8 +152,8 @@ edits.next_word = function(state) {
 		}
 		return {
 			text: state.text,
-			start: state.start + i,
-			end: state.start + i
+			start: parseInt(state.start) + i,
+			end: parseInt(state.start) + i
 		}
     } else {
         return {
@@ -558,8 +558,8 @@ edits.right = function(state){
 	if(state.start == state.end){
 		return {
 			text: state.text,
-			start: Math.min(state.start - 1, state.text.length),
-			end: Math.min(state.start - 1, state.text.length)
+			start: Math.min(parseInt(state.start) + 1, state.text.length),
+			end: Math.min(parseInt(state.start) + 1, state.text.length)
 		}
 	}else{
 		return {

@@ -61,6 +61,14 @@ function accept_generator(solution){
 //var acceptor = accept_generator(s("ala ma kota", 0, 11,"f"));
 //console.log(acceptor(edits.select_all(s("ala ma kota", 0, 0))));
 
+function hash_fn(element){
+	return element.text +
+		";" + element.start +
+		";" + element.end +
+		";" + element.direction || "-" +
+		";" + element.h || "^";
+}
+
 module.exports = function(root, solution){
 	console.log(root, solution);
 	console.log("Task: transform:\n\n");
@@ -72,6 +80,7 @@ module.exports = function(root, solution){
 	var solution = bfs(
 		root,
 		children_fn,
+		hash_fn,
 		accept_generator(solution)
 	);
 

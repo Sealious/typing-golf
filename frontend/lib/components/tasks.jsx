@@ -30,10 +30,15 @@ var Tasks = React.createClass({
 		if(!this.state.loaded){
 			return <div className="content"> Loading...</div>
 		}else{
-			var elements = this.state.data.map(function(task){return <Task data={task} key={task.id}/>});
+			var elements = this.state.data.map(function(task, index){
+				return <Task data={task} key={task.id} index={index}/>
+			});
 			return (
 				<div className="content">
-				{elements}
+				<h2>Tasks</h2>
+				<ul className="tasklist">
+					{elements}
+				</ul>
 				</div>
 			)
 		}

@@ -6,10 +6,9 @@ var TaskLi = React.createClass({
 	render: function(){
 		try{
 			var body = JSON.parse(this.props.data.body.json);
-			// console.log("body: ", body);
 			return (
-				<li>
-					<h2><Link to={"/tasks/" + this.props.data.id}>{body.title}</Link></h2>
+				<li className="task-li" style={{animationDelay: this.props.index*75 + "ms"}}>
+					<Link to={"/tasks/" + this.props.data.id}>{body.title}</Link>
 				</li>
 			)
 		}catch(e){

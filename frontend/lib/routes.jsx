@@ -16,6 +16,7 @@ ReactDOM.render(
 				<IndexRoute component={TypingGolf.Tasks}/>
 				<Route path=":id" component={TypingGolf.ViewTask}/>
 			</Route>
+			<Route path="/ranking" component={TypingGolf.Ranking}/>
 		</Route>
   	</Router>,
 	document.getElementById('app')

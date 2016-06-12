@@ -17,6 +17,7 @@ var ViewTask = React.createClass({
 		.then(function(xhr, data){
 			var task = JSON.parse(data.body.json);
 			self.setState({
+				task_id: data.id,
 				loaded: true,
 				title: task.title,
 				to: task.to,
@@ -41,6 +42,7 @@ var ViewTask = React.createClass({
 	},
     componentDidUpdate: function(prevProps, prevState) {
 		try{
+		var self = this;
         if (equal(this.state.current_state, this.state.to) && this.state.loaded ) {
             if (this.state.resolved === false) {
                 this.setState({
@@ -50,8 +52,12 @@ var ViewTask = React.createClass({
 				if(this.state.counter > this.state.solution.length){
 					message += "\nCan you solve it in " + this.state.solution.length + "? :)";
 				}
-                alert(message)
-//                this.context.router.push('/tasks')
+				message += "\nWould you like to post your result to the leaderboard?";
+                var save_ranking = confirm(message);
+				if(save_ranking){
+					var nick = prompt("Please enter your nickname:");
+					self.postScore(nick);
+				}
             }
         }
 		}catch(e){
@@ -89,6 +95,16 @@ var ViewTask = React.createClass({
 		this.setState({current_state: this.state.from, counter: 0, resolved: false});
 		this.refs.input.focusInput();
 	},
+	postScore: function(nick){
+		var self = this;
+		qwest.post("/api/v1/resources/ranking_entry", {
+			nick: nick,
+			score: self.state.counter,
+			task: self.state.task_id
+		}).then(function(){
+			console.log("posted!");
+		});
+	},
     render: function() {
 		try{
 			var ret;
@@ -104,21 +120,22 @@ var ViewTask = React.createClass({
 				ret = (
 					<div>
 						<div className="content">
-							<h2>Task: {body.title}</h2>
-							<button onClick={this.reset}>Reset task</button>
-						</div>
-					<div>
+							<h2 className="complex-header">
+								<span>Task: {body.title}</span>
+								<div class="button-wrapper"><button onClick={this.reset}>Reset task</button></div>
+							</h2>
 							<TypingGolf.Input
 								state={body.current_state}
 								onChange={this.handleChange}
 								onSelect={this.handleChange}
 								ref="input"
+								steps={this.state.counter}
 								title="Turn this:"/>
-							<p className="end-text-details">You've done {body.counter} steps</p>
 							<TypingGolf.Target
 								state={body.to}
-								title={"Into this state below in "+body.solution.length+" steps: " +direction}
+								title={"into this:"}
 							/>
+							<h3>in {body.solution.length} steps!</h3>
 						</div>
 					</div>
 				);

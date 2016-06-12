@@ -90,10 +90,7 @@ var NewTask = React.createClass({
             <div>
 			<div className="content">
 				<h2>Create a new Task</h2>
-			</div>
-				 <div className="content">
-					<input type="text" placeholder="Task title" value={this.state.title} onChange={this.changeTitle}/>
-				 </div>			
+					<input type="text" placeholder="Task title" className="task-title" value={this.state.title} onChange={this.changeTitle}/>
                 <TypingGolf.InputOrTarget
                     state={this.state.from}
                     is_active={this.state.active == "from"}
@@ -111,10 +108,7 @@ var NewTask = React.createClass({
             		onFocus={this.onFocusTo}
 					title="Goal:"
                     ref="to"/>
-				<div className="flex-container">
-					<div className="content">
-						<button onClick={this.sendTask}>Find the shortest solution!</button>
-					</div>
+				<button onClick={this.sendTask}>Find the shortest solution!</button>
 				</div>
 
 			<div className="flex-container">

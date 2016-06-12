@@ -42,16 +42,23 @@ var Input = React.createClass({
     focusInput: function(){ this.selectText(this.props.state); },
     clickInput: function(e) {
         e.preventDefault();
-        this.t(this.props.state);
+        this.selectText(this.props.state);
     },
 	componentDidUpdate: function(){
 		this.selectText(this.props.state);
 	},
     render: function() {
+		var header = <h3>{this.props.title}</h3>
+		if(this.props.steps != undefined){
+			header = <h3 className="complex-header">
+				<span>{this.props.title || ""}</span>
+				<span className="steps-count">steps: {this.props.steps}</span>
+			</h3>
+		}
+		
         return (
-            <div className="flex-container">
-			<div className="content">
-				<h3>{this.props.title || ""}</h3>
+			<div className="input-container">
+				{header}
 				<textarea
                     className="input"
             		type="text"
@@ -64,7 +71,6 @@ var Input = React.createClass({
                     onBlur={this.props.onBlur}
                     ref="input" />
 			</div>
-            </div>
         )
     }
 });

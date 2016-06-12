@@ -17,7 +17,7 @@ var Container = React.createClass({
 
     render: function() {
         return (
-            <div>
+            <div className="main-column">
                 <div className="logo-item">
                     <div className="logo animated flipInX">typing…·golf</div>
                 </div>
@@ -32,8 +32,9 @@ var Container = React.createClass({
                         <Link className="link" to='new-task'>new task</Link>
                     </div>
                 </div>
-                
-                {this.props.children}
+                <div className="main-view">
+                	{this.props.children}
+				</div>
 
                 <TypingGolf.Cheatsheet
                     showCheatsheet={this.state.showCheatsheet}

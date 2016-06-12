@@ -42,7 +42,8 @@ body {
 	font-family: 'Source Sans Pro Regular', 'Open Sans', 'Liberation Sans', 'Nimbus Sans L', 'Trebuchet MS', 'Arial';
 	font-weight: 300;
 	padding: 0;
-	color: hsl(0, 0%, 27%);
+	/*color: hsl(0, 0%, 27%);*/
+	color: #575757;
 	background-repeat: repeat;
 	background-attachment: fixed;
     display: flex;
@@ -50,12 +51,20 @@ body {
     min-height: 100vh;
 }
 
+h1, h2, h3, p, span{
+	color: HSL(0, 0%, 35%);
+}
+
 h2 {
 	height: 3rem;
 	line-height: 3rem;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid HSL(0, 0%, 85%);
 	font-size: 2rem;
 	margin-bottom: 1rem;
+}
+
+.sweet-alert h2{
+	border: 0;
 }
 
 h2.complex-header {
@@ -271,7 +280,7 @@ img{
 .selection.b{
 	background-image:  url(../images/selection-left.png);
 }
-	
+
 
 .blink {
     /* -webkit-animation: blink 1s linear infinite; */
@@ -386,7 +395,7 @@ a:active {
 	line-height: 2rem;
 	color: hsl(231, 10%, 37%);
 	overflow: visible;
-	background-color: hsl(62, 100%, 90%);
+	background-color: #F9FFCB;
 	transition: all 400ms;
 	resize: none;
 	vertical-align:bottom;
@@ -550,7 +559,7 @@ select{
 .ranking-entry{
 	max-width: 32rem;
 	background-color: rgba(255, 255, 255, 0.67);
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid #797979;
 	margin-bottom: -1px;
 	line-height: 3rem;
 	font-size: 1.5rem;
@@ -558,6 +567,11 @@ select{
 	display:flex;
 	animation: enter 200ms;
 	animation-fill-mode: backwards;
+}
+
+.ranking-entry:last-child{
+	border: 0;
+	margin-bottom: 0;
 }
 
 .ranking-entry span{

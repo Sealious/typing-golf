@@ -21,7 +21,7 @@ edits.insert_char = function(state) {
 }
 
 edits.insert_char.desc = "[letter]"
-edits.insert_char.spec = "Insert any character."
+edits.insert_char.spec = "Insert any character"
 
 edits.delete = function(state) {
     if (state.start != state.end) {
@@ -258,7 +258,7 @@ edits.delete_next_word = function(state){
 }
 
 edits.delete_next_word.desc = "CTRL+DEL";
-edits.delete_next_word.spec = "When any text is selected, remove that text. Otherwise delete all he chars to the right of the caret until the end of the first word to the right of the caret."
+edits.delete_next_word.spec = "When any text is selected, remove that text. Otherwise delete all the chars to the right of the caret until the end of the first word to the right of the caret."
 
 edits.shift_home = function(state){
 	var moving_index = "start";

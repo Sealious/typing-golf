@@ -115,6 +115,10 @@ body {
 	height: 2rem;
 }
 
+#overlay table td:first-child {
+	white-space: nowrap;
+}
+
 img{
 	background-repeat: no-repeat;
 	background-position: 50%;
@@ -156,8 +160,14 @@ img{
 }
 
 #overlay .content{
-	height: 60vh;
+	height: calc(100vh - 10rem);
 	overflow-y: scroll;
+	padding: 0;
+}
+
+#overlay table{
+	max-width: 45rem;
+	margin: 0 4rem;
 }
 
 .end-text {
@@ -168,7 +178,7 @@ img{
 .descripiton {
 	font-size: 1.8rem;
 	line-height: 2rem;
-	padding-top: 1.2rem;
+	padding-top: 0;
 	padding-bottom: 1.2rem;
 	color: hsl(231, 18%, 30%);
 }
@@ -258,11 +268,16 @@ thead td{
 }
 
 .key{
-	padding: 0.4rem;
+	line-height: 1.5rem;
+	margin: .25rem 0;
+	display:inline-block;
+	padding: 0 .5rem;
 	color: #FFF;
 	font-family: 'Inconsolata', monospace;
-	background: hsl(265, 6%, 40%);
 	font-weight: bold;
+	border-style: outset;
+	background: hsl(265, 6%, 40%);
+	border-color:  hsl(265, 6%, 40%);
 }
 
 a {

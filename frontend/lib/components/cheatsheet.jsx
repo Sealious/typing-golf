@@ -16,18 +16,23 @@ var Cheatsheet = React.createClass({
                         current_shortcut.push(<kbd key={i} className="key">{keys[i]}</kbd>)
                         if (keys.length - i > 1) current_shortcut.push(' + ')
                     }
-                } else current_shortcut = <kbd className="key">{keys[0]}</kbd>
-                shortcuts.push(
-                    <tr key={key}>
-                        <td>{current_shortcut}</td>
-                        <td>{edits[key].spec}</td>
-                    </tr>
-                )
+                } else current_shortcut = [<kbd className="key">{keys[0]}</kbd>]
+                shortcuts.push({keys: current_shortcut, description: edits[key].spec});
             }
         }
+		shortcuts = shortcuts.sort(function(a, b){
+			return a.keys.length > b.keys.length;
+		});
         return shortcuts;
     },
     render: function() {
+
+		var shortcuts = this.loadCheatsheet().map(function(shortcut, index){
+			return <tr key={index}>
+				 <td>{shortcut.keys}</td>
+				 <td>{shortcut.description}</td>
+			</tr>
+		});		
         return (
             <div>
                 {(this.props.showCheatsheet === true)
@@ -38,10 +43,10 @@ var Cheatsheet = React.createClass({
                                     x
                                 </div>
                                 <div className="content">
-                                    <p className="descripiton">Shortcuts</p>
+                                    <h2 className="descripiton">Shortcuts</h2>
                                 <table>
                                     <tbody>
-                                        {this.loadCheatsheet()}
+                                        {shortcuts}
                                     </tbody>
                                 </table>
                             </div>

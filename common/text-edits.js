@@ -353,7 +353,7 @@ edits.select_left = function(state){
 }
 
 edits.select_left.desc = "SHIFT+←";
-edits.select_left.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
+edits.select_left.spec = "Move the active end of the selection one character to the left."
 
 edits.select_right = function(state){
 	if(state.direction == "b"){
@@ -375,7 +375,7 @@ edits.select_right = function(state){
 }
 
 edits.select_right.desc = "SHIFT+→";
-edits.select_right.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
+edits.select_right.spec = "Move the active end of the selection one character to the right."
 
 edits.control_home = function(state){
 	return {

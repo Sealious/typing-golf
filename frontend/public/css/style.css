@@ -524,9 +524,67 @@ button {
 	display:flex;
 	flex-flow: column nowrap;
 	height: 100%;
+    min-height: calc(100vh - 7rem);
 }
 
 .steps-count{
 	text-align: right;
 	font-weight: normal;
+}
+
+select{
+	height: 2rem;
+	margin: 0px;
+	line-height: 2rem;
+	font-size: 0.9rem;
+	padding: 0 1rem;
+}
+
+.resource-list{
+	list-style: none;
+	outline: 1rem solid rgb(106, 100, 113);
+	margin-left: 1rem;
+	padding-left: 0;
+}
+
+.ranking-entry{
+	max-width: 32rem;
+	background-color: rgba(255, 255, 255, 0.67);
+	border-bottom: 1px solid black;
+	margin-bottom: -1px;
+	line-height: 3rem;
+	font-size: 1.5rem;
+	padding: 1rem;
+	display:flex;
+	animation: enter 200ms;
+	animation-fill-mode: backwards;
+}
+
+.ranking-entry span{
+	line-height: 3rem;
+	font-size: 1.5rem;
+}
+
+.ranking-entry .nick {
+	flex-grow: 1;
+}
+
+.ranking-entry .index {
+	width: 3rem;
+}
+
+.ranking-entry .score{
+	text-align:right;
+}
+
+.ranking-container{
+	height:100%;
+	background-image: url("/images/winner.svg");
+	background-repeat: no-repeat;
+	background-position: 75% 0%;
+	background-size: auto 100%;
+}
+
+.medal-container{
+	width:3rem;
 }

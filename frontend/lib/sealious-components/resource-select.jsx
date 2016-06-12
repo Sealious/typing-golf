@@ -42,8 +42,6 @@ var ResourceSelect = React.createClass({
 				</option>
 			)
 		}
-
-		console.log("self.props.disabled", self.props.disabled);
 		return (
 			<label>
 				{self.props.label}

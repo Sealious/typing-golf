@@ -36,9 +36,10 @@ var ResourceList = React.createClass({
 	},
 	render: function(){
 		var self = this;
-		var list_elements = this.state.resources.map(function(resource){
+		var list_elements = this.state.resources.map(function(resource, index){
 			return React.createElement(self.props.listElementClass, {
-				resource: resource, 
+				resource: resource,
+				index: index,
 				key: resource.id,
 				onDelete: self.wrap(self.delete, resource),
 				afterChange: self.refresh

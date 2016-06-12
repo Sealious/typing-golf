@@ -13,45 +13,38 @@ var extractTaskBody = function(task){
 }
 
 var Ranking = React.createClass({
-	fetch: function(){
-		var self = this;
-		qwest.get("/api/v1/resources/ranking_entry")
-		.then(function(xhr, data){
-			self.setState({
-				entries: data,
-				loaded: true
-			})
-		})
-	},
 	getInitialState: function(){
 		return {
 			loaded: false
 		}
 	},
-	componentDidMount: function(){
-		this.fetch();
+	changeTask: function(e){
+		this.setState({task_id: e.target.value});
 	},
 	render: function(){
-		if(!this.state.loaded){
-			return (
-			   <div className='content'> wczytywanie... </div>
-			)
-		}else{
-			return (
+		return (
+			<div className="ranking-container">
 				<div className="content">
 					<h2>Ranking</h2>
 					<ResourceSelect
 						url="/api/v1/resources/task"
 						displayAttr="title"
 						transformEntry={extractTaskBody}
+						value={this.state.task_id}
+						onChange={this.changeTask}
+						allowNoValue="true"				 
+						noValueOptionName="Choose a task..."
 					/>
 					<ResourceList
 						url="/api/v1/resources/ranking_entry"
 						listElementClass={RankingLi}
+						filter={{task:this.state.task_id}}
+						sort={{"body.score":"asc"}}						  
+
 					/>
 				</div>
-			)
-		}
+			</div>
+		)
 	}
 });
 

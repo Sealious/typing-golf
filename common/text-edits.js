@@ -21,7 +21,7 @@ edits.insert_char = function(state) {
 }
 
 edits.insert_char.desc = "[letter]"
-edits.insert_char.spec = "Insert any character"
+edits.insert_char.spec = "Insert any character."
 
 edits.delete = function(state) {
     if (state.start != state.end) {
@@ -42,7 +42,7 @@ edits.delete = function(state) {
 }
 
 edits.delete.desc = "DEL";
-edits.delete.spec = "Delete the character to the right of the caret, or the selected text"
+edits.delete.spec = "Delete the character to the right of the caret, or the selected text."
 
 
 edits.end = function(state) {
@@ -54,7 +54,7 @@ edits.end = function(state) {
 }
 
 edits.end.desc = "END";
-edits.end.spec = "Unselect all text and move the caret to the end of the text"
+edits.end.spec = "Unselect all text and move the caret to the end of the text."
 
 edits.home = function(state) {
     return {
@@ -65,7 +65,7 @@ edits.home = function(state) {
 }
 
 edits.home.desc = "HOME";
-edits.home.spec = "Unselect all text and move the caret to the beginning of the text"
+edits.home.spec = "Unselect all text and move the caret to the beginning of the text."
 
 edits.ctrl_shift_end = function(state) {
     if (state.direction == "f") {
@@ -86,7 +86,7 @@ edits.ctrl_shift_end = function(state) {
 }
 
 edits.ctrl_shift_end.desc = "CTRL+SHIFT+END";
-edits.ctrl_shift_end.spec = "Move the active end of the selection to the end of the text"
+edits.ctrl_shift_end.spec = "Move the active end of the selection to the end of the text."
 
 edits.ctrl_shift_home = function(state) {
     if (state.direction == "f") {
@@ -107,7 +107,7 @@ edits.ctrl_shift_home = function(state) {
 }
 
 edits.ctrl_shift_home.desc = "CTRL+SHIFT+HOME";
-edits.ctrl_shift_home.spec = "Move the active end of the selection to the beginning of the text"
+edits.ctrl_shift_home.spec = "Move the active end of the selection to the beginning of the text."
 
 edits.backspace = function(state) {
     if (state.end == state.start) {
@@ -137,7 +137,7 @@ edits.backspace = function(state) {
 }
 
 edits.backspace.desc = "BACKSPACE";
-edits.backspace.spec = "When any text is selected, remove it. Otherwise delete the caracter that's to the left of the caretx"
+edits.backspace.spec = "When any text is selected, remove it. Otherwise delete the caracter that's to the left of the caretx."
 
 edits.next_word = function(state) {
     if (state.start == state.end) {
@@ -165,7 +165,7 @@ edits.next_word = function(state) {
 }
 
 edits.next_word.desc = "CTRL+→";
-edits.next_word.spec = "Move the caret to the end of the first word to the right of the caret"
+edits.next_word.spec = "Move the caret to the end of the first word to the right of the caret."
 
 edits.prev_word = function(state) {
     if (state.start == state.end) {
@@ -238,7 +238,7 @@ edits.select_next_word = function(state){
 }
 
 edits.select_next_word.desc = "CTRL+SHIFT+→";
-edits.select_next_word.spec = "Move the active part of the selection to the end of the first word to the right of the active end of the selection"
+edits.select_next_word.spec = "Move the active part of the selection to the end of the first word to the right of the active end of the selection."
 
 edits.delete_prev_word = function(state) {
 	if(state.start == state.end){
@@ -287,7 +287,7 @@ edits.shift_home = function(state){
 }
 
 edits.shift_home.desc = "SHIFT+HOME";
-edits.shift_home.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
+edits.shift_home.spec = "Move the active part of the selection to the beginning of the line."
 
 edits.shift_end = function(state){
 	var moving_index = "start";
@@ -319,7 +319,7 @@ edits.shift_end = function(state){
 }
 
 edits.shift_end.desc = "SHIFT+END";
-edits.shift_end.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
+edits.shift_end.spec = "Move the active part of the selection to the end of the line."
 
 edits.select_all = function(state){
 	return {
@@ -331,7 +331,7 @@ edits.select_all = function(state){
 }
 
 edits.select_all.desc = "CTRL+A";
-edits.select_all.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
+edits.select_all.spec = "Select the entire text. The active part of the selection will at the end of the text."
 
 edits.select_left = function(state){
 	if(state.direction == "f"){
@@ -386,7 +386,7 @@ edits.control_home = function(state){
 }
 
 edits.control_home.desc = "CTRL+HOME";
-edits.control_home.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
+edits.control_home.spec = "If there's some text selected, unselect it. Move the caret to the beginning of the line."
 
 edits.control_end = function(state){
 	return {
@@ -397,7 +397,7 @@ edits.control_end = function(state){
 }
 
 edits.control_end.desc = "CTRL+END";
-edits.control_end.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
+edits.control_end.spec = "If there's some text selected, unselect it. Move the caret to the end of the line."
 
 function get_h_offset(state){
 	var moving_index = "end";
@@ -488,7 +488,7 @@ edits.shift_up = function(state){
 }
 
 edits.shift_up.desc = "SHIFT+↑";
-edits.shift_up.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
+edits.shift_up.spec = "Move the active end of the selection one line up."
 
 edits.shift_down = function(state){
 	var h_offset;
@@ -533,7 +533,7 @@ edits.shift_down = function(state){
 }
 
 edits.shift_down.desc = "SHIFT+↓";
-edits.shift_down.spec = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
+edits.shift_down.spec = "Move the active part of the selection one line down."
 
 edits.left = function(state){
 	if(state.start == state.end){

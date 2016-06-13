@@ -2,6 +2,8 @@ var React = require('react');
 var PropTypes = React.PropTypes;
 var TypingGolf = require('../typing-golf-components.js');
 var Handler = require('../modules/handler.js');
+var SweetAlert = require('sweetalert-react');
+
 
 var qwest = require("qwest");
 
@@ -21,7 +23,8 @@ var NewTask = React.createClass({
             },
             active: "from",
             solution: null,
-			loading: false
+			loading: false,
+            show: false
         };
     },
     sendTask: function(){
@@ -81,10 +84,14 @@ var NewTask = React.createClass({
 		qwest.post("/api/v1/resources/task",{
 			json: data_str
 		}).then(function(){
-			alert("saved!");
-		});
-		
+            this.setState({
+                show: true
+            })
+		}.bind(this));
 	},
+    clearFields: function(){
+
+    },
     render: function(){
         return (
             <div>
@@ -109,13 +116,23 @@ var NewTask = React.createClass({
 					title="Goal:"
                     ref="to"/>
 				<button onClick={this.sendTask}>Find the shortest solution!</button>
+                <SweetAlert
+                    show={this.state.show}
+                    title="Your task saved!"
+                    onConfirm={() => {
+                        this.setState({ show: false });
+                    }}
+                    onCancel={() => {
+                        console.log('cancel');
+                    }}
+                    />
 				</div>
 
 			<div className="flex-container">
 				<div className="content">
 					<TypingGolf.Solution
 						solution={this.state.solution}
-						is_loading={this.state.loading}  
+						is_loading={this.state.loading}
 					 />
 				</div>
 			</div>
@@ -126,7 +143,7 @@ var NewTask = React.createClass({
 				</div>
 				: null}
 			</div>
-			
+
             </div>
         );
     }

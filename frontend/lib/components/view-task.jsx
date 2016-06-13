@@ -108,7 +108,7 @@ var ViewTask = React.createClass({
         });
     },
     render: function() {
-        var message = "Congratulations! \nYou've solve the task in "+this.state.counter+" steps.";
+        var message = "You've solve the task in "+this.state.counter+" steps.";
         if(this.state.counter > this.state.solution.length){
             message += "\nCan you solve it in " + this.state.solution.length + "? :)";
         }
@@ -168,10 +168,7 @@ var ViewTask = React.createClass({
                                 onConfirm={() => {
                                     this.setState({ save_ranking: true });
                                 }}
-                                onCancel={() => {
-                                    console.log('cancel');
-                                    this.reset();
-                                }}
+                                onCancel={() => { swal.close(); }}
                                 showCancelButton
                                 />
                             <SweetAlert
@@ -180,6 +177,7 @@ var ViewTask = React.createClass({
                                 type="input"
                                 inputType="text"
                                 inputPlaceholder="text"
+                                showCancelButton
                                 onConfirm={(inputValue) => {
                                     console.log(inputValue);
                                     this.postScore(inputValue)
@@ -191,7 +189,6 @@ var ViewTask = React.createClass({
                                         save_ranking: false
                                     })
                                 }}
-                                showCancelButton
                                 />
 
                         </div>

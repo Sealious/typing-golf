@@ -30,7 +30,8 @@ var NewTask = React.createClass({
     sendTask: function(){
         var data = {
             from: this.state.from,
-            to: this.state.to
+            to: this.state.to,
+			solution: null
         }
 
         var self = this;

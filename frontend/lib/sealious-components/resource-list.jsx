@@ -6,6 +6,8 @@ var type_collection = require("./resource-type-collection.mixin.jsx");
 
 var Pagination = require("./resource-list-pagination.jsx");
 
+var Loading = require("../components/loading.jsx");
+
 var ResourceList = React.createClass({
 	mixins: [type_collection],
 	getDefaultProps() {
@@ -54,7 +56,7 @@ var ResourceList = React.createClass({
 		/>
 
 		if(this.state.loading){
-			return <div>wczytywanie...</div>
+			return <Loading/>
 		} else if (list_elements.length){
 
 

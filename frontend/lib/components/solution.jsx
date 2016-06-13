@@ -1,9 +1,11 @@
 var React = require("react");
 
+var Loading = require("./loading.jsx");
+
 var Solution = React.createClass({
 	render: function(){
 		if(this.props.is_loading){
-			return <div>Waiting for the server response...</div>
+			return <Loading/>
 		}else if (this.props.solution == null){
 			return <div></div>
 		}else{

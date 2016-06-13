@@ -2,6 +2,9 @@ var React = require("react");
 var qwest = require("qwest");
 
 var Task = require("./task-li.jsx");
+var Loading = require("./loading.jsx");
+
+var Promise = require("bluebird");
 
 var Tasks = React.createClass({
 	getInitialState: function(){
@@ -15,20 +18,25 @@ var Tasks = React.createClass({
 		self.setState({
 			loaded: false
 		});
-		qwest.get("/api/v1/resources/task")
-		.then(function(xhr, response){
-			self.setState({
-				data: response,
-				loaded: true
+		return new Promise(function(resolve){
+			setTimeout(resolve, 1300)
+		}).then(function(){
+			return qwest.get("/api/v1/resources/task")
+			.then(function(xhr, response){
+				console.log(arguments);
+				self.setState({
+					data: response,
+					loaded: true
+				});
 			});
-		});
+		})
 	},
 	componentDidMount: function(){
 		this.refresh();
 	},
 	render: function(){
 		if(!this.state.loaded){
-			return <div className="content"> Loading...</div>
+			return <Loading/>
 		}else{
 			var elements = this.state.data.map(function(task, index){
 				return <Task data={task} key={task.id} index={index}/>

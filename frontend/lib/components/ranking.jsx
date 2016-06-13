@@ -39,8 +39,7 @@ var Ranking = React.createClass({
 						url="/api/v1/resources/ranking_entry"
 						listElementClass={RankingLi}
 						filter={{task:this.state.task_id}}
-						sort={{"body.score":"asc"}}						  
-
+						sort={{"body.score":"asc"}}
 					/>
 				</div>
 			</div>

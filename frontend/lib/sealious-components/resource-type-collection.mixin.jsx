@@ -84,17 +84,19 @@ module.exports = {
 		self.setState({
 			loading: true
 		})
-//		console.log(self.props.url);
-		return rest.get(self.props.url, query)
-		.then(function(xml, response){
-			try{
-			var resources = response.map(self.props.transformEntry);
-			self.setState({
-				loading: false,
-				resources: resources,
-				last_query: clone(query)
+		//		console.log(self.props.url);
+		return new Promise(function(resolve, reject){
+			setTimeout(resolve, 1000);
+		}).then(function(){
+			return rest.get(self.props.url, query)
+			.then(function(xml, response){
+				var resources = response.map(self.props.transformEntry);
+				self.setState({
+					loading: false,
+					resources: resources,
+					last_query: clone(query)
+				})
 			})
-			}catch(e){console.log(e)}
 		})			
 
 	},

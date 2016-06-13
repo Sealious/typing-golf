@@ -44,22 +44,11 @@ var ViewTask = React.createClass({
     },
     componentDidUpdate: function(prevProps, prevState) {
         try{
-            // var self = this;
             if (equal(this.state.current_state, this.state.to) && this.state.loaded ) {
                 if (this.state.resolved === false) {
                     this.setState({
                         resolved: true
                     })
-                    // var message = "Congratulations! \nYou've solve the task in "+this.state.counter+" steps.";
-                    // if(this.state.counter > this.state.solution.length){
-                    // 	message += "\nCan you solve it in " + this.state.solution.length + "? :)";
-                    // }
-                    // message += "\nWould you like to post your result to the leaderboard?";
-                    // var save_ranking = confirm(message);
-                    if(save_ranking){
-                        var nick = prompt("Please enter your nickname:");
-                        self.postScore(nick);
-                    }
                 }
             }
         }catch(e){

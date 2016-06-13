@@ -97,7 +97,7 @@ var ViewTask = React.createClass({
         });
     },
     render: function() {
-        var message = "You've solve the task in "+this.state.counter+" steps.";
+        var message = "Congratulations! \nYou've solve the task in "+this.state.counter+" steps.";
         if(this.state.counter > this.state.solution.length){
             message += "\nCan you solve it in " + this.state.solution.length + "? :)";
         }
@@ -154,10 +154,14 @@ var ViewTask = React.createClass({
                                 show={this.state.resolved}
                                 title="Congratulations!"
                                 text={message}
+                                type="success"
                                 onConfirm={() => {
                                     this.setState({ save_ranking: true });
                                 }}
-                                onCancel={() => { swal.close(); }}
+                                onCancel={() => {
+                                    console.log('cancel');
+                                    this.reset();
+                                }}
                                 showCancelButton
                                 />
                             <SweetAlert
@@ -166,17 +170,12 @@ var ViewTask = React.createClass({
                                 type="input"
                                 inputType="text"
                                 inputPlaceholder="text"
-                                showCancelButton
                                 onConfirm={(inputValue) => {
                                     console.log(inputValue);
                                     this.postScore(inputValue)
                                     this.setState({ save_ranking: false });
                                     this.reset();
-                                }}
-                                onCancel={() => {
-                                    this.setState({
-                                        save_ranking: false
-                                    })
+
                                 }}
                                 />
 

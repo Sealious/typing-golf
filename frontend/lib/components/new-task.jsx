@@ -24,7 +24,8 @@ var NewTask = React.createClass({
             active: "from",
             solution: null,
 			loading: false,
-            show: false
+            prompt: false,
+            error: false
         };
     },
     sendTask: function(){
@@ -74,21 +75,28 @@ var NewTask = React.createClass({
 		this.setState({title: e.target.value});
 	},
 	save: function(){
-		var data = {
-			from: this.state.from,
-			to: this.state.to,
-			title: this.state.title,
-			solution: this.state.solution
-		};
+        if (this.state.title !== "") {
+            var data = {
+    			from: this.state.from,
+    			to: this.state.to,
+    			title: this.state.title,
+    			solution: this.state.solution
+    		};
 
-		var data_str = JSON.stringify(data);
-		qwest.post("/api/v1/resources/task",{
-			json: data_str
-		}).then(function(){
+    		var data_str = JSON.stringify(data);
+    		qwest.post("/api/v1/resources/task",{
+    			json: data_str
+    		}).then(function(){
+                this.setState({
+                    prompt: true
+                })
+    		}.bind(this));
+            console.log('ekhm')
+        } else {
             this.setState({
-                show: true
+                error: true
             })
-		}.bind(this));
+        }
 	},
     clearFields: function(){
 
@@ -118,16 +126,30 @@ var NewTask = React.createClass({
                     ref="to"/>
 				<button onClick={this.sendTask}>Find the shortest solution!</button>
                 <SweetAlert
-                    show={this.state.show}
-                    title="Your task saved!"
+                    show={this.state.prompt}
+                    title="Success"
+                    text="Your task saved!"
+                    type="success"
                     onConfirm={() => {
-                        this.setState({ show: false });
+                        this.setState({ prompt: false });
                     }}
                     onCancel={() => {
                         console.log('cancel');
                     }}
-                    />
-				</div>
+                />
+                <SweetAlert
+                    show={this.state.error}
+                    title="Error"
+                    text="Please add title for your task!"
+                    type="error"
+                    onConfirm={() => {
+                        this.setState({ error: false });
+                    }}
+                    onCancel={() => {
+                        console.log('cancel');
+                    }}
+                />
+			</div>
 
 			<div className="flex-container">
 				<div className="content">

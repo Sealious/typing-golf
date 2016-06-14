@@ -452,6 +452,11 @@ footer {
 	padding-bottom: 1rem;
 	text-align: center;;
 	width: 100%;
+	font-size: 1rem;
+}
+
+footer *{
+	font-size: 1rem;
 }
 
 @media all and (max-width: 80rem) {
@@ -755,3 +760,8 @@ code.q {
 option {
 	font-size: 1rem;
 }
+
+.find-solution {
+	margin-top:1rem;
+}
+

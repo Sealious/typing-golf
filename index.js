@@ -13,7 +13,9 @@ www_server.route({
 	path: "/api/v1/count_steps",
 	method: "POST",
 	handler: function(context, request){
-		return solver(request.payload.from, request.payload.to);
+		if(context.user_id != null){
+			return solver(request.payload.from, request.payload.to);
+		}
 	}
 });
 
@@ -25,7 +27,11 @@ var Task = new Sealious.ResourceType({
 	name: "task",
 	fields: [
 		{name: "json", type: "text", required: true}
-	]
+	],
+	access_strategy: {
+		retrieve: "public",
+		default: "logged_in"
+	}
 });
 
 var RankingEntry = new Sealious.ResourceType({

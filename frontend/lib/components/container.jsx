@@ -4,7 +4,10 @@ var ReactRouter = require('react-router')
 var Link = ReactRouter.Link;
 var TypingGolf = require('../typing-golf-components.js');
 
+var UserData = require("../sealious-mixins/user-data.jsx");
+
 var Container = React.createClass({
+	mixins: [UserData],
     getInitialState: function() {
         return {
             showCheatsheet: false
@@ -16,6 +19,12 @@ var Container = React.createClass({
     },
 
     render: function() {
+		var new_task_option = <div></div>;
+		if(this.state.logged_in){
+			new_task_option = <div className="nav-item">
+				<Link className="link" to='new-task' activeClassName="active" title="create a new task">new task</Link>
+			</div>
+		}
         return (
             <div className="main-column">
                 <div className="logo-item">
@@ -28,9 +37,7 @@ var Container = React.createClass({
                     <div className="nav-item">
                         <Link className="link" to='ranking' activeClassName="active" title="view best scores so far">ranking</Link>
                     </div>
-                    <div className="nav-item">
-                        <Link className="link" to='new-task' activeClassName="active" title="create a new task">new task</Link>
-                    </div>
+					{new_task_option}
                 </div>
                 <div className="main-view">
                 	{this.props.children}

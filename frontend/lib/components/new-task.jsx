@@ -124,7 +124,7 @@ var NewTask = React.createClass({
             		onFocus={this.onFocusTo}
 					title="Goal:"
                     ref="to"/>
-				<button onClick={this.sendTask}>Find the shortest solution!</button>
+				<button onClick={this.sendTask} className="find-solution">Find the shortest solution!</button>
                 <SweetAlert
                     show={this.state.prompt}
                     title="Success"

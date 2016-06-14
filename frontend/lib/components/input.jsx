@@ -62,7 +62,7 @@ var Input = React.createClass({
 				<textarea
                     className="input"
             		type="text"
-					rows="1"
+					rows={this.props.state.text.split("\n").length}
                     value={this.props.state.text}
                     onChange={this.handleChange}
                     onSelect={this.handleChange}

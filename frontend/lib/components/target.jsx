@@ -13,11 +13,13 @@ var Target = React.createClass({
 		var sub_2 = "﻿";
 		var sub_3 = text.slice(end);
 
+		var style = {height: parseInt(text.split("\n").length) * 2 + 2 + "rem"};
+		
         if (start !== end) {
             sub_2 = text.slice(start, end)
-            targetText = <p className="end-text">{sub_1}<span className={"selection " + direction}>{sub_2}</span>{sub_3}</p>;
+            targetText = <pre className="end-text" style={style}>{sub_1}<span className={"selection " + direction}>{sub_2}</span>{sub_3}</pre>;
         } else {
-            targetText = <p className="end-text">{sub_1}<span className="blink">{sub_2}</span>{sub_3}</p>;
+            targetText = <pre className="end-text" style={style}>{sub_1}<span className="blink">{sub_2}</span>{sub_3}</pre>;
         }
         return targetText;
     },

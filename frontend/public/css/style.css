@@ -389,12 +389,14 @@ a:active {
 	font-family: 'Inconsolata', monospace;
 	border: 1px solid hsl(0, 0%, 80%);
 	width: 100%;
-	max-width: none;
+	max-wdth: none;
+	overflow-y: auto;
+	white-space: pre;
+	font-size: 1.2rem;
 }
 
 .input {
 	padding: 1rem;
-	font-size: 1.8rem;
 	line-height: 2rem;
 	color: hsl(231, 10%, 37%);
 	overflow: visible;

@@ -30,7 +30,7 @@ var ViewTask = React.createClass({
 					solution: task.solution
 				});
 			});
-		}, 500)
+		}, 600)
 
     },
     getInitialState: function() {
@@ -101,6 +101,9 @@ var ViewTask = React.createClass({
             console.log("posted!");
         });
     },
+    redirectToTasks: function() {
+        this.context.router.push('/tasks')
+    },
     render: function() {
         var message = "Congratulations! \nYou've solve the task in "+this.state.counter+" steps.";
         if(this.state.counter > this.state.solution.length){
@@ -165,6 +168,8 @@ var ViewTask = React.createClass({
                                 onCancel={() => {
                                     console.log('cancel');
                                     this.reset();
+                                    this.redirectToTasks();
+
                                 }}
                                 showCancelButton
                                 />
@@ -179,6 +184,7 @@ var ViewTask = React.createClass({
                                     this.postScore(inputValue)
                                     this.setState({ save_ranking: false });
                                     this.reset();
+                                    this.redirectToTasks();
 
                                 }}
                                 />

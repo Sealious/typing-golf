@@ -2,7 +2,7 @@ var React = require("react");
 
 var Loading = React.createClass({
 	render: function(){
-		var delay = 65;
+		var delay = 60;
 		//var boxes_amnt = Math.floor(Math.random()*10) + 5;
 		var boxes_amnt = 6;
 		var boxes  = [];
@@ -17,7 +17,7 @@ var Loading = React.createClass({
 		return (
 			<div className="loading-container">
 			<div>
-				{boxes}			
+				{boxes}
 			</div>
 			<div className="loading-text">
 			Loading...

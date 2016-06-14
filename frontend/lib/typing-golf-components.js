@@ -13,3 +13,4 @@ TypingGolf.ViewTask = require("./components/view-task.jsx");
 TypingGolf.Cheatsheet = require("./components/cheatsheet.jsx");
 TypingGolf.Ranking = require("./components/ranking.jsx");
 TypingGolf.Loading = require("./components/loading.jsx");
+TypingGolf.Welcome = require("./components/welcome.jsx");

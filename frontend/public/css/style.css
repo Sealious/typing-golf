@@ -691,6 +691,18 @@ select{
 	animation-delay: 500ms;
 }
 
+.content > *:nth-child(6){
+	animation-delay: 600ms;
+}
+
+.content > *:nth-child(7){
+	animation-delay: 700ms;
+}
+
+.content > *:nth-child(8){
+	animation-delay: 800ms;
+}
+
 @keyframes popup{
 	from: {
 		transform: scale(0.5);
@@ -704,4 +716,36 @@ select{
 
 .shortcuts {
 	animation: enter 300ms;
+}
+
+.welcome p,
+.welcome p *{
+	line-height: 2rem;
+	font-size: 1.1rem;
+}
+
+.welcome h3 {
+	margin-top:1rem;
+}
+
+.welcome a{
+	position:relative;
+	text-shadow: -1px 0px 0px #fff,1px 0px 0px #fff,-2px 0px 0px #fff,2px 0px 0px #fff,-3px 0px 0px #fff,3px 0px 0px #fff;
+	background-image: linear-gradient(to bottom,black 0%,#333 75%,#333 100%);
+	background-size: 1px 1px;
+	background-position: 3px 24px;
+	background-repeat: repeat-x;
+}
+
+strong {
+	font-weight: bold;
+}
+
+code.q {
+	background-color: #48A0DC;
+	border-radius: 50%;
+	color: white;
+	width: 2rem;
+	display: inline-block;
+	text-align:center;
 }

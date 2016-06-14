@@ -10,7 +10,8 @@ var hashHistory = ReactRouter.hashHistory;
 
 ReactDOM.render(
 	<Router history={hashHistory}>
-		<Route path="/" component={TypingGolf.Container}>
+			<Route path="/" component={TypingGolf.Container}>
+			<IndexRoute component={TypingGolf.Welcome}/>
 			<Route path="new-task" component={TypingGolf.NewTask}/>
 			<Route path="tasks">
 				<IndexRoute component={TypingGolf.Tasks}/>

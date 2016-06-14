@@ -526,6 +526,8 @@ input.task-title{
 button {
 	font-size: 1rem;
 	height: 2rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
 }
 
 .button-wrapper{
@@ -748,4 +750,8 @@ code.q {
 	width: 2rem;
 	display: inline-block;
 	text-align:center;
+}
+
+option {
+	font-size: 1rem;
 }

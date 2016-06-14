@@ -36,7 +36,7 @@ var Tasks = React.createClass({
 	},
 	render: function(){
 		if(!this.state.loaded){
-			return <Loading/>
+			return <div className="content"><Loading/></div>
 		}else{
 			var elements = this.state.data.map(function(task, index){
 				return <Task data={task} key={task.id} index={index}/>

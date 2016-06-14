@@ -17,7 +17,7 @@ var RankingLi = React.createClass({
 			break;
 		}
 		return (
-			<li className="ranking-entry" style={{animationDelay: this.props.index*200 + "ms"}}>
+			<li className="ranking-entry" style={{animationDelay: this.props.index*200 + 300 + "ms"}}>
 				<span className="medal-container">{medal}</span>
 				<span className="index">#{this.props.index+1}</span>
 				<span className="nick">{body.nick}</span>

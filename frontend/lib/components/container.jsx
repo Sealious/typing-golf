@@ -19,17 +19,17 @@ var Container = React.createClass({
         return (
             <div className="main-column">
                 <div className="logo-item">
-                    <div className="logo animated flipInX">typing…·golf</div>
+                    <div className="logo animated flipInX">typing·golf</div>
                 </div>
                 <div className="nav">
                     <div className="nav-item">
-                        <Link className="link" to='tasks'>tasks</Link>
+                        <Link className="link" to='tasks' activeClassName="active">tasks</Link>
                     </div>
                     <div className="nav-item">
-                        <Link className="link" to='ranking'>ranking</Link>
+                        <Link className="link" to='ranking' activeClassName="active">ranking</Link>
                     </div>
                     <div className="nav-item">
-                        <Link className="link" to='new-task'>new task</Link>
+                        <Link className="link" to='new-task' activeClassName="active">new task</Link>
                     </div>
                 </div>
                 <div className="main-view">

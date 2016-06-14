@@ -104,17 +104,7 @@ h3.complex-header span{
 	background-image: url(../images/bckgd_body.png);
 	background-position: calc(50% + 8px) 0%;
 	flex-grow: 1;
-}
-
-.nav{
-	position: fixed;
-	width: 16rem;
-	left: 0;
-	top: 0;
-	background-color: #fff;
-	padding: 0;
-	display: inline-block;
-	justify-content: center;
+	position:relative;
 }
 
 .flex-container {
@@ -139,10 +129,23 @@ h3.complex-header span{
 	vertical-align: middle;
 	color: hsl(231, 18%, 66%);
 	padding: 0.2rem 1rem;
+	outline: .25rem solit transparent;
+	color: white;
+}
+
+.nav-item .link.active {
+	background-color: white;
+	color: inherit;
+	outline: .25rem solid white;
+	box-shadow: 0 -3px 21px rgba(0, 0, 0, 0.35);
 }
 
 .nav-item .link:hover{
-	background-color: #F9FFCB;
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+.nav-item .link.active:hover {
+	background-color: white;
 }
 
 .logo-item {
@@ -460,9 +463,10 @@ footer {
 	width: 100%;
 	left: 0;
 	top: 0;
-	background-color: #fff;
 	padding: 0;
 	display: flex;
+	background-color: hsl(268, 6%, 60%);
+	justify-content: center;
 }
 #app{
 	width: 100%;
@@ -660,4 +664,44 @@ select{
 	margin-top: 1rem;
 	font-size: 1.5rem;
 	line-height: 2rem;
+}
+
+.content > * {
+	animation: enter 200ms;
+	animation-fill-mode: backwards;
+}
+
+.content > *:nth-child(1){
+	animation-delay: 100ms;
+}
+
+.content > *:nth-child(2){
+	animation-delay: 200ms;
+}
+
+.content > *:nth-child(3){
+	animation-delay: 300ms;
+}
+
+.content > *:nth-child(4){
+	animation-delay: 400ms;
+}
+
+.content > *:nth-child(5){
+	animation-delay: 500ms;
+}
+
+@keyframes popup{
+	from: {
+		transform: scale(0.5);
+		opacity: 0;
+	}
+	to: {
+		transform: scale(1);
+		opacity:1;
+	}
+}
+
+.shortcuts {
+	animation: enter 300ms;
 }

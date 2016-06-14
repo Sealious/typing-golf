@@ -5,6 +5,8 @@ var equal = require('deep-equal');
 var TypingGolf = require('../typing-golf-components.js');
 var SweetAlert = require('sweetalert-react');
 
+var Loading = require("./loading.jsx");
+
 var qwest = require("qwest");
 
 var ViewTask = React.createClass({
@@ -14,19 +16,22 @@ var ViewTask = React.createClass({
     fetch: function(){
         this.setState({loaded: false});
         var self = this;
-        qwest.get("/api/v1/resources/task/" + this.props.params.id)
-        .then(function(xhr, data){
-            var task = JSON.parse(data.body.json);
-            self.setState({
-                task_id: data.id,
-                loaded: true,
-                title: task.title,
-                to: task.to,
-                from: task.from,
-                current_state: task.from,
-                solution: task.solution
-            });
-        });
+		setTimeout(function(){
+			qwest.get("/api/v1/resources/task/" + self.props.params.id)
+			.then(function(xhr, data){
+				var task = JSON.parse(data.body.json);
+				self.setState({
+					task_id: data.id,
+					loaded: true,
+					title: task.title,
+					to: task.to,
+					from: task.from,
+					current_state: task.from,
+					solution: task.solution
+				});
+			});
+		}, 500)
+
     },
     getInitialState: function() {
         return {
@@ -106,8 +111,7 @@ var ViewTask = React.createClass({
         try{
             var ret;
             if(!this.state.loaded){
-                ret =
-                <div className="content">Loading...</div>
+                ret = <Loading/>
             }else{
                 var body = this.state;
                 var direction = ""

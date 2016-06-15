@@ -35,7 +35,7 @@ module.exports = {
 		if(props.paginate){
 			query.pagination = this.state.pagination;
 		}
-		
+
 		if(props.search){
 			query.search = props.search;
 		}
@@ -86,7 +86,7 @@ module.exports = {
 		})
 		//		console.log(self.props.url);
 		return new Promise(function(resolve, reject){
-			setTimeout(resolve, 1000);
+			setTimeout(resolve, 1400);
 		}).then(function(){
 			return rest.get(self.props.url, query)
 			.then(function(xml, response){
@@ -97,7 +97,7 @@ module.exports = {
 					last_query: clone(query)
 				})
 			})
-		})			
+		})
 
 	},
 	refresh: function(force){
@@ -125,7 +125,7 @@ module.exports = {
 	componentWillReceiveProps: function(next_props) {
 		var self = this;
 		setTimeout(function(){
-			self.refresh();			
+			self.refresh();
 		}, 0)
 	},
 	delete: function(resource){

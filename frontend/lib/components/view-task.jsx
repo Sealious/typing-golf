@@ -30,7 +30,7 @@ var ViewTask = React.createClass({
 					solution: task.solution
 				});
 			});
-		}, 600)
+		}, 1400)
 
     },
     getInitialState: function() {

@@ -19,7 +19,7 @@ var Tasks = React.createClass({
 			loaded: false
 		});
 		return new Promise(function(resolve){
-			setTimeout(resolve, 700)
+			setTimeout(resolve, 1400)
 		}).then(function(){
 			return qwest.get("/api/v1/resources/task")
 			.then(function(xhr, response){

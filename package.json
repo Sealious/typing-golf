@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-front": "watchify -t reactify frontend/lib/routes.jsx -o frontend/public/js/main.build.js -v"
+    "build-front": "watchify -t reactify frontend/lib/routes.jsx -o frontend/public/js/main.build.js -v",
+    "build-front-once": "browserify -t reactify frontend/lib/routes.jsx -o frontend/public/js/main.build.js -v"	  
   },
   "repository": {
     "type": "git",

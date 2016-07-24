@@ -23,7 +23,7 @@
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "react-router": "^2.4.0",
-    "sealious": "git://github.com/sealcode/sealious.git#references",
+    "sealious": "git://github.com/sealcode/sealious.git#829cb67c1b1b48f4f1b55e59845",
     "sealious-channel-rest": "git://github.com/sealcode/sealious-channel-rest.git#subjects",
     "sealious-www-server": "git://github.com/sealcode/sealious-www-server.git#references",
     "sweetalert-react": "^0.4.4"

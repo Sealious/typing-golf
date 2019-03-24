@@ -1,0 +1,27 @@
+version: "3.2"
+services:
+    typing-golf-app:
+        container_name: typing-golf-app
+        restart: always
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - ./common:/common
+            - ./frontend:/frontend
+            - ./index.js:/index.js
+            - ./package.json:/package.json
+            - ./node_modules:/node_modules
+        ports:
+            - "4444:8080"
+        links:
+            - mongo
+        depends_on:
+            - mongo
+    mongo:
+        container_name: mongo
+        image: mongo:3.2
+        volumes:
+            - ./db:/db
+        ports:
+            - "127.0.0.1:27017:27017"
